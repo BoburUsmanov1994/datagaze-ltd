@@ -1,0 +1,13 @@
+.icon {
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+.icon-eye {
+  mask-image: url("../icons/eye.svg");
+  -webkit-mask-image: url("../icons/eye.svg");
+}

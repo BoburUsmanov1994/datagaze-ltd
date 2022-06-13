@@ -5,6 +5,7 @@ import {ToastContainer} from "react-toastify";
 import "nprogress/nprogress.css";
 import 'react-toastify/dist/ReactToastify.css';
 import 'rodal/lib/rodal.css';
+import '../assets/styles/styles.scss'
 
 const GlobalStyles = createGlobalStyle`
   * {

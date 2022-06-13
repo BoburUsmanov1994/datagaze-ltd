@@ -13,6 +13,7 @@
     "dayjs": "^1.11.3",
     "framer-motion": "^6.3.10",
     "lodash": "^4.17.21",
+    "node-sass": "^7.0.1",
     "nprogress": "^0.2.0",
     "rc-slider": "^10.0.0",
     "react": "^18.1.0",
@@ -32,6 +33,7 @@
     "react-switch": "^6.1.0",
     "react-toastify": "^9.0.3",
     "rodal": "^1.8.3",
+    "sass-loader": "^13.0.0",
     "styled-components": "^5.3.5",
     "sweetalert2": "^11.4.17",
     "zustand": "^4.0.0-rc.1"
