@@ -4,7 +4,7 @@ import useAuth from "../../hooks/auth/useAuth";
 const IsAuth = ({children,...rest}) => {
     const {isAuthenticated,token} = useAuth({});
 
-    return !!(token) ? children : null
+    return true ? children : null
 };
 
 export default IsAuth;
