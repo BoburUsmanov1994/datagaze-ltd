@@ -9,6 +9,7 @@ import {get} from "lodash";
 import Swal from "sweetalert2";
 import {OverlayLoader} from "../../../components/loader";
 import {URLS} from "../../../constants/url";
+import Icon from "../../../components/ui/icon";
 
 const LoginContainer = ({...rest}) => {
     const {mutate, isLoading} = usePostQuery({url: URLS.login, hideSuccessToast: true})

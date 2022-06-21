@@ -1,224 +1,50 @@
-import classNames from "classnames";
+import React from 'react';
 import styled from "styled-components";
 
-const StyledIcon = styled.div`
-  .ui__icon__wrapper {
-
-    .icon {
-      width: 22px;
-      height: 22px;
-      background-color: var(--icon--default);
-      transition: 0.15s linear;
-    }
-
-    &.xs {
-      width: 18px;
-      height: 18px;
-
-      .icon {
-        width: 16px;
-        height: 16px;
-      }
-
-      &.hover {
-        width: 26px;
-        height: 26px;
-      }
-    }
-
-    &.sm {
-      width: 20px;
-      height: 20px;
-
-      .icon {
-        width: 18px;
-        height: 18px;
-      }
-
-      &.hover {
-        width: 28px;
-        height: 28px;
-      }
-    }
-
-    &.xmd {
-      width: 22px;
-      height: 22px;
-
-      .icon {
-        width: 20px;
-        height: 20px;
-      }
-
-      &.hover {
-        width: 30px;
-        height: 30px;
-      }
-    }
-
-    &.md {
-      width: 24px;
-      height: 24px;
-
-      .icon {
-        width: 22px;
-        height: 22px;
-      }
-
-      &.hover {
-        width: 42px;
-        height: 42px;
-      }
-    }
-
-    &.lg {
-      width: 30px;
-      height: 30px;
-
-      .icon {
-        width: 28px;
-        height: 28px;
-      }
-
-      &.hover {
-        width: 48px;
-        height: 48px;
-      }
-    }
-
-    &.xl {
-      width: 38px;
-      height: 38px;
-
-      .icon {
-        width: 36px;
-        height: 36px;
-      }
-
-      &.hover {
-        width: 56px;
-        height: 56px;
-      }
-    }
-
-    &.white {
-      .icon {
-        background-color: var(--white);
-      }
-    }
-
-    &.dark {
-      .icon {
-        background-color: var(--icon--dark);
-      }
-    }
-
-    &.green {
-      .icon {
-        background-color: var(--green);
-      }
-
-      &.hover:hover {
-        background-color: var(--icon--wrapper--bg--green);
-      }
-    }
-
-    &.info {
-      .icon {
-        background-color: var(--info);
-      }
-
-      &.hover:hover {
-        background-color: var(--icon--wrapper--bg--info);
-      }
-    }
-
-    &.success {
-      .icon {
-        background-color: var(--success);
-      }
-
-      &.hover:hover {
-        background-color: var(--icon--wrapper--bg--success);
-      }
-    }
-
-    &.warning {
-      .icon {
-        background-color: var(--warning);
-      }
-
-      &.hover:hover {
-        background-color: var(--icon--wrapper--bg--warning);
-      }
-    }
-
-    &.danger {
-      .icon {
-        background-color: var(--danger);
-      }
-
-      &.hover:hover {
-        background-color: var(--icon--wrapper--bg--danger);
-      }
-    }
-
-    &.disabled {
-      pointer-events: none;
-
-      .icon {
-        background-color: var(--icon--disable);
-      }
-    }
-    .icon {
-      background-color: ${({ color }) => color !== "white" && color !== "dark" && color !== "green" && color !== "info" && color !== "success" && color !== "warning" && color !== "danger" ? color : "var(--icon--default)"};
-    }
-  }
-
+const Styled = styled.div`
+  display: inline-block;
 `;
-const Icon = ({
-                  icon = "icon-settings",
-                  color = "",
-                  size = "md",
-                  hover = false,
-                  disabled = false,
-                  onClick = () => {},
-                  mainOnClick = () => {},
-                  className = '',
-                  mainClassName = '',
-                  iconClassName='',
-                  ...rest
-              }) => {
 
-    return (
-        <StyledIcon className={mainClassName} onClick={mainOnClick} color={color} >
-            <div
-                className={classNames(`ui__icon__wrapper ${className}`, {
-                    xs: size === "xs",
-                    sm: size === "sm",
-                    xmd: size === "xmd",
-                    md: size === "md",
-                    lg: size === "lg",
-                    xl: size === "xl",
-                    hover,
-                    white: color === "white",
-                    dark: color === "dark",
-                    green: color === "green",
-                    info: color === "info",
-                    success: color === "success",
-                    warning: color === "warning",
-                    danger: color === "danger",
-                    disabled,
-                })}
-                onClick={(e) => {
-                    onClick(e);
-                }}
-                {...rest}
-            >
-                <div className={`icon ${icon} ${iconClassName}`}/>
-            </div>
-        </StyledIcon>
-    );
+const EyeIcon = ({
+                     color,
+                     size,
+                 }) => {
+    return <svg width={size} height={size} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_37_177)">
+            <path d="M6.83118 7.90022C7.18025 7.90022 7.51501 7.76156 7.76184 7.51473C8.00866 7.26791 8.14732 6.93315 8.14732 6.58408C8.14732 6.23502 8.00866 5.90026 7.76184 5.65343C7.51501 5.40661 7.18025 5.26794 6.83118 5.26794C6.48212 5.26794 6.14736 5.40661 5.90053 5.65343C5.65371 5.90026 5.51505 6.23502 5.51505 6.58408C5.51505 6.93315 5.65371 7.26791 5.90053 7.51473C6.14736 7.76156 6.48212 7.90022 6.83118 7.90022Z" fill="#C9C9C9"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.55188 6.58415C1.39026 3.91436 3.88435 1.97766 6.83118 1.97766C9.77802 1.97766 12.2721 3.91436 13.1105 6.58415C12.2721 9.25394 9.77802 11.1906 6.83118 11.1906C3.88435 11.1906 1.39026 9.25394 0.55188 6.58415ZM9.46346 6.58415C9.46346 7.28227 9.18613 7.9518 8.69248 8.44545C8.19884 8.9391 7.52931 9.21643 6.83118 9.21643C6.13306 9.21643 5.46353 8.9391 4.96988 8.44545C4.47623 7.9518 4.1989 7.28227 4.1989 6.58415C4.1989 5.88603 4.47623 5.2165 4.96988 4.72285C5.46353 4.2292 6.13306 3.95187 6.83118 3.95187C7.52931 3.95187 8.19884 4.2292 8.69248 4.72285C9.18613 5.2165 9.46346 5.88603 9.46346 6.58415V6.58415Z" fill="#C9C9C9"/>
+        </g>
+        <defs>
+            <clipPath id="clip0_37_177">
+                <rect width="13.1614" height="13.1614" fill="white" transform="translate(0.250488 0.00341797)"/>
+            </clipPath>
+        </defs>
+    </svg>
 };
+
+const UserGroupsIcon = ({size = 20, color = "#18181B"}) => {
+
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M14.1666 16.6667H18.3333V15C18.3333 14.4805 18.1713 13.9738 17.8701 13.5506C17.5688 13.1273 17.1431 12.8084 16.6523 12.6382C16.1614 12.468 15.6296 12.4549 15.131 12.6009C14.6324 12.7468 14.1916 13.0445 13.87 13.4525M14.1666 16.6667H5.83329M14.1666 16.6667V15C14.1666 14.4534 14.0616 13.9309 13.87 13.4525M13.87 13.4525C13.5605 12.6792 13.0264 12.0163 12.3366 11.5493C11.6468 11.0824 10.8329 10.8328 9.99996 10.8328C9.16697 10.8328 8.35309 11.0824 7.6633 11.5493C6.9735 12.0163 6.43942 12.6792 6.12996 13.4525M5.83329 16.6667H1.66663V15C1.66666 14.4805 1.82857 13.9738 2.12984 13.5506C2.43112 13.1273 2.85678 12.8084 3.34767 12.6382C3.83856 12.468 4.37027 12.4549 4.86891 12.6009C5.36754 12.7468 5.80832 13.0445 6.12996 13.4525M5.83329 16.6667V15C5.83329 14.4534 5.93829 13.9309 6.12996 13.4525M12.5 5.83337C12.5 6.49641 12.2366 7.1323 11.7677 7.60114C11.2989 8.06998 10.663 8.33337 9.99996 8.33337C9.33692 8.33337 8.70103 8.06998 8.23219 7.60114C7.76335 7.1323 7.49996 6.49641 7.49996 5.83337C7.49996 5.17033 7.76335 4.53445 8.23219 4.06561C8.70103 3.59677 9.33692 3.33337 9.99996 3.33337C10.663 3.33337 11.2989 3.59677 11.7677 4.06561C12.2366 4.53445 12.5 5.17033 12.5 5.83337ZM17.5 8.33337C17.5 8.7754 17.3244 9.19932 17.0118 9.51188C16.6992 9.82445 16.2753 10 15.8333 10C15.3913 10 14.9673 9.82445 14.6548 9.51188C14.3422 9.19932 14.1666 8.7754 14.1666 8.33337C14.1666 7.89135 14.3422 7.46742 14.6548 7.15486C14.9673 6.8423 15.3913 6.66671 15.8333 6.66671C16.2753 6.66671 16.6992 6.8423 17.0118 7.15486C17.3244 7.46742 17.5 7.89135 17.5 8.33337ZM5.83329 8.33337C5.83329 8.7754 5.6577 9.19932 5.34514 9.51188C5.03258 9.82445 4.60865 10 4.16663 10C3.7246 10 3.30068 9.82445 2.98811 9.51188C2.67555 9.19932 2.49996 8.7754 2.49996 8.33337C2.49996 7.89135 2.67555 7.46742 2.98811 7.15486C3.30068 6.8423 3.7246 6.66671 4.16663 6.66671C4.60865 6.66671 5.03258 6.8423 5.34514 7.15486C5.6577 7.46742 5.83329 7.89135 5.83329 8.33337Z"
+            stroke={color} stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+}
+const Icon = ({icon, color, size,...rest}) => (
+    <Styled {...rest}>
+        {
+            ((icon) => {
+                switch (icon) {
+                    case 'eye':
+                        return <EyeIcon color={color} size={size}/>
+                    case 'user-group':
+                        return <UserGroupsIcon color={color} size={size}/>
+                }
+            })(icon)
+        }
+    </Styled>
+);
+
 
 export default Icon;
