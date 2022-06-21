@@ -26,6 +26,7 @@ const Sidebar = ({children,...rest}) => {
             <Link className={'miniLogo'} to={'/dashboard'}>
                 <img src={miniLogo} alt="mini logo"/>
             </Link>
+            <Menu />
         </Styled>
     );
 };
