@@ -9,21 +9,21 @@ import classNames from "classnames";
 const Styled = styled.ul`
   display: flex;
   align-items: center;
-  margin-left: 65px;
+  margin-left: 30px;
 
   li {
     display: flex;
     align-items: center;
     .breadcrumb-link{
       color: #000;
-      font-size: 16px;
+      font-size: 18px;
       transition: 0.2s ease;
       &:hover{
-        color: #13D6D1;
+        color: #4439C1;
       }
       
       &.last{
-        font-family: 'Gilroy-Medium', sans-serif;
+        font-weight: 700;
       }
     }
     svg{

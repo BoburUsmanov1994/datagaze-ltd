@@ -23,7 +23,6 @@ const Styled = styled.aside`
   .logout{
     position: absolute;
     width: 100%;
-    //border-top: 1px solid #CDCDCD;
     height:50px;
     bottom: 0;
     display: flex;

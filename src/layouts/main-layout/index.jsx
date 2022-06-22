@@ -8,19 +8,24 @@ import Content from "../../components/content";
 
 const Styled = styled.div`
   position: relative;
-  .wrap-content{
+  .wrap-box{
     display: flex;
+  }
+  .wrap-content{
+    margin-top: 75px;
   }
 `;
 const MainLayout = ({...rest}) => {
 
     return (
         <Styled {...rest}>
-            <div className={'wrap-content'}>
+            <div className={'wrap-box'}>
                 <Sidebar />
                 <Content>
-                    {/*<Header />*/}
-                    <Outlet/>
+                    <Header />
+                    <div className={'wrap-content'}>
+                        <Outlet/>
+                    </div>
                 </Content>
             </div>
         </Styled>

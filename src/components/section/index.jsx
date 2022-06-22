@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {Container} from "react-grid-system";
 
 const Styled = styled.section`
-  padding: 25px 15px;
+  padding: 0px 25px 25px 15px;
   background-color: #fff;
 `;
 const Section = ({

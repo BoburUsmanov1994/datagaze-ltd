@@ -1,20 +1,37 @@
-import React, {useEffect} from 'react';
-import {useQuery} from "react-query";
-import {request} from "../../../services/api";
-import config from "../../../config";
+import React, {useEffect, useMemo} from 'react';
+import {get} from "lodash";
+import {useStore} from "../../../store";
+import Section from "../../../components/section";
+import {Col, Row} from "react-grid-system";
+import {MonthRangeSlider, TimeRangeSlider} from "../../../components/range-slider";
+
 
 const DashboardContainer = ({...rest}) => {
+    const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
+    }))
+    const breadcrumbs = useMemo(() => [
+        {
+            id: 1,
+            title: 'Dashboard',
+            path: '/dashboard',
+        }
+    ], [])
 
-    // useEffect(()=>{
-    //     fetch('https://jsonplaceholder.typicode.com/posts/1')
-    //         .then((response) => response.json())
-    //         .then((json) => console.log(json))
-    // },[])
-    console.log('test')
+    useEffect(() => {
+        setBreadcrumbs(breadcrumbs)
+    }, [])
+
     return (
-        <div>
-            Dashboard page
-        </div>
+        <Section>
+            <Row>
+                <Col xs={12} style={{marginBottom: '150px'}}>
+                    <MonthRangeSlider/>
+                </Col>
+                <Col xs={12}>
+                    <TimeRangeSlider/>
+                </Col>
+            </Row>
+        </Section>
     );
 };
 
