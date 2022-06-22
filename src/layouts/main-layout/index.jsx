@@ -7,7 +7,6 @@ import Sidebar from "../../components/sidebar";
 import Content from "../../components/content";
 
 const Styled = styled.div`
-  padding-top: 80px;
   position: relative;
   .wrap-content{
     display: flex;
@@ -17,10 +16,10 @@ const MainLayout = ({...rest}) => {
 
     return (
         <Styled {...rest}>
-            <Header/>
             <div className={'wrap-content'}>
                 <Sidebar />
                 <Content>
+                    {/*<Header />*/}
                     <Outlet/>
                 </Content>
             </div>

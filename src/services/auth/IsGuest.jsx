@@ -5,6 +5,7 @@ const IsGuest = ({children,...rest}) => {
     const {isAuthenticated,token} = useAuth({});
 
     return false ? children : null
+
 };
 
 export default IsGuest;

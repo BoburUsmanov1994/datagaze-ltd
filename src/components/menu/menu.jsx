@@ -1,111 +1,120 @@
-import React, {useState} from 'react';
+import React, {memo} from 'react';
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
-import {get, isEqual} from "lodash";
-import {menuData} from "../../constants/menu";
-import {ChevronRight, ChevronDown} from 'react-feather';
-import classNames from "classnames";
+import {
+    AlertCircle,
+    Clipboard,
+    Copy,
+    Database,
+    Grid,
+    Monitor,
+    PieChart, Search, Server,
+    Settings,
+    Shield,
+    User,
+    Users
+} from "react-feather";
 
 const StyledMenu = styled.div`
-  //padding-top: 15px;
-`;
+  position: relative;
+  ul {
+padding: 15px 15px 5px;
+    height: calc(100vh - 120px);
+    overflow-y: auto;
 
-const StyledMenuLink = styled(NavLink)`
-  margin-left: 40px;
-  margin-right: 18px;
-  padding: 12px 0;
-  display: flex;
-  border-bottom: 1px solid #CDCDCD;
-  justify-content: space-between;
-  align-items: center;
+    li {
+      margin-bottom: 25px;
+      text-align: center;
+      a{
+        color: #948989;
+        transition: 0.3s ease;
+        &:hover{
+          color: #18181B;
+        }
+        &.active{
+          color: #4439C1;
+        }
+      }
 
-  &:hover {
-    .menu-title {
-      color: #13D6D1;
-    }
-
-    .menu-icon > svg {
-      stroke: #13D6D1;
-    }
-  }
-
-  &.active-link, &.active {
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 24px;
-    padding-right: 16px;
-    background-color: #13D6D1;
-
-    .menu-title {
-      color: #fff;
-    }
-
-    .menu-icon > svg {
-      stroke: #fff;
-    }
-  }
-
-  .menu-title {
-    font-size: 16px;
-    color: #000;
-    text-decoration: none;
-  }
-
-  .menu-icon {
-    svg {
-      margin-top: 3px;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 `;
 
-const StyledSubMenuLink = styled(NavLink)`
-  padding: 12px 30px;
-  text-decoration: none;
-  font-size: 14px;
-  color: #000;
-  border-bottom: 1px solid #AAAAAA;
-  display: block;
-  &:hover{
-    background-color: #E9E9E9;
-  }
-  &.active{
-    background-color: #E9E9E9;
-  }
-`;
 const Menu = ({...rest}) => {
-    const [active, setActive] = useState(null);
-    const showSubMenu = (id) => {
-        setActive(id);
-    }
     return (
         <StyledMenu {...rest}>
-            {menuData && menuData.map((menu, i) => <><StyledMenuLink
-                key={get(menu, 'id', i)}
-                onClick={(e) => {
-                    if (get(menu, 'submenu')) e.preventDefault();
-                    showSubMenu(get(menu, 'id'))
-                }
-                }
-                to={get(menu, 'path', '#')}
-                className={classNames({'active-link': isEqual(active, get(menu, 'id'))})}
-            >
-                <span className={'menu-title'}>{get(menu, 'title', '-')}</span>
-                {get(menu, 'submenu') && <span className={'menu-icon'}>
-                    {isEqual(active, get(menu, 'id')) ? <ChevronDown size={20} color={'#000'}/> :
-                        <ChevronRight size={20} color={'#000'}/>}
-                </span>}
-            </StyledMenuLink>
-                    {
-                        isEqual(active, get(menu, 'id')) && get(menu,'submenu') && get(menu,'submenu',[]).map(
-                            (submenu,j) => <StyledSubMenuLink to={get(submenu,'path','#')} key={get(submenu,'id',j)}>
-                                {get(submenu,'title')}
-                            </StyledSubMenuLink>
-                        )
-                    }
-            </>
-            )}
+            <ul>
+                <li>
+                    <NavLink to={"/dashboard"}>
+                        <Grid  size={21}/>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/users"}>
+                        <Users size={20}/>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/statistics"}>
+                        <Monitor size={20}/>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/user"}>
+                        <User size={20}/>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/shield-check"}>
+                        <Shield size={20} />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/exclamation-circle"}>
+                        <AlertCircle size={20} />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/clipboard-list"}>
+                        <Clipboard size={20} />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/clipboard-list"}>
+                        <PieChart size={20} />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/clipboard-list"}>
+                        <Database size={20} />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/settings"}>
+                        <Settings size={20} />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/settings"}>
+                        <Copy size={20} />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/search"}>
+                        <Search size={20} />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/search"}>
+                        <Server size={20} />
+                    </NavLink>
+                </li>
+            </ul>
         </StyledMenu>
     );
 };
 
-export default Menu;
+export default memo(Menu);
