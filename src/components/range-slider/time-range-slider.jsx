@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
-import Slider from "rc-slider";
+import Slider  from "rc-slider";
 import 'rc-slider/assets/index.css';
 import {range} from "lodash";
+const {Tooltip,Handle} = Slider
+const createSliderWithTooltip = Slider.createSliderWithTooltip;
 
 const Styled = styled.div`
   .rc-slider-mark {
@@ -19,8 +21,29 @@ const Styled = styled.div`
   .rc-slider-handle {
     z-index: 99;
   }
-
+  .rc-slider-dot:nth-child(5n+1){
+    height: 9px !important;
+  }
 `;
+
+const handle = props => {
+
+    const { value, dragging, index, ...restProps } = props;
+
+    return (
+        <Tooltip
+            prefixCls="rc-slider-tooltip"
+            overlay={1}
+            visible={dragging}
+            placement="top"
+            key={index}
+        >
+            <Handle value={1} {...restProps} />
+        </Tooltip>
+    );
+};
+
+
 const TimeRangeSlider = ({
                               defaultValue = [2, 10],
                               min = 1,
@@ -42,24 +65,26 @@ const TimeRangeSlider = ({
                     defaultValue={[2, 5]}
                     min={min}
                     max={max}
-                    step={step}
                     value={value}
                     onChange={(val) => setValue(val)}
                     marks={range(min - 1, max + 1)}
-                    railStyle={{background: 'transparent', height: 48}}
-                    trackStyle={{background: '#FFF5DA', height: 14}}
-                    handleStyle={{
-                        width: 9,
-                        height: 9,
-                        top: 10,
-                        background: 'rgb(254 200 60 / 60%)',
-                        borderColor: 'rgb(254 200 60 / 60%)'
-                    }}
-                    dots={true}
-                    dotStyle={{background: "red", width: 1, height: 14, top: 0,borderRadius:'unset',border:'unset'}}
-                    activeDotStyle={{background: '#FFF5DA', opacity: 1, borderColor: 'transparent'}}
-                    allowCross={false}
-                    tabIndex={min}
+                    // railStyle={{background: '#707070', height: 1}}
+                    // trackStyle={{background: '#FFF5DA', height: 14,borderTop:'1px solid #FEC83C'}}
+                    // handleStyle={{
+                    //     width: 9,
+                    //     height: 9,
+                    //     top: 6,
+                    //     background: 'rgb(254 200 60 / 60%)',
+                    //     borderColor: 'rgb(254 200 60 / 60%)'
+                    // }}
+                    // dots={true}
+                    // dotStyle={{background: "#9B9B9B", width: 1, height: 6, top: 0,borderRadius:'unset',border:'unset'}}
+                    // activeDotStyle={{background: '#FEC83C', opacity: 1, borderColor: 'transparent'}}
+                    // allowCross={false}
+                    // tabIndex={min}
+                    // step={0.2}
+                    handle={handle}
+                    // tipFormatter={value => `${value}`}
                 />
             </Styled>
         );
