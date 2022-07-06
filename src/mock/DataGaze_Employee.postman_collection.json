@@ -1,0 +1,1014 @@
+{
+	"info": {
+		"_postman_id": "01f7f291-86a5-4a01-8231-ea6de81556c3",
+		"name": "DataGaze_Employee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:3500/api/main/employees",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdyQWRtaW4xIiwidXNlcklkIjoiNWViYThjOWFkNTE0OWQxZTQ0ODhiMGU2Iiwicm9sZSI6Imdyb3VwQWRtaW4iLCJpYXQiOjE1ODkyODQwMzUsImV4cCI6MTU4OTg4ODgzNX0.K0n4Lq7TfQQSdlzRsQ7UBQ3porpPS9X1SHxc3LVNRjQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/employees",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/api/main/employee/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "",
+							"type": "file"
+						},
+						{
+							"key": "firstName",
+							"value": "Olim",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Bahronov",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "exp@m.uz",
+							"type": "text"
+						},
+						{
+							"key": "position",
+							"value": "developer",
+							"type": "text"
+						},
+						{
+							"key": "phoneNumber",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:3500/api/main/employee/5e8ee984b16c13178434b298",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"employee",
+						"5e8ee984b16c13178434b298"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/api/main/employee/5e7c63b98d680a1becdc4cb0",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3500/api/main/employee/5e7c63b98d680a1becdc4cb0",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"employee",
+						"5e7c63b98d680a1becdc4cb0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/api/main/employee/status",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"employees\": [\"5e7c63b98d680a1becdc4cb0\", \"5e7c63b98d680a1becdc4cb1\"],\n\t\"status\": \"restart\"\n\t//status: \"clean\",\n\t//status: \"remove\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:3500/api/main/employee/status",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"employee",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Screenshot list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdyQWRtaW4xIiwidXNlcklkIjoiNWViYThjOWFkNTE0OWQxZTQ0ODhiMGU2Iiwicm9sZSI6Imdyb3VwQWRtaW4iLCJpYXQiOjE1ODkyODQwMzUsImV4cCI6MTU4OTg4ODgzNX0.K0n4Lq7TfQQSdlzRsQ7UBQ3porpPS9X1SHxc3LVNRjQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/scrshtlist?employeeId=5eb3fb8e6441f60e94f56ff3&offset=0&limit=2",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"scrshtlist"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5eb3fb8e6441f60e94f56ff3"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clipboard list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/clbrdlist?employeeId=5e8ee984b16c13178434b298&offset=0&limit=2",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"clbrdlist"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Keylogger list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/keylgrlist?employeeId=5e8ee984b16c13178434b298&offset=0&limit=2&start=Wed%20Apr%2001%202020%2000:00:00%20GMT+0500%20(Uzbekistan%20Standard%20Time)&end=Fri%20Apr%2010%202020%2011:58:15%20GMT+0500%20(Uzbekistan%20Standard%20Time)&employeeId=5e8ee984b16c13178434b298",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"keylgrlist"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "start",
+							"value": "Wed%20Apr%2001%202020%2000:00:00%20GMT+0500%20(Uzbekistan%20Standard%20Time)"
+						},
+						{
+							"key": "end",
+							"value": "Fri%20Apr%2010%202020%2011:58:15%20GMT+0500%20(Uzbekistan%20Standard%20Time)"
+						},
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Print list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/printlist?employeeId=5e8ee984b16c13178434b298&offset=0&limit=2",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"printlist"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Web visit list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/visitlist?employeeId=5e8ee984b16c13178434b298&offset=0&limit=2",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"visitlist"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Email list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/emails?employeeId=5e8ee984b16c13178434b298&offset=0&limit=2",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"emails"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Web sniff list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/websniffs?employeeId=5e8ee984b16c13178434b298&offset=0&limit=2",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"websniffs"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNWU4ZWU5NjEwNWNiNzYxZWUwMzQ2MGY4Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTkwMTYzMDAwLCJleHAiOjE1OTA3Njc4MDB9.dvaEbwT7th1ibqS7PtuFmH0jEO4LhDEvvUvLDsbf3b4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/filewatcher?offset=0&limit=2",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"filewatcher"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USB connection list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/usblist?employeeId=5e8ee984b16c13178434b298&offset=0&limit=2",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"usblist"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USB sniff list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNjEwZjhmNzYzYjY1ZDAyYjVjYzY4NzE4Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI4NDA5Nzg3LCJleHAiOjE2Mjg0OTYxODd9.BqUScP21CLD1mNaD_oY-whC-CHVJNDIL8cjcUivgzsY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/filesniff?employeeId=610f9ac7978b2708f85a8d31&offset=0&limit=5",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"filesniff"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "610f9ac7978b2708f85a8d31"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Employee KPD graph",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/statistic/kpd?employeeId=5e8ee984b16c13178434b298",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"statistic",
+						"kpd"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sniffer stats graph",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/statistic/sniff?employeeId=5e8ee984b16c13178434b298",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"statistic",
+						"sniff"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activity grapg",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/statistic/apps?employeeId=5e8ee984b16c13178434b298",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"statistic",
+						"apps"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activity web",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/statistic/web?employeeId=5e8ee984b16c13178434b298",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"statistic",
+						"web"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "incidents graph",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/statistic/incidents?employeeId=5e8ee984b16c13178434b298",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"statistic",
+						"incidents"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "employee chronology graph",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/statistic/chronology?employeeId=5e8ee984b16c13178434b298",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"statistic",
+						"chronology"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "traffic graf",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/statistic/traffic?type=wi-fi&employeeId=5e8ee984b16c13178434b298",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"statistic",
+						"traffic"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "wi-fi"
+						},
+						{
+							"key": "employeeId",
+							"value": "5e8ee984b16c13178434b298"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{address}}/api/main/srvlist?employeeId=5eaef40a91e86718344138a1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/srvlist?employeeId=5eb3fb8e6441f60e94f56ff3&limit=2&offset=0",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"srvlist"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5eb3fb8e6441f60e94f56ff3"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{address}}/api/main/activeness?employeeId=5eaef40a91e86718344138a1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/activeness?employeeId=5eb3fb8e6441f60e94f56ff3",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"activeness"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5eb3fb8e6441f60e94f56ff3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{address}}/api/main/applist?employeeId=5eaef40a91e86718344138a1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/applist?employeeId=5eb3fb8e6441f60e94f56ff3&limit=10&offset=0",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"applist"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5eb3fb8e6441f60e94f56ff3"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Top10 user apps stat",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/statistic/apps?employeeId=5eb3fb8e6441f60e94f56ff3",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"statistic",
+						"apps"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "5eb3fb8e6441f60e94f56ff3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agent logs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNjExNzhlODY2YTAxZTQyMjE0ZGIxZDRhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI5Mjc3NjkxLCJleHAiOjE2MjkzNjQwOTF9.6H4pqHybSMDWiIQFB4O7PQua9yVOHNDdyJDbXHp4fqc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/events/agentLogs?start=2021-08-01T00:00:00.000Z&end=2021-08-31T23:59:59.000Z&offset=0&limit=10&employeeId=611ccdf349b359210cc32f66&type=error,log",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"events",
+						"agentLogs"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2021-08-01T00:00:00.000Z"
+						},
+						{
+							"key": "end",
+							"value": "2021-08-31T23:59:59.000Z"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "employeeId",
+							"value": "611ccdf349b359210cc32f66"
+						},
+						{
+							"key": "type",
+							"value": "error,log"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Telegram Session",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNjExNzhlODY2YTAxZTQyMjE0ZGIxZDRhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI5MzcxNjMxLCJleHAiOjE2Mjk0NTgwMzF9.xOXPvqz_VTULbEoTtHpnFHtumf6pg6K-BTlPvoH_zeQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/tgsession?employeeId=611ccdf349b359210cc32f66",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"tgsession"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "611ccdf349b359210cc32f66"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Log ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNjExMTE4YjBhMzMwYmQ2NWMwOGU5ZDliIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI5MzU4NTQyLCJleHAiOjE2Mjk0NDQ5NDJ9.w54sI1_BRvkec95TejPs4OPPxC9IeTee7MgMexAn0fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/log?employeeId=611e6051f0c1677d14c9eda9",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"log"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "611e6051f0c1677d14c9eda9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Command run",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNjExMTE4YjBhMzMwYmQ2NWMwOGU5ZDliIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI5MzU4NTQyLCJleHAiOjE2Mjk0NDQ5NDJ9.w54sI1_BRvkec95TejPs4OPPxC9IeTee7MgMexAn0fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employeeId\": \"611e6051f0c1677d14c9eda9\",\r\n    \"command\": \"ipconfig\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{address}}/api/main/command",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"command"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

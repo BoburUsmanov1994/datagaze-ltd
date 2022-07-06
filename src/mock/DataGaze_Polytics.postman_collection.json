@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "80d30b8b-a692-4f43-8a72-aaab44bcbffe",
+		"name": "DataGaze_Polytics",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:3500/main/polytics/processes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/policies/processes",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"policies",
+						"processes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/processGroup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"group1\",\n\t\"useful\": false,\n\t\"processes\":[\n\t{\n       \n        \"name\": \"opera\"\n    },\n    {\n        \"name\": \"Code\"\n    },\n    {\n        \"name\": \"robo3t\"\n    }\n\t]\n}"
+				},
+				"url": {
+					"raw": "https://localhost:3500/main/policies/processGroup",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"main",
+						"policies",
+						"processGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/processGroup",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/main/policies/processGroup",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"processGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/processGroup?id=5e478ed18bc45b13f090621e",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"group1edit\",\n\t\"processes\":[\n\t\t{\"name\": \"Telegram\"},\n\t\t{\"name\": \"WINWORD\"},\n\t\t{ \"name\": \"EXCEL\"},\n\t\t{\n        \"_id\": \"5dfe0129230b0c35eccabe8f\",\n        \"name\": \"opera\"\n\t\t},\n    {\n        \"_id\": \"5e478a7aa883e71a58692405\",\n        \"name\": \"Code\"\n    },\n    {\n        \"_id\": \"5e478a7ba883e71a5869240d\",\n        \"name\": \"robo3t\"\n    }\n\t\t\n\t]\n}"
+				},
+				"url": {
+					"raw": "https://localhost:3500/main/polytics/processGroup?id=5e47b1f546627b12f8521b31",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"main",
+						"polytics",
+						"processGroup"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5e47b1f546627b12f8521b31"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/processGroup?id=5e47b1f546627b12f8521b31",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:3500/main/polytics/processGroup?id=5e47b1f546627b12f8521b31",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"main",
+						"polytics",
+						"processGroup"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5e47b1f546627b12f8521b31"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/sites",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/main/policies/sites",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"sites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/sitesGroup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"sitegroup1\",\n\t\"useful\": false,\n\t\"sites\":[\n\t\t{\n       \n        \"hostname\": \"championat.asia\"\n    },\n    {\n       \n        \"hostname\": \"facebook.com\"\n    },\n    {\n        \"hostname\": \"stadion.uz\"\n    },\n    {\n        \"hostname\": \"npmjs.com\"\n    },\n    {\n        \"hostname\": \"ru.wikipedia.org\"\n    }\n\t]\n}"
+				},
+				"url": {
+					"raw": "{{address}}/main/policies/sitesGroup",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"sitesGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/sitesGroup?id=5e47a0ae0ed0cb2154e66f87",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"sitegroup1edit\",\n\t\"useful\": false,\n\t\"processes\":[\n\t\t{\"name\": \"ya.ru\"},\n\t\t{\"name\": \"udemy.com\"},\n\t\t{ \"name\": \"qwerty.uz\"},\n\t {\n            \"_id\": \"5dfe02120deac30a309155ef\",\n            \"hostname\": \"npmjs.com\"\n        },\n        {\n            \"_id\": \"5dfe056568d58f260c336779\",\n            \"hostname\": \"akaycity.com\"\n        }\n\t\t\n\t]\n}"
+				},
+				"url": {
+					"raw": "https://localhost:3500/main/polytics/sitesGroup?id=5e47b03e8433342be43a0121",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"main",
+						"polytics",
+						"sitesGroup"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5e47b03e8433342be43a0121"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/sitesGroup?id=5e47a0ae0ed0cb2154e66f87",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/main/policies/sitesGroup",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"sitesGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/sitesGroup?id=5e47b1f546627b12f8521b31",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:3500/main/polytics/sitesGroup?id=5e47c004280c0d05ec6e8ea8",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"main",
+						"polytics",
+						"sitesGroup"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5e47c004280c0d05ec6e8ea8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/usblist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/main/policies/usblist",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"usblist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/usbGroup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"usbgroup1\",\n\t\"blocked\": false,\n\t\"usblist\":[\n\t\t{\n        \n        \"imei\": \"123321313\",\n        \"model\": \"Generic Flash Disk USB Device\"\n    },\n    {\n        \n        \"imei\": \"464646546\",\n        \"model\": \"Flash Disk\"\n    }\n\t]\n}"
+				},
+				"url": {
+					"raw": "{{address}}/main/policies/usbGroup",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"usbGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/sitesGroup?id=5e47a0ae0ed0cb2154e66f87",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/main/policies/usbGroup",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"usbGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/usbGroup?id=5e47a0ae0ed0cb2154e66f87",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"usbgroup1edit\",\n\t\"blocked\": true,\n\t\"usblist\":[\n\t{\n        \"_id\": \"5e47c20c75d681294c73e1f9\",\n        \"imei\": \"123321313\",\n        \"model\": \"Generic Flash Disk USB Device\"\n    },\n    {\n        \"_id\": \"5e47c20c75d681294c73e1f9\",\n        \"imei\": \"464646546\",\n        \"model\": \"Flash Disk\"\n    },\n    {\n       \n        \"imei\": \"46613423321313\",\n        \"model\": \"USB Device\"\n    },\n    {\n        \"imei\": \"464646546\",\n        \"model\": \"Disk\"\n    }\n\t\t\n\t]\n}"
+				},
+				"url": {
+					"raw": "https://localhost:3500/main/polytics/usbGroup?id=5e47ca76a9aa4835b4c57519",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"main",
+						"polytics",
+						"usbGroup"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5e47ca76a9aa4835b4c57519"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/polytics/usbGroup?id=5e47b1f546627b12f8521b31",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:3500/main/polytics/usbGroup?id=5e47ca76a9aa4835b4c57519",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"main",
+						"polytics",
+						"usbGroup"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5e47ca76a9aa4835b4c57519"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/policies/doctypes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/main/policies/doctypes",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"doctypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{address}}/main/policies/doctype",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"test\",\n\t\"priority\": \"1\",\n\t\"frequency\": \"2\",\n\t\"words\": [\n\t\t{\"word\": \"w1\"},\n\t\t{\"word\": \"w2\"},\n\t\t{\"word\": \"w3\"}\n\t\t]\n}"
+				},
+				"url": {
+					"raw": "{{address}}/main/policies/doctype",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"doctype"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -3,7 +3,6 @@ import {get} from "lodash";
 import {useStore} from "../../../store";
 import Section from "../../../components/section";
 import {Col, Row} from "react-grid-system";
-import {MonthRangeSlider, TimeRangeSlider} from "../../../components/range-slider";
 
 
 const DashboardContainer = ({...rest}) => {
@@ -24,12 +23,9 @@ const DashboardContainer = ({...rest}) => {
     return (
         <Section>
             <Row>
-                <Col xs={12} style={{marginBottom: '150px'}}>
-                    {/*<MonthRangeSlider/>*/}
-                </Col>
-                <Col xs={12}>
-                    {/*<TimeRangeSlider/>*/}
-                </Col>
+               <Col xs={12}>
+                   Dashboard
+               </Col>
             </Row>
         </Section>
     );
