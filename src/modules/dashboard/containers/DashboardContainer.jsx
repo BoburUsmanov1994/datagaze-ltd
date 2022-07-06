@@ -25,10 +25,10 @@ const DashboardContainer = ({...rest}) => {
         <Section>
             <Row>
                 <Col xs={12} style={{marginBottom: '150px'}}>
-                    <MonthRangeSlider/>
+                    {/*<MonthRangeSlider/>*/}
                 </Col>
                 <Col xs={12}>
-                    <TimeRangeSlider/>
+                    {/*<TimeRangeSlider/>*/}
                 </Col>
             </Row>
         </Section>
