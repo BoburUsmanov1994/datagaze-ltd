@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "5e8427aa-f1dd-400e-b2af-693ab81c49b8",
+		"name": "DataGaze_Dashboard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:3500/api/main/dashboard/topUsers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdyQWRtaW4xIiwidXNlcklkIjoiNWViYThjOWFkNTE0OWQxZTQ0ODhiMGU2Iiwicm9sZSI6Imdyb3VwQWRtaW4iLCJpYXQiOjE1ODkyODQwMzUsImV4cCI6MTU4OTg4ODgzNX0.K0n4Lq7TfQQSdlzRsQ7UBQ3porpPS9X1SHxc3LVNRjQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/dashboard/topUsers",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"dashboard",
+						"topUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/api/main/dashboard/kpd",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNWViM2JlNjRmMDBmMzkzMmI0NDAzOTcxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTg4ODUzMjAzLCJleHAiOjE1ODk0NTgwMDN9.fHehO_6OOYKMV7MHbSozbS7XCBWhyi3vcj584LlBYIA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/dashboard/kpd",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"dashboard",
+						"kpd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/api/main/dashboard/topEmployee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdyQWRtaW4xIiwidXNlcklkIjoiNWViYThjOWFkNTE0OWQxZTQ0ODhiMGU2Iiwicm9sZSI6Imdyb3VwQWRtaW4iLCJpYXQiOjE1ODkyODQwMzUsImV4cCI6MTU4OTg4ODgzNX0.K0n4Lq7TfQQSdlzRsQ7UBQ3porpPS9X1SHxc3LVNRjQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/dashboard/topEmployee/5eba6576029e5b235036a04c",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"dashboard",
+						"topEmployee",
+						"5eba6576029e5b235036a04c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/api/main/dashboard/incsByUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/api/main/dashboard/incsByUser",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"api",
+						"main",
+						"dashboard",
+						"incsByUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/api/main/dashboard/incidents",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNWU4ZWU5NjEwNWNiNzYxZWUwMzQ2MGY4Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTkwMTYzMDAwLCJleHAiOjE1OTA3Njc4MDB9.dvaEbwT7th1ibqS7PtuFmH0jEO4LhDEvvUvLDsbf3b4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/dashboard/incidents",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"dashboard",
+						"incidents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/api/main/dashboard/incsByPeriod",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNWViM2JlNjRmMDBmMzkzMmI0NDAzOTcxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTg4ODUzMjAzLCJleHAiOjE1ODk0NTgwMDN9.fHehO_6OOYKMV7MHbSozbS7XCBWhyi3vcj584LlBYIA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/dashboard/incsByPeriod",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"dashboard",
+						"incsByPeriod"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/api/main/dashboard/incsByType",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNWViM2JlNjRmMDBmMzkzMmI0NDAzOTcxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTg4ODUzMjAzLCJleHAiOjE1ODk0NTgwMDN9.fHehO_6OOYKMV7MHbSozbS7XCBWhyi3vcj584LlBYIA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/dashboard/incsByType",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"dashboard",
+						"incsByType"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/api/main/dashboard/incsByDocType",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNWViM2JlNjRmMDBmMzkzMmI0NDAzOTcxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTg4ODUzMjAzLCJleHAiOjE1ODk0NTgwMDN9.fHehO_6OOYKMV7MHbSozbS7XCBWhyi3vcj584LlBYIA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/dashboard/incsByDocType",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"dashboard",
+						"incsByDocType"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{address}}/api/main/dashboard/incsByGroup",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNWViM2JlNjRmMDBmMzkzMmI0NDAzOTcxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTg4ODUzMjAzLCJleHAiOjE1ODk0NTgwMDN9.fHehO_6OOYKMV7MHbSozbS7XCBWhyi3vcj584LlBYIA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/api/main/dashboard/incsByGroup",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"api",
+						"main",
+						"dashboard",
+						"incsByGroup"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

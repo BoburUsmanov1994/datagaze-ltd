@@ -68,23 +68,23 @@ const TimeRangeSlider = ({
                     value={value}
                     onChange={(val) => setValue(val)}
                     marks={range(min - 1, max + 1)}
-                    // railStyle={{background: '#707070', height: 1}}
-                    // trackStyle={{background: '#FFF5DA', height: 14,borderTop:'1px solid #FEC83C'}}
-                    // handleStyle={{
-                    //     width: 9,
-                    //     height: 9,
-                    //     top: 6,
-                    //     background: 'rgb(254 200 60 / 60%)',
-                    //     borderColor: 'rgb(254 200 60 / 60%)'
-                    // }}
-                    // dots={true}
-                    // dotStyle={{background: "#9B9B9B", width: 1, height: 6, top: 0,borderRadius:'unset',border:'unset'}}
-                    // activeDotStyle={{background: '#FEC83C', opacity: 1, borderColor: 'transparent'}}
-                    // allowCross={false}
-                    // tabIndex={min}
-                    // step={0.2}
+                    railStyle={{background: '#707070', height: 1}}
+                    trackStyle={{background: '#FFF5DA', height: 14,borderTop:'1px solid #FEC83C'}}
+                    handleStyle={{
+                        width: 9,
+                        height: 9,
+                        top: 6,
+                        background: 'rgb(254 200 60 / 60%)',
+                        borderColor: 'rgb(254 200 60 / 60%)'
+                    }}
+                    dots={true}
+                    dotStyle={{background: "#9B9B9B", width: 1, height: 6, top: 0,borderRadius:'unset',border:'unset'}}
+                    activeDotStyle={{background: '#FEC83C', opacity: 1, borderColor: 'transparent'}}
+                    allowCross={false}
+                    tabIndex={min}
+                    step={0.2}
                     handle={handle}
-                    // tipFormatter={value => `${value}`}
+                    tipFormatter={value => `${value}`}
                 />
             </Styled>
         );

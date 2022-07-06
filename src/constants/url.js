@@ -1,5 +1,5 @@
 export const URLS = {
-    login:'auth/login',
+    login:'api/account/login',
     signUp:'auth/sinup',
     getMe:'user/',
 }

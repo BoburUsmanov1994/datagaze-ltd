@@ -1,0 +1,266 @@
+{
+	"info": {
+		"_postman_id": "04e1e8eb-ba47-4e90-b23b-c806b43d940b",
+		"name": "DataGaze_Poly_Continue",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All modules and settings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/main/policies/modules",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"modules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all polytics list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/main/policies/rules",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"rules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET polytic by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{address}}:3500/main/policies/rule/5e8efb540300292e94eaa1bd",
+					"protocol": "https",
+					"host": [
+						"{{address}}"
+					],
+					"port": "3500",
+					"path": [
+						"main",
+						"policies",
+						"rule",
+						"5e8efb540300292e94eaa1bd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST new polytic",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Rule1\",\n\t\"description\": \"Rule1 desc\",\n\t\"includedModules\": [\n\t\t{\"name\": \"screenshot\", \n\t\t\"settings\": [{\n    \t\t\"name\": \"screenTime\",\n    \t\t\"value\": 5\n\t\t  },{\n\t\t    \"name\": \"isGrayScale\",\n\t\t    \"value\": false    \n\t\t  }, {\n\t\t    \"name\": \"resizeImagePercent\",\n\t\t    \"value\": 100\n\t\t    \n\t\t  },{\n\t\t    \"name\": \"imageQuality\",\n\t\t    \"value\": 100\n\t\t    \n\t\t  }]\n\t\t},\n\t\t{\"name\": \"keylogger\"},\n\t\t{\"name\": \"filewatcher\",\n\t\t \"settings\": [\n            {\n                \"name\": \"path\",\n                \"value\": [\n                    \"%USERPROFILE%\\\\Documents\\\\\",\n                    \"%USERPROFILE%\\\\Desktop\\\\\"\n                ]\n            },\n            {\n                \"name\": \"afterComplete\",\n                \"value\": \"none\"\n            },\n            {\n                \"name\": \"days\",\n                \"value\": [\"mon\",\"tue\",\"fri\"]\n            },\n            {\n                \"name\": \"startTime\",\n                \"value\": \"18:00\"\n            },\n            {\n                \"name\": \"extentions\",\n                \"value\": [\"pdf\",\"doc\",\"docx\",\"txt\"]\n            }\n        ]\n\t\t},\n\t\t{\"name\": \"activewindow\"},\n\t\t{\"name\": \"clipboard\"},\n\t\t{\"name\": \"httpsproxy\"},\n\t\t{\"name\": \"remoteview\"},\n\t\t{\"name\": \"printcontrol\"},\n\t\t{\"name\": \"usbcontrol\"},\n\t\t {\n        \"name\": \"blacklist\",\n        \"settings\": [\n            {\n                \"name\": \"websites\",\n                \"value\": [ \"facebook.com\", \"disk.yandex.uz\",  \"fast.com\", \"dropbox.com\", \"youtube.com\"]\n               \n            },\n            {\n                \"name\": \"processes\",\n                \"value\": [\"Telegram\",\"KMPlayer\", \"mspaint\",\"uTorrent\",\"mspaint\"]\n            },\n            {\n                \"name\": \"usb\",\n                \"value\": [\"\\u00035\"]\n            }\n        ]\n    },\n\t\t{\"name\": \"sender\",\n        \"settings\": [\n            {\n                \"name\": \"reportTime\",\n                \"value\": 2\n            },\n            {\n                \"name\": \"countMaxItems\",\n                \"value\": 15\n            }\n        ]}\n\t\t]\n}"
+				},
+				"url": {
+					"raw": "{{address}}/main/policies/rule",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"rule"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT edid polytic ",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Rule1Edit\",\n\t\"description\": \"Rule1 descEdit\",\n\t\"includedModules\": [\n\t\t{\"name\": \"screenshot\", \n\t\t\"settings\": [{\n    \t\t\"name\": \"screenTime\",\n    \t\t\"value\": 5\n\t\t  },{\n\t\t    \"name\": \"isGrayScale\",\n\t\t    \"value\": false    \n\t\t  }, {\n\t\t    \"name\": \"resizeImagePercent\",\n\t\t    \"value\": 100\n\t\t    \n\t\t  },{\n\t\t    \"name\": \"imageQuality\",\n\t\t    \"value\": 100\n\t\t    \n\t\t  }]\n\t\t},\n\t\t{\"name\": \"keylogger\"},\n\t\t{\"name\": \"filewatcher\",\n\t\t \"settings\": [\n            {\n                \"name\": \"path\",\n                \"value\": [\n                    \"%USERPROFILE%\\\\Documents\\\\\",\n                    \"%USERPROFILE%\\\\Desktop\\\\\"\n                ]\n            },\n            {\n                \"name\": \"afterComplete\",\n                \"value\": \"none\"\n            },\n            {\n                \"name\": \"days\",\n                \"value\": [\"mon\",\"tue\",\"fri\"]\n            },\n            {\n                \"name\": \"startTime\",\n                \"value\": \"18:00\"\n            },\n            {\n                \"name\": \"extentions\",\n                \"value\": [\"pdf\",\"doc\",\"docx\",\"txt\"]\n            }\n        ]\n\t\t},\n\t\t{\"name\": \"activewindow\"},\n\t\t{\"name\": \"clipboard\"},\n\t\t{\"name\": \"httpsproxy\"},\n\t\t{\"name\": \"remoteview\"},\n\t\t{\"name\": \"printcontrol\"},\n\t\t{\"name\": \"usbcontrol\"},\n\t\t {\n        \"name\": \"blacklist\",\n        \"settings\": [\n            {\n                \"name\": \"websites\",\n                \"value\": [ \"facebook.com\", \"disk.yandex.uz\",  \"fast.com\", \"dropbox.com\", \"youtube.com\"]\n               \n            },\n            {\n                \"name\": \"processes\",\n                \"value\": [\"Telegram\",\"KMPlayer\", \"mspaint\",\"uTorrent\",\"mspaint\"]\n            },\n            {\n                \"name\": \"usb\",\n                \"value\": [\"\\u00035\"]\n            }\n        ]\n    },\n\t\t{\"name\": \"sender\",\n        \"settings\": [\n            {\n                \"name\": \"reportTime\",\n                \"value\": 2\n            },\n            {\n                \"name\": \"countMaxItems\",\n                \"value\": 15\n            }\n        ]}\n\t\t]\n}"
+				},
+				"url": {
+					"raw": "{{address}}/main/policies/rule/5ea64cc88a8bfe217865dc3f",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"rule",
+						"5ea64cc88a8bfe217865dc3f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE polytic",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{address}}/main/policies/rule/5ea659ed144e902fc83eb5a4",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"rule",
+						"5ea659ed144e902fc83eb5a4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/policies/groups",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/main/policies/groups",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/policies/group/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/main/policies/group/5e8efb8d0300292e94eaa1c8",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"group",
+						"5e8efb8d0300292e94eaa1c8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/policies/group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"empGroup1\",\n\t\"description\": \"empGroup1 desc\",\n\t\"employees\": [\"5e8ee984b16c13178434b298\", \"5e9eb93ebd2ce61884307d61\", \"5e9f2c78bd2ce61884308f7b\"],\n\t\"rule\": \"5ea64cc88a8bfe217865dc3f\"\n}"
+				},
+				"url": {
+					"raw": "{{address}}/main/policies/group",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"group"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/policies/group/5e846192738fdb1d849992fc",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"employees\": [\"5e8ee984b16c13178434b298\", \"5eab1c9e1d8bfc6e0e083426\", \"5e9f2c78bd2ce61884308f7b\"],\n\t\"rule\": \"5ead1b362d290720c0f6ede3\"\n\t\n}"
+				},
+				"url": {
+					"raw": "{{address}}/main/policies/group/5eac279dd8922f8740e37946",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"group",
+						"5eac279dd8922f8740e37946"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3500/main/policies/group/5e846192738fdb1d849992fc",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/main/policies/group/5ea68f36167c563584e90453",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"main",
+						"policies",
+						"group",
+						"5ea68f36167c563584e90453"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
