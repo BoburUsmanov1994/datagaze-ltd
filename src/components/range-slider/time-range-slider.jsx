@@ -9,8 +9,7 @@ const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Styled = styled.div`
   .rc-slider-mark {
     top: -18px;
-    font-size: 14px;
-    color: #000;
+    font-size: 14px;Nb
     font-weight: 300;
   }
 

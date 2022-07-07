@@ -23,9 +23,9 @@ const DashboardContainer = ({...rest}) => {
     return (
         <Section>
             <Row>
-                <Col xs={12} style={{marginBottom: '150px'}}>
+               <Col xs={12}>
                    Dashboard
-                </Col>
+               </Col>
             </Row>
         </Section>
     );
