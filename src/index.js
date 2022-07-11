@@ -10,11 +10,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <Query>
-            <Auth>
-                <Theme>
+            <Theme>
+                <Auth>
                     <Router/>
-                </Theme>
-            </Auth>
+                </Auth>
+            </Theme>
         </Query>
     </React.StrictMode>
 );
