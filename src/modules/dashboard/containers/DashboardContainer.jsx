@@ -53,7 +53,7 @@ const DashboardContainer = ({...rest}) => {
                 </Col>
             </Row>
             <Row className={'mt-30'}>
-                <Col xs={6}>
+                <Col xs={12} xxl={6} className={'mb-30'}>
                     <Row align={'center'}>
                         <Col xs={3}>
                             <Category color={'#4439C1'} percent={19.6} title={'YouTube'}/>
@@ -91,7 +91,7 @@ const DashboardContainer = ({...rest}) => {
                         </Col>
                     </Row>
                 </Col>
-                <Col xs={6}>
+                <Col xs={12} xxl={6} className={'mb-30'}>
                     <Row align={'center'}>
                         <Col xs={3}>
                             <Category color={'#4439C1'} percent={19.6} title={'YouTube'}/>
