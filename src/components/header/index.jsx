@@ -1,16 +1,14 @@
 import React from 'react';
 import styled from "styled-components";
 import {Container, Row, Col} from "react-grid-system";
-import Brand from "../brand";
 import Flex from "../flex";
 import Breadcrumb from "../breadcrumb";
 import Dropdown from "../dropdown";
 import Profile from "../profile";
-import {Settings, ExternalLink, ChevronDown, Menu} from "react-feather";
-import Swal from "sweetalert2";
-import {useSettingsStore, useStore} from "../../store";
-import {useNavigate} from "react-router-dom";
-import {get} from "lodash";
+import {Settings, Menu,Search} from "react-feather";
+import dots from "../../assets/images/dots.png";
+import Notification from "../notification";
+import RangeDatepicker from "../range-datepicker";
 
 const Styled = styled.header`
   padding: 15px 10px 15px 5px;
@@ -52,6 +50,15 @@ const Styled = styled.header`
     }
   }
 
+  .header {
+    &__dots {
+     margin: 0 40px;
+    }
+    &__search{
+      margin-right: 40px;
+    }
+  }
+
 `;
 
 const Header = ({...rest}) => {
@@ -66,7 +73,11 @@ const Header = ({...rest}) => {
                         </Flex>
                     </Col>
                     <Col xs={6}>
-                        <Flex justify={'flex-end'}>
+                        <Flex justify={'flex-end'} align={'center'}>
+                            <RangeDatepicker />
+                            <Search color={'#C4C4C4'} size={28} className={'header__search'}/>
+                            <Notification />
+                            <img className={'header__dots'} src={dots} alt="dots"/>
                             <Dropdown button={<Profile username={'Bobur Usmanov'}/>}>
                                 <ul className={'profile-body'}>
                                     <li><Settings size={20}/><span>Settings</span></li>

@@ -15,7 +15,7 @@ const Styled = styled.ul`
     display: flex;
     align-items: center;
     .breadcrumb-link{
-      color: #000;
+      color: #5A5A5A;
       font-size: 18px;
       transition: 0.2s ease;
       &:hover{

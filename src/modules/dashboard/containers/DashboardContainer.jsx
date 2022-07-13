@@ -15,7 +15,7 @@ const DashboardContainer = ({...rest}) => {
     const breadcrumbs = useMemo(() => [
         {
             id: 1,
-            title: 'Dashboard',
+            title: 'Статистика',
             path: '/dashboard',
         }
     ], [])

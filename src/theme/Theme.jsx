@@ -4,7 +4,6 @@ import Wrapper from "../components/wrapper";
 import {ToastContainer} from "react-toastify";
 import "nprogress/nprogress.css";
 import 'react-toastify/dist/ReactToastify.css';
-import 'rodal/lib/rodal.css';
 
 const GlobalStyles = createGlobalStyle`
   * {

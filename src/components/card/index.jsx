@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import {Bell} from "react-feather";
 import {Row, Col} from "react-grid-system"
+import CountUp from 'react-countup';
 import Flex from "../flex";
 import decreaseLine from "../../assets/images/decrease-line.svg"
 import decreaseCursor from "../../assets/images/decrease-cursor.svg"
@@ -64,7 +64,7 @@ const Card = ({
                 <Col xs={10} className={'text-right'}>
                     <Flex className={'card__top'} align={'center'} justify={'flex-end'}>
                         <h4 className={'card__title'}>{title}</h4>
-                        <h2 className={'card__count'}>{count}</h2>
+                        <h2 className={'card__count'}><CountUp duration={4} end={count} /></h2>
                     </Flex>
                     <Flex justify={'flex-end'}>
                         <div className="card__graphic">

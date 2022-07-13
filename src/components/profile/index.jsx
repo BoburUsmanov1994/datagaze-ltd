@@ -38,9 +38,9 @@ const Profile = ({
                  }) => {
     return (
         <Styled {...rest}>
-            <User className={'user-icon'} size={26}/>
+            <User className={'user-icon'} size={26} color={'#9B9B9B'}/>
             <span className={'username'}>{username}</span>
-            <ChevronDown className={'chevron-icon'} size={22} />
+            <ChevronDown className={'chevron-icon'} size={22} color={'#9B9B9B'} />
         </Styled>
     );
 };
