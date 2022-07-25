@@ -8,6 +8,8 @@ import SignUpPage from "../modules/auth/pages/SignUpPage";
 import IsAuth from "../services/auth/IsAuth";
 import IsGuest from "../services/auth/IsGuest";
 import NotFoundPage from "../modules/auth/pages/NotFoundPage";
+import StateOrganizationsStatisticsPage from "../modules/dashboard/pages/StateStatisticsPage";
+import EmployeeProfilePage from "../modules/employee/pages/EmployeeProfilePage";
 
 const Router = ({...rest}) => {
     return (
@@ -30,6 +32,10 @@ const Router = ({...rest}) => {
 
             <IsGuest>
                 <Routes>
+                    <Route path={"/"} element={<MainLayout/>}>
+                        <Route path={"state-organization-statistics"} element={<StateOrganizationsStatisticsPage />} />
+                        <Route path={"employee"} element={<EmployeeProfilePage />} />
+                    </Route>
                     <Route path={"/auth"} element={<AuthLayout/>}>
                         <Route index element={<LoginPage/>}/>
                         <Route path={"sign-up"} element={<SignUpPage/>}/>
