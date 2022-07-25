@@ -7,6 +7,9 @@ import Card from "../../../components/card";
 import {AlertOctagon, Bell, Info, Monitor, Shield, Users} from "react-feather";
 import Category from "../../../components/category";
 import {CustomPieChart} from "../../../components/chart";
+import DashboardBox from "../../../components/dashboard-box";
+import EmployeeProfile from "../../../components/employee-profile";
+import Progressbar from "../../../components/progress";
 
 
 const DashboardContainer = ({...rest}) => {
@@ -128,6 +131,20 @@ const DashboardContainer = ({...rest}) => {
                             <Category color={'#515061'} percent={4.6} title={'my.gov.uz'} right/>
                         </Col>
                     </Row>
+                </Col>
+            </Row>
+            <Row>
+                <Col xs={6}>
+                    <DashboardBox>
+                        <Row>
+                            <Col xs={8}>
+                                <EmployeeProfile />
+                            </Col>
+                            <Col xs={4}>
+                                    <Progressbar />
+                            </Col>
+                        </Row>
+                    </DashboardBox>
                 </Col>
             </Row>
         </Section>
