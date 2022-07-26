@@ -3,16 +3,12 @@ import styled from "styled-components";
 import {
     usePaginateQuery,
 } from "../../hooks/api";
-import ErrorPage from "../../modules/auth/pages/ErrorPage";
 import {OverlayLoader} from "../../components/loader";
 import GridViewHeader from "./components/grid-view-header";
-import GridViewTimeline from "./components/grid.view-timeline";
-import GridViewTable from "./components/grid-view-table";
-import GridViewPagination from "./components/grid-view-pagination";
 
 
 const Styled = styled.div`
-
+  min-height: 80vh;
 `;
 const GridView = ({
                       tableHeaderData = [],
@@ -36,9 +32,6 @@ const GridView = ({
     return (
         <Styled {...rest}>
             <GridViewHeader/>
-            <GridViewTimeline/>
-            <GridViewTable/>
-            <GridViewPagination/>
         </Styled>
     );
 };

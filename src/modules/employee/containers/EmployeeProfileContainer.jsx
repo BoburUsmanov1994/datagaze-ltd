@@ -30,14 +30,9 @@ const EmployeeProfileContainer = ({...rest}) => {
         setBreadcrumbs(breadcrumbs)
     }, [])
     return (
-        <Container fluid>
-            <Row>
-                <Col xs={2}></Col>
-                <Col xs={10}>
-                    <GridView/>
-                </Col>
-            </Row>
-        </Container>
+       <>
+           <GridView/>
+       </>
     );
 };
 

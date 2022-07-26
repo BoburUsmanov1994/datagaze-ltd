@@ -19,8 +19,9 @@ const Router = ({...rest}) => {
                 <Routes>
                     <Route path={"/"} element={<MainLayout/>}>
                         <Route path={"dashboard"} index element={<DashboardPage/>}/>
-                        <Route path={"employees"}>
+                        <Route path={"employee"}>
                             <Route index element={<h2>Employees</h2>}/>
+                            <Route path={"view/:id"} element={<EmployeeProfilePage />}/>
                         </Route>
                         <Route path={"auth/*"} element={<Navigate to={'/dashboard'} replace/>}/>
                         <Route path={"/"} element={<Navigate to={'/dashboard'} replace/>}/>
@@ -32,10 +33,6 @@ const Router = ({...rest}) => {
 
             <IsGuest>
                 <Routes>
-                    <Route path={"/"} element={<MainLayout/>}>
-                        <Route path={"state-organization-statistics"} element={<StateOrganizationsStatisticsPage />} />
-                        <Route path={"employee"} element={<EmployeeProfilePage />} />
-                    </Route>
                     <Route path={"/auth"} element={<AuthLayout/>}>
                         <Route index element={<LoginPage/>}/>
                         <Route path={"sign-up"} element={<SignUpPage/>}/>
