@@ -8,8 +8,8 @@ import SignUpPage from "../modules/auth/pages/SignUpPage";
 import IsAuth from "../services/auth/IsAuth";
 import IsGuest from "../services/auth/IsGuest";
 import NotFoundPage from "../modules/auth/pages/NotFoundPage";
-import StateOrganizationsStatisticsPage from "../modules/dashboard/pages/StateStatisticsPage";
 import EmployeeProfilePage from "../modules/employee/pages/EmployeeProfilePage";
+import EmployeeListPage from "../modules/employee/pages/EmployeeListPage";
 
 const Router = ({...rest}) => {
     return (
@@ -20,8 +20,8 @@ const Router = ({...rest}) => {
                     <Route path={"/"} element={<MainLayout/>}>
                         <Route path={"dashboard"} index element={<DashboardPage/>}/>
                         <Route path={"employee"}>
-                            <Route index element={<h2>Employees</h2>}/>
-                            <Route path={"view/:id"} element={<EmployeeProfilePage />}/>
+                            <Route index element={<EmployeeListPage/>}/>
+                            <Route path={"view/:id"} element={<EmployeeProfilePage/>}/>
                         </Route>
                         <Route path={"auth/*"} element={<Navigate to={'/dashboard'} replace/>}/>
                         <Route path={"/"} element={<Navigate to={'/dashboard'} replace/>}/>

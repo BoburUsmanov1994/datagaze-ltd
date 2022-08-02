@@ -10,9 +10,17 @@ import {CustomPieChart} from "../../../components/chart";
 import DashboardBox from "../../../components/dashboard-box";
 import EmployeeProfile from "../../../components/employee-profile";
 import Progressbar from "../../../components/progress";
+import {useGetAllQuery} from "../../../hooks/api";
+import {KEYS} from "../../../constants/key";
+import {URLS} from "../../../constants/url";
 
 
 const DashboardContainer = ({...rest}) => {
+    let {data: topUsers} = useGetAllQuery({key: KEYS.topUsers, url: URLS.topUsers})
+    let {data: kpd} = useGetAllQuery({key: KEYS.kpd, url: URLS.kpd})
+    let {data: incidents} = useGetAllQuery({key: KEYS.incidents, url: URLS.incidents})
+    let {data: incsByPeriod} = useGetAllQuery({key: KEYS.incsByPeriod, url: URLS.incsByPeriod})
+    let {data: incsByType} = useGetAllQuery({key: KEYS.incsByType, url: URLS.incsByType})
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
     const breadcrumbs = useMemo(() => [
@@ -75,9 +83,9 @@ const DashboardContainer = ({...rest}) => {
                             <CustomPieChart data={[
                                 {name: 'YouTube', value: 19.6},
                                 {name: 'Яндекс карты', value: 9},
-                                {name:'Google.com', value: 3.5},
-                                {name:'Gmail.com',value: 7}
-                            ]} colors={['#4439C1','#F6749F','#CD4472','#722774']}/>
+                                {name: 'Google.com', value: 3.5},
+                                {name: 'Gmail.com', value: 7}
+                            ]} colors={['#4439C1', '#F6749F', '#CD4472', '#722774']}/>
                         </Col>
                         <Col xs={3}>
                             <Category color={'#4474B6'} percent={19.6} title={'Telegram.org'} right/>
@@ -113,9 +121,9 @@ const DashboardContainer = ({...rest}) => {
                             <CustomPieChart data={[
                                 {name: 'YouTube', value: 19.6},
                                 {name: 'Яндекс карты', value: 9},
-                                {name:'Google.com', value: 3.5},
-                                {name:'Gmail.com',value: 7}
-                            ]} colors={['#4439C1','#F6749F','#CD4472','#722774']}/>
+                                {name: 'Google.com', value: 3.5},
+                                {name: 'Gmail.com', value: 7}
+                            ]} colors={['#4439C1', '#F6749F', '#CD4472', '#722774']}/>
                         </Col>
                         <Col xs={3}>
                             <Category color={'#4474B6'} percent={19.6} title={'Telegram.org'} right/>
@@ -138,10 +146,10 @@ const DashboardContainer = ({...rest}) => {
                     <DashboardBox>
                         <Row>
                             <Col xs={8}>
-                                <EmployeeProfile />
+                                <EmployeeProfile/>
                             </Col>
                             <Col xs={4}>
-                                    <Progressbar />
+                                <Progressbar/>
                             </Col>
                         </Row>
                     </DashboardBox>

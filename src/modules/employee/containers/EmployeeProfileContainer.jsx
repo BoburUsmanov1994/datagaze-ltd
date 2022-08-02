@@ -30,9 +30,24 @@ const EmployeeProfileContainer = ({...rest}) => {
         setBreadcrumbs(breadcrumbs)
     }, [])
     return (
-       <>
-           <GridView/>
-       </>
+        <>
+            <GridView
+                tableHeaderData={
+                    [
+                        {id: 1, title: "Название процесса", key: "title"},
+                        {id: 2, title: "Название", key: "name"},
+                        {id: 3, title: "Имя компьютера", key: "computer__name"},
+                        {id: 4, title: "Дата и время", key: "title"},
+                        {id: 5, title: "Продолжительность", key: "title"},
+                    ]
+                }
+                tableBodyData={
+                    [
+
+                    ]
+                }
+            />
+        </>
     );
 };
 

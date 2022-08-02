@@ -6,7 +6,8 @@ import {toast} from "react-toastify";
 const usePaginateQuery = ({
                               key = "get-all",
                               url = "/",
-                              page = 1,
+                              page = 0,
+                              limit = 5,
                               params = {},
                               showSuccessMsg = false,
                               showErrorMsg = false
@@ -18,7 +19,7 @@ const usePaginateQuery = ({
         data,
         error,
         isFetching
-    } = useQuery([key, page], () => request.get(`${url}?page=${page}`, params), {
+    } = useQuery([key, page, limit], () => request.get(`${url}`, {params}), {
         keepPreviousData: true,
         onSuccess: () => {
             if (showSuccessMsg) {

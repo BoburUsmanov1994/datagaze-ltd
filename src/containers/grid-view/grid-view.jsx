@@ -1,11 +1,14 @@
-import React, {useState, memo} from 'react';
+import React, {useState, memo, useEffect} from 'react';
 import styled from "styled-components";
 import {
     usePaginateQuery,
 } from "../../hooks/api";
+import {ceil, get} from "lodash";
 import {OverlayLoader} from "../../components/loader";
 import GridViewHeader from "./components/grid-view-header";
 import GridViewTimeline from "./components/grid-view-timeline";
+import GridViewTable from "./components/grid-view-table";
+import GridViewPagination from "./components/grid-view-pagination";
 
 
 const Styled = styled.div`
@@ -13,14 +16,28 @@ const Styled = styled.div`
 `;
 const GridView = ({
                       tableHeaderData = [],
-                      title = '',
+                      tableBodyData = [],
                       keyId,
                       url,
                       ...rest
                   }) => {
 
-    const [page, setPage] = useState(1)
-    const {data, isError, isLoading, isFetching} = usePaginateQuery({key: keyId, url, page})
+    const [limit, setLimit] = useState(5);
+    const [page, setPage] = useState(0);
+    // ?start=&end=&offset=0&limit=10&deleted=&monitored=&online=&groups=&search=
+    const {data, isError, isLoading, isFetching} = usePaginateQuery({
+        key: keyId,
+        url,
+        page,
+        limit,
+        params: {limit, offset: page * limit}
+    })
+
+    useEffect(() => {
+        if (page) {
+            setPage(0)
+        }
+    }, [limit])
 
 
     if (isLoading) {
@@ -28,12 +45,18 @@ const GridView = ({
     }
 
     if (isError) {
-        // return <ErrorPage/>
+        return "Error ...";
     }
     return (
         <Styled {...rest}>
             <GridViewHeader/>
-            <GridViewTimeline />
+            <GridViewTimeline/>
+            {
+                isFetching && <OverlayLoader/>
+            }
+            <GridViewTable tableHeaderData={tableHeaderData} tableBodyData={get(data, "data.docs", [])}/>
+            <GridViewPagination pageCount={ceil(get(data, "data.total") / limit)} setPage={setPage}
+                                setLimit={setLimit}/>
         </Styled>
     );
 };
