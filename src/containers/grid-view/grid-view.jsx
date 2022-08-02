@@ -5,6 +5,7 @@ import {
 } from "../../hooks/api";
 import {OverlayLoader} from "../../components/loader";
 import GridViewHeader from "./components/grid-view-header";
+import GridViewTimeline from "./components/grid-view-timeline";
 
 
 const Styled = styled.div`
@@ -32,6 +33,7 @@ const GridView = ({
     return (
         <Styled {...rest}>
             <GridViewHeader/>
+            <GridViewTimeline />
         </Styled>
     );
 };

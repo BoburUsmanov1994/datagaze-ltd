@@ -1,56 +1,120 @@
 import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
-import Slider  from "rc-slider";
+import Slider from "rc-slider";
 import 'rc-slider/assets/index.css';
-import {range} from "lodash";
-const {Tooltip,Handle} = Slider
-const createSliderWithTooltip = Slider.createSliderWithTooltip;
+import {head, last, range} from "lodash";
+import {ChevronLeft, ChevronRight} from "react-feather";
+
+const {SliderTooltip, Handle} = Slider
+
 
 const Styled = styled.div`
+  position: relative;
+  height: 80px;
+  padding: 15px 80px;
+
   .rc-slider-mark {
-    top: -18px;
-    font-size: 14px;Nb
+    top: 18px;
+    font-size: 14px;
     font-weight: 300;
+    color: #000;
   }
 
   .rc-slider-handle-dragging {
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.13) !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 
   .rc-slider-handle {
     z-index: 99;
   }
-  .rc-slider-dot:nth-child(5n+1){
-    height: 9px !important;
+
+  .rc-slider-step {
+    display: none;
+  }
+
+  .rc-slider-mark-text {
+    border-right: 1px solid #BABABA;
+    width: ${({width}) => width};
+
+    &:last-child {
+      border-right-color: transparent !important;
+    }
+
+    &.rc-slider-mark-text-active {
+      font-weight: 500;
+      border-right-color: #000;
+      color: #000;
+    }
+  }
+
+  .rc-slider-mark {
+  }
+
+  .slider__prev {
+    left: 15px;
+  }
+
+  .slider__next {
+    right: 15px;
+  }
+
+  .slider__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid #C8C8C8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: transparent;
   }
 `;
 
 const handle = props => {
 
-    const { value, dragging, index, ...restProps } = props;
+    const {value, dragging, index, ...restProps} = props;
 
     return (
-        <Tooltip
+        <SliderTooltip
             prefixCls="rc-slider-tooltip"
-            overlay={1}
+            overlay={`${value < 10 ? '0' + value : value}:00`}
             visible={dragging}
             placement="top"
             key={index}
         >
-            <Handle value={1} {...restProps} />
-        </Tooltip>
+            <Handle value={value} {...restProps} />
+        </SliderTooltip>
     );
 };
 
 
 const TimeRangeSlider = ({
-                              defaultValue = [2, 10],
-                              min = 1,
-                              max = 31,
-                              step = 1,
-                              ...rest
-                          }) => {
+                             defaultValue = [2, 10],
+                             min = 0,
+                             max = 23,
+                             step = 1,
+                             ...rest
+                         }) => {
         const [value, setValue] = useState([min, min])
+
+        const next = () => {
+            if (last(value) < max) {
+                setValue(prev => ([head(prev), last(prev) + 1]))
+            }
+        }
+
+        const prev = () => {
+            if (head(value) > min) {
+                setValue(prev => ([head(prev) - 1, last(prev)]))
+            }
+        }
 
         useEffect(() => {
             if (defaultValue) {
@@ -58,33 +122,35 @@ const TimeRangeSlider = ({
             }
         }, [])
         return (
-            <Styled {...rest}>
+            <Styled width={100 / 23 + '%'} {...rest}>
+                <button onClick={prev} className={"slider__btn slider__prev"}><ChevronLeft size={16} color={'#707070'}/>
+                </button>
                 <Slider
                     range
-                    defaultValue={[2, 5]}
+                    defaultValue={value}
                     min={min}
                     max={max}
                     value={value}
                     onChange={(val) => setValue(val)}
-                    marks={range(min - 1, max + 1)}
-                    railStyle={{background: '#707070', height: 1}}
-                    trackStyle={{background: '#FFF5DA', height: 14,borderTop:'1px solid #FEC83C'}}
+                    marks={range(min, max + 1).map(r => r < 10 ? `0${r}:00` : `${r}:00`)}
+                    railStyle={{background: 'transparent', height: 40}}
+                    trackStyle={{background: '#FEC83C', height: 40, borderRadius: 'unset'}}
                     handleStyle={{
-                        width: 9,
-                        height: 9,
-                        top: 6,
-                        background: 'rgb(254 200 60 / 60%)',
-                        borderColor: 'rgb(254 200 60 / 60%)'
+                        width: 20,
+                        height: 40,
+                        top: 9,
+                        background: 'transparent',
+                        borderRadius: 'unset',
+                        borderColor: 'transparent'
                     }}
-                    dots={true}
-                    dotStyle={{background: "#9B9B9B", width: 1, height: 6, top: 0,borderRadius:'unset',border:'unset'}}
-                    activeDotStyle={{background: '#FEC83C', opacity: 1, borderColor: 'transparent'}}
+                    dots={false}
                     allowCross={false}
-                    tabIndex={min}
                     step={0.2}
                     handle={handle}
                     tipFormatter={value => `${value}`}
                 />
+                <button className={"slider__btn slider__next"} onClick={next}><ChevronRight size={16} color={'#707070'}/>
+                </button>
             </Styled>
         );
     }
