@@ -6,9 +6,11 @@ let store = (set) => ({
     user: null,
     isAuthenticated: false,
     breadcrumbs: [],
+    dateRange:null,
     setUser: (user) => set(state => ({...state, user})),
     setAuth: (isAuthenticated) => set(state => ({...state, isAuthenticated})),
-    setBreadcrumbs: (breadcrumbs) => set(state => ({...state, breadcrumbs}))
+    setBreadcrumbs: (breadcrumbs) => set(state => ({...state, breadcrumbs})),
+    setDateRange: (dateRange) => set(state => ({...state, dateRange})),
 })
 
 let settingsStore = (set) => ({

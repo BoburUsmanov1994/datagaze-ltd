@@ -89,6 +89,9 @@ const GlobalStyles = createGlobalStyle`
   .mb-30{
     margin-bottom: 30px !important;
   }
+  .mb-20{
+    margin-bottom: 20px !important;
+  }
   /* width */
   ::-webkit-scrollbar {
     width: 3px;

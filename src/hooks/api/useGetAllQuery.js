@@ -11,7 +11,7 @@ const useGetAllQuery = ({
                             hideErrorMsg = false
                         }) => {
 
-    const {isLoading, isError, data, error, isFetching} = useQuery(key, () => request.get(url, params), {
+    const {isLoading, isError, data, error, isFetching} = useQuery([key,params], () => request.get(url, {params}), {
         onSuccess: () => {
         },
         onError: (data) => {

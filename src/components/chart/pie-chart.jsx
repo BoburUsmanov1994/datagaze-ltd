@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styled from "styled-components";
 import {PieChart, Pie, Tooltip, ResponsiveContainer, Cell} from "recharts";
 
@@ -11,13 +11,12 @@ const CustomPieChart = ({
 
     return (
         <Styled {...rest}>
-            <ResponsiveContainer width={'100%'} height={500}>
+            <ResponsiveContainer width={'100%'} height={450}>
                 <PieChart>
                     <Pie
                         dataKey="value"
                         isAnimationActive={true}
                         data={data}
-                        outerRadius={200}
                         stroke={''}
                         label
                     >
@@ -25,8 +24,6 @@ const CustomPieChart = ({
                             <Cell key={`cell-${index}`} fill={colors[index % colors.length]}/>
                         ))}
                     </Pie>
-
-                    {/* Display the tooltips */}
                     <Tooltip/>
                 </PieChart>
             </ResponsiveContainer>
@@ -34,4 +31,4 @@ const CustomPieChart = ({
     );
 };
 
-export default CustomPieChart;
+export default memo(CustomPieChart);

@@ -3,10 +3,11 @@ import styled, {css} from "styled-components";
 import {DateRangePicker} from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import {Calendar,ChevronDown} from "react-feather";
+import {Calendar, ChevronDown} from "react-feather";
 import dayjs from "dayjs";
 import {get} from "lodash"
 import OutsideClickHandler from "react-outside-click-handler";
+import {useStore} from "../../store";
 
 
 const Styled = styled.div`
@@ -65,9 +66,10 @@ const Styled = styled.div`
     }
 
     .datepicker__input_calendar {
-    left: 0;
+      left: 0;
     }
-    .datepicker__input_arrow{
+
+    .datepicker__input_arrow {
       position: absolute;
       right: 8px;
     }
@@ -81,10 +83,15 @@ const RangeDatepicker = ({
 
     const [open, setOpen] = useState(false)
     const [range, setRange] = useState({startDate: dayjs().subtract(1, 'month').toDate(), endDate: dayjs().toDate()})
+    const setDateRange = useStore(state => get(state, 'setDateRange', () => {
+    }))
 
     useEffect(() => {
         if (open) {
             setOpen(false)
+        }
+        if (range) {
+            setDateRange(range);
         }
     }, [range])
 
@@ -94,19 +101,20 @@ const RangeDatepicker = ({
                 <span
                     className={'datepicker__input_text'}>{grid ? dayjs(get(range, 'startDate')).format("DD.MM.YYYY") : dayjs(get(range, 'startDate')).format("MMM DD, YYYY")} — {grid ? dayjs(get(range, 'endDate')).format("DD.MM.YYYY") : dayjs(get(range, 'endDate')).format("MMM DD, YYYY")}</span>
                 <Calendar className={'datepicker__input_calendar'} color={grid ? '#09121F' : '#ABABAB'} size={20}/>
-                {grid && <ChevronDown className={'datepicker__input_arrow'} color={grid ? '#09121F' :'#ABABAB'} size={20} />}
+                {grid &&
+                    <ChevronDown className={'datepicker__input_arrow'} color={grid ? '#09121F' : '#ABABAB'} size={20}/>}
             </div>
             {open &&
-            <OutsideClickHandler onOutsideClick={() => {
-                setOpen(false)
-            }}><DateRangePicker
-                ranges={[{...range, key: 'selection'}]}
-                onChange={({selection}) => setRange(selection)}
-                className={'datepicker__range'}
-                rangeColors={['#4439C1']}
-                months={2}
-                direction="horizontal"
-            /></OutsideClickHandler>}
+                <OutsideClickHandler onOutsideClick={() => {
+                    setOpen(false)
+                }}><DateRangePicker
+                    ranges={[{...range, key: 'selection'}]}
+                    onChange={({selection}) => setRange(selection)}
+                    className={'datepicker__range'}
+                    rangeColors={['#4439C1']}
+                    months={2}
+                    direction="horizontal"
+                /></OutsideClickHandler>}
         </Styled>
     );
 };

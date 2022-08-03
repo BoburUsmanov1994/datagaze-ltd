@@ -7,4 +7,6 @@ export const KEYS = {
     incidents: 'incidents',
     incsByPeriod: 'incsByPeriod',
     incsByType: 'incsByType',
+    statusComps: 'statusComps',
+    organizationReports: 'organizationReports',
 }
