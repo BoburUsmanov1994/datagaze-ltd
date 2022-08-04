@@ -59,7 +59,6 @@ const DashboardContainer = ({...rest}) => {
         return <OverlayLoader/>
     }
 
-    console.log("dateRange", get(incsByType,'data',[]))
 
     return (
         <Section>
@@ -125,7 +124,7 @@ const DashboardContainer = ({...rest}) => {
                     </DashboardBox>
                 </Col>
                 <Col lg={6}>
-                    <DashboardBox title={"Инциденты по уровня"} icon={<PieChart color={'#CD4472'} size={32}/>}>
+                    <DashboardBox title={"Инциденты по уровня"} icon={<PieChart color={'#4439C1'} size={32}/>}>
                         <Col xs={12} xxl={12}>
                             <Row align={'center'}>
                                 <Col xs={3}>
@@ -159,7 +158,7 @@ const DashboardContainer = ({...rest}) => {
                     </DashboardBox>
                 </Col>
                 <Col lg={6}>
-                    <DashboardBox title={"Статистика по утечке и предотв"} icon={<PieChart color={'#47A6FF'} size={32}/>}>
+                    <DashboardBox title={"Статистика по утечке и предотв"} icon={<PieChart color={'#4439C1'} size={32}/>}>
                         <Col xs={12} xxl={12}>
                             <Row align={'center'}>
                                 <Col xs={3}>
@@ -192,7 +191,7 @@ const DashboardContainer = ({...rest}) => {
                     </DashboardBox>
                 </Col>
                 <Col lg={6}>
-                    <DashboardBox title={"Инциденты по действительности"} icon={<PieChart color={'#F9B37F'} size={32}/>}>
+                    <DashboardBox title={"Инциденты по действительности"} icon={<PieChart color={'#4439C1'} size={32}/>}>
                         <Col xs={12} xxl={12}>
                             <Row align={'center'}>
                                 <Col xs={3}>

@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from "styled-components";
-import {User,ChevronDown} from "react-feather";
+import {User, ChevronDown} from "react-feather";
+import config from "../../config";
 
 const Styled = styled.div`
   border: 1px solid #C2C2C2;
-  padding: 8px 16px;
+  padding: 5px 15px;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
   max-width: 250px;
   display: flex;
   align-items: center;
-  
+
 
   .username {
     font-size: 15px;
@@ -23,24 +24,34 @@ const Styled = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .user-icon{
+
+  .user-icon {
     margin-right: 12px;
     line-height: 1;
   }
-  .chevron-icon{
+  .profile__avatar{
+    width: 32px;
+    height: 32px;
+    -webkit-border-radius: 50%;-moz-border-radius: 50%;border-radius: 50%;
+    object-fit: cover;
+    margin-right: 18px;
+  }
+
+  .chevron-icon {
     margin-top: 3px;
   }
 `
 
 const Profile = ({
+                     avatar = null,
                      username = 'Admin',
                      ...rest
                  }) => {
     return (
         <Styled {...rest}>
-            <User className={'user-icon'} size={26} color={'#9B9B9B'}/>
+            {avatar ? <img className={'profile__avatar'} src={`${config.API_ROOT}${avatar}`} alt=""/> :  <User className={'user-icon'} size={26} color={'#9B9B9B'}/> }
             <span className={'username'}>{username}</span>
-            <ChevronDown className={'chevron-icon'} size={22} color={'#9B9B9B'} />
+            <ChevronDown className={'chevron-icon'} size={20} color={'#9B9B9B'}/>
         </Styled>
     );
 };

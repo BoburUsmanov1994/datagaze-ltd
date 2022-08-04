@@ -70,6 +70,7 @@ const Header = ({...rest}) => {
     const {data:profile,isLoading} = useGetAllQuery({key:KEYS.profile,url:URLS.profile,hideErrorMsg:true})
     const setUser = useStore(state => get(state,'setUser',()=>{}))
     const setToken = useSettingsStore(state => get(state,'setToken',()=>{}))
+    const user = useStore(state => get(state,'user'));
 
     useEffect(()=>{
         if(!isNil(get(profile,'data'))){
@@ -77,6 +78,7 @@ const Header = ({...rest}) => {
             setToken(get(profile,'data.token'));
         }
     },[get(profile,'data')])
+    console.log('user',user)
     return (
         <Styled {...rest}>
             <Container fluid>
@@ -93,7 +95,7 @@ const Header = ({...rest}) => {
                             <Search color={'#C4C4C4'} size={28} className={'header__search'}/>
                             <Notification />
                             <img className={'header__dots'} src={dots} alt="dots"/>
-                            <Dropdown button={<Profile username={'Bobur Usmanov'}/>}>
+                            <Dropdown button={<Profile  avatar={get(user,'image')} username={get(user,'username')}/>}>
                                 <ul className={'profile-body'}>
                                     <li><Settings size={20}/><span>Settings</span></li>
                                 </ul>
