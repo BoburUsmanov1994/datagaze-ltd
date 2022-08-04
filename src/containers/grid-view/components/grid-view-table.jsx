@@ -21,7 +21,7 @@ const Styled = styled.div`
       }
 
       th {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 500;
         color: #000;
         font-family: 'Inter', sans-serif;
@@ -41,7 +41,7 @@ const Styled = styled.div`
       td {
         text-align: center;
         padding: 25px 15px;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 400;
 
         &:first-child {

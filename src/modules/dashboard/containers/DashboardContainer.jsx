@@ -19,7 +19,7 @@ import Table from "../../../components/table";
 
 const DashboardContainer = ({...rest}) => {
     const dateRange = useStore(state => get(state, "dateRange"));
-    let {data: incidents, isLoading: incidentsIsLoading} = useGetAllQuery({key: KEYS.incidents, url: URLS.incidents})
+    let {data: incidents, isLoading: incidentsIsLoading,isError} = useGetAllQuery({key: KEYS.incidents, url: URLS.incidents})
     let {data: statusComps, isLoading: statusCompsIsloading} = useGetAllQuery({
         key: KEYS.statusComps,
         url: URLS.statusComps
@@ -52,7 +52,9 @@ const DashboardContainer = ({...rest}) => {
         setBreadcrumbs(breadcrumbs)
     }, [])
 
-
+    if(isError){
+        return "Error"
+    }
     if (incidentsIsLoading || statusCompsIsloading || organizationReportsIsloading) {
         return <OverlayLoader/>
     }

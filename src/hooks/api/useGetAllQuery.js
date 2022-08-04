@@ -7,18 +7,23 @@ const useGetAllQuery = ({
                             key = "get-all",
                             url = "/",
                             params = {},
+                            headers={},
+                            enabled = true,
                             showSuccessMsg = false,
-                            hideErrorMsg = false
+                            hideErrorMsg = false,
+                            removeAfterUnmount = false
                         }) => {
 
-    const {isLoading, isError, data, error, isFetching} = useQuery([key,params], () => request.get(url, {params}), {
+    const {isLoading, isError, data, error, isFetching} = useQuery([key,params], () => request.get(url, {headers,params}), {
         onSuccess: () => {
         },
         onError: (data) => {
             if(!hideErrorMsg) {
                 toast.error(data?.response?.data?.message || `ERROR!!! api not working`)
             }
-        }
+        },
+        enabled,
+        removeAfterUnmount
     });
 
     return {

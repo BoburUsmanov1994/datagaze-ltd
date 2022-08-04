@@ -1,25 +1,27 @@
-import React from 'react';
-import {useNavigate,Link} from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useNavigate, Link} from 'react-router-dom';
 import Form from "../../../containers/form/form";
 import Field from "../../../containers/form/field";
 import Button from "../../../components/ui/button";
 import {usePostQuery} from "../../../hooks/api";
-import {useSettingsStore} from "../../../store";
+import {useSettingsStore, useStore} from "../../../store";
 import {get} from "lodash";
 import Swal from "sweetalert2";
 import {OverlayLoader} from "../../../components/loader";
 import {URLS} from "../../../constants/url";
 
 const LoginContainer = ({...rest}) => {
-    const {mutate, isLoading} = usePostQuery({url: URLS.login, hideSuccessToast: true})
+
     const setToken = useSettingsStore(state => get(state, 'setToken', () => {
     }))
+    const {mutate, isLoading} = usePostQuery({url: URLS.login, hideSuccessToast: true})
+
     const navigate = useNavigate();
 
     const loginRequest = ({data}) => {
         mutate({url: URLS.login, attributes: data}, {
             onSuccess: ({data}) => {
-                setToken(get(data, 'token', null))
+                setToken(get(data, 'token'));
                 navigate("/dashboard");
                 Swal.fire({
                     position: 'center',
@@ -60,7 +62,7 @@ const LoginContainer = ({...rest}) => {
                     label={'Пароль'}
                     property={{type: 'password', placeholder: 'Пароль', hideLabel: true}}
                     params={{required: true}}/>
-                    <Link className={'forget-password'} to={'/auth/forget-password'}>Забыли пароль?</Link>
+                <Link className={'forget-password'} to={'/auth/forget-password'}>Забыли пароль?</Link>
             </Form>
         </div>
     );

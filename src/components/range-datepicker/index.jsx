@@ -13,6 +13,7 @@ import {useStore} from "../../store";
 const Styled = styled.div`
   margin-right: 40px;
   position: relative;
+  z-index: 9;
 
   .datepicker {
     &__range {

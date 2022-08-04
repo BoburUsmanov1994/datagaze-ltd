@@ -23,7 +23,7 @@ padding: 15px 15px 5px;
     overflow-y: auto;
 
     li {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       text-align: center;
       a{
         color: #948989;
@@ -53,7 +53,7 @@ const Menu = ({...rest}) => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/users"}>
+                    <NavLink to={"/employee"}>
                         <Users size={20}/>
                     </NavLink>
                 </li>

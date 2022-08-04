@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 import {Container, Row, Col} from "react-grid-system";
 import Flex from "../flex";
@@ -9,6 +9,11 @@ import {Settings, Menu,Search} from "react-feather";
 import dots from "../../assets/images/dots.png";
 import Notification from "../notification";
 import RangeDatepicker from "../range-datepicker";
+import {useGetAllQuery} from "../../hooks/api";
+import {KEYS} from "../../constants/key";
+import {URLS} from "../../constants/url";
+import {useSettingsStore, useStore} from "../../store";
+import {get, isNil} from "lodash";
 
 const Styled = styled.header`
   padding: 15px 10px 15px 5px;
@@ -62,6 +67,16 @@ const Styled = styled.header`
 `;
 
 const Header = ({...rest}) => {
+    const {data:profile,isLoading} = useGetAllQuery({key:KEYS.profile,url:URLS.profile,hideErrorMsg:true})
+    const setUser = useStore(state => get(state,'setUser',()=>{}))
+    const setToken = useSettingsStore(state => get(state,'setToken',()=>{}))
+
+    useEffect(()=>{
+        if(!isNil(get(profile,'data'))){
+            setUser(get(profile,'data'));
+            setToken(get(profile,'data.token'));
+        }
+    },[get(profile,'data')])
     return (
         <Styled {...rest}>
             <Container fluid>
