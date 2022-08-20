@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {isArray, get} from "lodash";
 import dayjs from "dayjs";
 import Badge from "../../../components/ui/badge";
+import {useNavigate} from "react-router-dom";
 
 const Styled = styled.div`
   padding: 30px;
@@ -38,6 +39,9 @@ const Styled = styled.div`
     }
 
     &__body {
+      tr{
+        cursor: pointer;
+      }
       td {
         text-align: center;
         padding: 25px 15px;
@@ -59,8 +63,10 @@ const GridViewTable = ({
                            children,
                            tableHeaderData = [],
                            tableBodyData = [],
+    viewUrl,
                            ...rest
                        }) => {
+    const navigate = useNavigate();
     return (
         <Styled {...rest}>
             <table className="table">
@@ -75,7 +81,7 @@ const GridViewTable = ({
                 </thead>
                 <tbody className={"table__body"}>
                 {
-                    tableBodyData && isArray(tableBodyData) && tableBodyData.map((tr, i) => <tr key={i}>
+                    tableBodyData && isArray(tableBodyData) && tableBodyData.map((tr, i) => <tr onClick={()=>navigate(`${viewUrl}/${get(tr,"id")}`)} key={i}>
                         <td>{i + 1}</td>
                         {
                             tableHeaderData && isArray(tableHeaderData) && tableHeaderData.map((th, j) => {

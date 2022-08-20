@@ -5,7 +5,7 @@ import {Col, Container, Row} from "react-grid-system";
 import GridView from "../../../containers/grid-view";
 
 
-const EmployeeProfileContainer = ({...rest}) => {
+const EmployeeContainer = ({...rest}) => {
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
     const breadcrumbs = useMemo(() => [
@@ -21,7 +21,7 @@ const EmployeeProfileContainer = ({...rest}) => {
         },
         {
             id: 3,
-            title: 'Активные приложения',
+            title: 'Журнал активности',
             path: '#',
         }
     ], [])
@@ -42,13 +42,11 @@ const EmployeeProfileContainer = ({...rest}) => {
                     ]
                 }
                 tableBodyData={
-                    [
-
-                    ]
+                    []
                 }
             />
         </>
     );
 };
 
-export default EmployeeProfileContainer;
+export default EmployeeContainer;

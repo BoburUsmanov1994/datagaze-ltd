@@ -19,6 +19,7 @@ const GridView = ({
                       tableBodyData = [],
                       keyId,
                       url,
+                      viewUrl,
                       ...rest
                   }) => {
 
@@ -54,7 +55,7 @@ const GridView = ({
             {
                 isFetching && <OverlayLoader/>
             }
-            <GridViewTable tableHeaderData={tableHeaderData} tableBodyData={get(data, "data.docs", [])}/>
+            <GridViewTable viewUrl={viewUrl} tableHeaderData={tableHeaderData} tableBodyData={get(data, "data.docs", [])}/>
             <GridViewPagination pageCount={ceil(get(data, "data.total") / limit)} setPage={setPage}
                                 setLimit={setLimit}/>
         </Styled>

@@ -31,17 +31,24 @@ const EmployeeListContainer = ({
             <GridView
                 url={URLS.employees}
                 keyId={KEYS.employees}
+                viewUrl={`/employee/activity-log`}
                 tableHeaderData={
                     [
-                        {id: 1, title: "Имя сотрудника", key: ["firstName","lastName"],type:"array"},
+                        {id: 1, title: "Имя сотрудника", key: ["firstName", "lastName"], type: "array"},
                         {id: 2, title: "Название хоста", key: "hostname"},
                         {id: 3, title: "Время последного подключения", key: "lastSeen", type: 'timestamp'},
                         {id: 4, title: "Название компьютера", key: "lastComputer.pcname"},
-                        {id: 5, title: "Aдрес", key: ["lastComputer.ipAddress","lastComputer.macAddress"],type: 'array',hasBreak:true},
+                        {
+                            id: 5,
+                            title: "Aдрес",
+                            key: ["lastComputer.ipAddress", "lastComputer.macAddress"],
+                            type: 'array',
+                            hasBreak: true
+                        },
                         {id: 6, title: "Версия агента", key: "lastComputer.agentVersion"},
                         {id: 7, title: "Группа", key: "group.name"},
                         {id: 8, title: "Правила политики", key: "rule.name"},
-                        {id: 9, title: "Под контролем", key: "isAgentInstalled",type:"boolean"},
+                        {id: 9, title: "Под контролем", key: "isAgentInstalled", type: "boolean"},
                     ]
                 }
             />
