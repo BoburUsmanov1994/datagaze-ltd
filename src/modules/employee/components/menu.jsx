@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {NavLink} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import logsIcon from "../../../assets/icons/logs.svg"
 import keyloggerIcon from "../../../assets/icons/keylogger.svg"
 import screenIcon from "../../../assets/icons/screenshot.svg"
@@ -48,40 +48,42 @@ const Styled = styled.ul`
 const Menu = ({
                   ...rest
               }) => {
+    const {id} = useParams()
     return (
         <Styled {...rest}>
             <li>
-                <NavLink className={'menu__link '} to={"/employee/activity-log/1"}><span className={"menu__link__left"}><img
+                <NavLink className={'menu__link '} to={`/employee/activity-log/${id}`}><span
+                    className={"menu__link__left"}><img
                     src={logsIcon} alt=""/>
                     <span>Журнал активности</span></span> <span className={'count'}>123</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link '} to={"/employee/keylogger/1"}><span
+                <NavLink className={'menu__link '} to={`/employee/keylogger/${id}`}><span
                     className={"menu__link__left"}><img src={keyloggerIcon} alt=""/>
                     <span>Кейлогер</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link'} to={"/employee/screenshot/1"}><span
+                <NavLink className={'menu__link'} to={`/employee/screenshot/${id}`}><span
                     className={"menu__link__left"}><img src={screenIcon} alt=""/>
                     <span>Скриншоты</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link'} to={"/employee/internet-use/1"}><span
+                <NavLink className={'menu__link'} to={`/employee/internet-use/${id}`}><span
                     className={"menu__link__left"}><img src={wifiIcon} alt=""/>
                     <span>Исп. интернета</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link'} to={"/employee/buffer/1"}><span
+                <NavLink className={'menu__link'} to={`/employee/buffer/${id}`}><span
                     className={"menu__link__left"}><img src={buferIcon} alt=""/>
                     <span>Буфер</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link '} to={"/employee/warnings/1"}><span
+                <NavLink className={'menu__link '} to={`/employee/warnings/${id}`}><span
                     className={"menu__link__left"}><img src={polygonIcon} alt=""/>
                     <span>Предупреждения</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link'} to={"/employee/telegram/1"}><span
+                <NavLink className={'menu__link'} to={`/employee/telegram/${id}`}><span
                     className={"menu__link__left"}><img src={telegramIcon} alt=""/>
                     <span>Телеграм</span></span> <span className={'count'}>564</span></NavLink>
             </li>
@@ -91,27 +93,27 @@ const Menu = ({
                     <span>USB лист</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link'} to={"/employee/usb-file/1"}><span
+                <NavLink className={'menu__link'} to={`/employee/usb-file/${id}`}><span
                     className={"menu__link__left"}><img src={usbDriverIcon} alt=""/>
                     <span>USB файлы</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link'} to={"/employee/printer/1"}><span
+                <NavLink className={'menu__link'} to={`/employee/printer/${id}`}><span
                     className={"menu__link__left"}><img src={printerIcon} alt=""/>
                     <span>Принтеры</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link'} to={"/employee/remote/1"}><span
+                <NavLink className={'menu__link'} to={`/employee/remote/${id}`}><span
                     className={"menu__link__left"}><img src={remoteIcon} alt=""/>
                     <span>Удаленное упр.</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link'} to={"/employee/audio/1"}><span
+                <NavLink className={'menu__link'} to={`/employee/audio/${id}`}><span
                     className={"menu__link__left"}><img src={audioIcon} alt=""/>
                     <span>Аудио записи</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link'} to={"/employee/session/1"}><span
+                <NavLink className={'menu__link'} to={`/employee/session/${id}`}><span
                     className={"menu__link__left"}><img src={sessionIcon} alt=""/>
                     <span>Журнал сеанса</span></span> <span className={'count'}>564</span></NavLink>
             </li>
