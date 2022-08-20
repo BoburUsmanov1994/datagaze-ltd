@@ -5,7 +5,6 @@ import storage from "../storage";
 import config from "../../config";
 
 
-
 NProgress.configure({
     showSpinner: true,
     trickleRate: 0.02,
@@ -21,7 +20,7 @@ const request = axios.create({
 
 request.interceptors.request.use((config) => {
     NProgress.inc();
-    const token = get(JSON.parse(storage.get('settings')),'state.token',null);
+    const token = get(JSON.parse(storage.get('settings')), 'state.token', null);
     if (token) {
         config.headers['Authorization'] = `Bearer ${token}`
     }
@@ -37,7 +36,7 @@ request.interceptors.response.use((response) => {
 }, (error) => {
     const statusCode = error.response.status;
     if (statusCode == 401) {
-        storage.remove('token');
+        window.localStorage.clear();
     }
 
     NProgress.done(true);
