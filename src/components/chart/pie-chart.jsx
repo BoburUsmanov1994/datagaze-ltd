@@ -11,7 +11,7 @@ const CustomPieChart = ({
 
     return (
         <Styled {...rest}>
-            <ResponsiveContainer width={'100%'}>
+            <ResponsiveContainer height={400} width={'100%'}>
                 <PieChart>
                     <Pie
                         dataKey="value"
