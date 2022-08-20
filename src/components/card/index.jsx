@@ -23,7 +23,7 @@ const Styled = styled.div`
     }
 
     &__count {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
       margin-left: 15px;
       color: #8A8A8A;
