@@ -11,7 +11,7 @@ const CustomPieChart = ({
 
     return (
         <Styled {...rest}>
-            <ResponsiveContainer height={400} width={'100%'}>
+            <ResponsiveContainer  height={400} width={'100%'}>
                 <PieChart>
                     <Pie
                         dataKey="value"
@@ -19,6 +19,7 @@ const CustomPieChart = ({
                         data={data}
                         stroke={''}
                         label
+                        outerRadius={115}
                     >
                         {data.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={colors[index % colors.length]}/>
