@@ -10,4 +10,5 @@ export const URLS = {
     incsByType: '/api/main/dashboard/incsByType',
     statusComps: '/api/main/dashboard/statusComps',
     organizationReports: '/api/reports/incident/organization',
+    activity: 'api/main/activity',
 }

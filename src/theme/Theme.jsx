@@ -10,6 +10,12 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
   }
 
   h1, h2, h3, h4, h5, h6, p, ul {
@@ -134,6 +140,14 @@ const GlobalStyles = createGlobalStyle`
 
   .mr-10 {
     margin-right: 10px !important;
+  }
+
+  .mr-20 {
+    margin-right: 20px !important;
+  }
+
+  .mt-25 {
+    margin-top: 25px !important;
   }
 
   * {

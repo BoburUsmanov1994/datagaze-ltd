@@ -62,7 +62,7 @@ const LoginContainer = ({...rest}) => {
                     label={'Пароль'}
                     property={{type: 'password', placeholder: 'Пароль', hideLabel: true}}
                     params={{required: true}}/>
-                <Link className={'forget-password'} to={'/auth/forget-password'}>Забыли пароль?</Link>
+                <Link className={'forget-password'} to={'/auth/forgot-password'}>Забыли пароль?</Link>
             </Form>
         </div>
     );

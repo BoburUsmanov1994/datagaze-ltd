@@ -52,12 +52,12 @@ const GridViewPagination = ({
                 breakLabel="..."
                 nextLabel={<ChevronRight size={20}/>}
                 onPageChange={({selected}) => setPage(selected)}
-                pageRangeDisplayed={5}
+                pageRangeDisplayed={limit}
                 pageCount={pageCount}
                 previousLabel={<ChevronLeft size={20}/>}
                 renderOnZeroPageCount={null}
             />
-            {pageCount > 0 && <GridViewPerPage setLimit={setLimit} />}
+            {pageCount > 0 && <GridViewPerPage defaultValue={{value:limit,label:limit}} setLimit={setLimit} />}
         </Styled>
     );
 };

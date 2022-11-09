@@ -16,11 +16,20 @@ const StyledButton = styled.button`
     padding: 18px 36px;
     font-size: 18px;
   `}
+  ${({md}) => md && css`
+    padding: 15px 30px;
+    font-size: 16px;
+  `}
   ${({danger}) => danger && css`
     background-color: #ef466f;
   `}
   ${({dark}) => dark && css`
     background-color: #1D283A;
+  `}
+  ${({transparent}) => transparent && css`
+    background-color: transparent;
+    border:1px solid #B3B3B3;
+    color: #B3B3B3;
   `}
 
   ${({success}) => success && css`

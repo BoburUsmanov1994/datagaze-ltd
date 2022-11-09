@@ -1,10 +1,10 @@
 import React from 'react';
 import useAuth from "../../hooks/auth/useAuth";
 
-const IsAuth = ({children,...rest}) => {
-    const {isAuthenticated,token = null} = useAuth({});
+const IsAuth = ({children}) => {
+    const {isAuthenticated = false,token = null} = useAuth({});
 
-    return !!(token) ? children : null
+    return isAuthenticated && token ? children : null
 };
 
 export default IsAuth;

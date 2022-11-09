@@ -78,7 +78,7 @@ const Header = ({...rest}) => {
             setToken(get(profile,'data.token'));
         }
     },[get(profile,'data')])
-    console.log('user',user)
+
     return (
         <Styled {...rest}>
             <Container fluid>
@@ -91,7 +91,6 @@ const Header = ({...rest}) => {
                     </Col>
                     <Col xs={6}>
                         <Flex justify={'flex-end'} align={'center'}>
-                            <RangeDatepicker />
                             <Search color={'#C4C4C4'} size={28} className={'header__search'}/>
                             <Notification />
                             <img className={'header__dots'} src={dots} alt="dots"/>

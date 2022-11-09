@@ -1,9 +1,10 @@
 import React from 'react';
-import {NavLink, Outlet} from "react-router-dom";
+import {NavLink, Outlet, useLocation} from "react-router-dom";
 import styled from "styled-components";
 import bgImg from "../../assets/images/login-bg.png"
 import Brand from "../../components/brand";
 import dayjs from 'dayjs'
+import {includes} from "lodash";
 
 const Styled = styled.div`
   min-height: 100vh;
@@ -62,7 +63,7 @@ const Styled = styled.div`
   .oferta {
     text-align: justify;
     margin-top: 20px;
-    margin-bottom: 20px;
+  
     font-size: 13px;
   }
 
@@ -71,10 +72,12 @@ const Styled = styled.div`
     font-size: 13px;
     color: rgba(0, 0, 0, 0.3);
     font-weight: 500;
+    margin-top: 20px;
   }
 `;
 
 const AuthLayout = ({...rest}) => {
+    const {pathname} = useLocation()
     return (
         <Styled {...rest}>
             <div className="box">
@@ -82,7 +85,7 @@ const AuthLayout = ({...rest}) => {
                     <Brand/>
                 </div>
                 <ul className={'auth-links'}>
-                    <li>
+                    {(!includes(pathname,'forgot-password') && !includes(pathname,'confirm')) && <><li>
                         <NavLink to={'/auth/sign-up'} end>
                             Регистрация
                         </NavLink>
@@ -91,12 +94,25 @@ const AuthLayout = ({...rest}) => {
                         <NavLink to={'/auth'} end>
                             Вход
                         </NavLink>
-                    </li>
+                    </li></>}
+                    {includes(pathname,'forgot-password') && <li>
+                        <NavLink to={'/auth/forgot-password'} end>
+                            Забыли пароль?
+                        </NavLink>
+                    </li>}
+
+                    {includes(pathname,'confirm') && <li>
+                        <NavLink to={'#'} end>
+                            Подтверждение заявки
+                        </NavLink>
+                    </li>}
+
+
                 </ul>
                 <Outlet/>
-                <p className={'oferta'}>Регистрируясь на DatagazeDLP или авторизуясь через социальные сети, вы
+                {!includes(pathname,'forgot-password') && !includes(pathname,'confirm') && <p className={'oferta'}>Регистрируясь на DatagazeDLP или авторизуясь через социальные сети, вы
                     соглашаетесь с
-                    <a href="#"> Пользовательским соглашением</a> и <a href="#">Политикой конфиденциальности</a>.</p>
+                    <a href="#"> Пользовательским соглашением</a> и <a href="#">Политикой конфиденциальности</a>.</p>}
                 <p className={'auth-bottom'}>2019 - {dayjs().year()} © Разработано Datagaze LTD</p>
             </div>
         </Styled>

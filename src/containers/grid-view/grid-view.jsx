@@ -9,6 +9,7 @@ import GridViewHeader from "./components/grid-view-header";
 import GridViewTimeline from "./components/grid-view-timeline";
 import GridViewTable from "./components/grid-view-table";
 import GridViewPagination from "./components/grid-view-pagination";
+import ErrorPage from "../../modules/auth/pages/ErrorPage";
 
 
 const Styled = styled.div`
@@ -20,10 +21,11 @@ const GridView = ({
                       keyId,
                       url,
                       viewUrl,
+                      params = {},
                       ...rest
                   }) => {
 
-    const [limit, setLimit] = useState(5);
+    const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(0);
     // ?start=&end=&offset=0&limit=10&deleted=&monitored=&online=&groups=&search=
     const {data, isError, isLoading, isFetching} = usePaginateQuery({
@@ -31,7 +33,7 @@ const GridView = ({
         url,
         page,
         limit,
-        params: {limit, offset: page * limit}
+        params: {limit, offset: page * limit,...params}
     })
 
     useEffect(() => {
@@ -46,7 +48,7 @@ const GridView = ({
     }
 
     if (isError) {
-        return "Error ...";
+        return <ErrorPage />;
     }
     return (
         <Styled {...rest}>
@@ -55,8 +57,9 @@ const GridView = ({
             {
                 isFetching && <OverlayLoader/>
             }
-            <GridViewTable viewUrl={viewUrl} tableHeaderData={tableHeaderData} tableBodyData={get(data, "data.docs", [])}/>
-            <GridViewPagination pageCount={ceil(get(data, "data.total") / limit)} setPage={setPage}
+            <GridViewTable viewUrl={viewUrl} tableHeaderData={tableHeaderData}
+                           tableBodyData={get(data, "data.docs", [])}/>
+            <GridViewPagination limit={limit} pageCount={ceil(get(data, "data.total") / limit)} setPage={setPage}
                                 setLimit={setLimit}/>
         </Styled>
     );

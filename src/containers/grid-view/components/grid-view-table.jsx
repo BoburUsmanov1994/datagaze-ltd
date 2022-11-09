@@ -4,6 +4,7 @@ import {isArray, get} from "lodash";
 import dayjs from "dayjs";
 import Badge from "../../../components/ui/badge";
 import {useNavigate} from "react-router-dom";
+import EmptyPage from "../../../modules/auth/pages/EmptyPage";
 
 const Styled = styled.div`
   padding: 30px;
@@ -67,6 +68,9 @@ const GridViewTable = ({
                            ...rest
                        }) => {
     const navigate = useNavigate();
+    if(tableBodyData?.length == 0){
+        return <EmptyPage />
+    }
     return (
         <Styled {...rest}>
             <table className="table">

@@ -9,4 +9,5 @@ export const KEYS = {
     incsByType: 'incsByType',
     statusComps: 'statusComps',
     organizationReports: 'organizationReports',
+    activity: 'activity',
 }

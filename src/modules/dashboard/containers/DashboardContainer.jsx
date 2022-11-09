@@ -14,7 +14,6 @@ import {OverlayLoader} from "../../../components/loader";
 import {colors} from "../../../constants/colors";
 import classNames from "classnames";
 import DashboardBox from "../components/dashboard-box";
-import Table from "../../../components/table";
 
 
 const DashboardContainer = ({...rest}) => {

@@ -83,7 +83,7 @@ const RangeDatepicker = ({
                          }) => {
 
     const [open, setOpen] = useState(false)
-    const [range, setRange] = useState({startDate: dayjs().subtract(1, 'month').toDate(), endDate: dayjs().toDate()})
+    const [range, setRange] = useState({startDate: dayjs().subtract(3, 'month').toDate(), endDate: dayjs().toDate()})
     const setDateRange = useStore(state => get(state, 'setDateRange', () => {
     }))
 

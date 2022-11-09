@@ -1,6 +1,6 @@
 import React from 'react';
-import SignUpContainer from "../containers/SignUpContainer";
 import styled from "styled-components";
+import ForgotPasswordContainer from "../containers/ForgotPasswordContainer";
 
 const Styled = styled.div`
   .login-description{
@@ -17,12 +17,14 @@ const Styled = styled.div`
     text-decoration: underline;
   }
 `;
-const SignUpPage = ({...rest}) => {
+const ForgotPasswordPage = ({
+                                ...rest
+                            }) => {
     return (
-        <Styled>
-            <SignUpContainer {...rest} />
+        <Styled {...rest}>
+            <ForgotPasswordContainer/>
         </Styled>
     );
 };
 
-export default SignUpPage;
+export default ForgotPasswordPage;
