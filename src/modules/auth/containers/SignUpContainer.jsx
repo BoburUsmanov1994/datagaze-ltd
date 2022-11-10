@@ -50,7 +50,7 @@ const SignUpContainer = ({...rest}) => {
                     label={'Пароль'}
                     property={{type: 'password', placeholder: 'Пароль', hideLabel: true}}
                     params={{required: true}}/>
-                <PasswordStrengthBar password={val} className={'mb-15'} />
+                <PasswordStrengthBar   password={val} className={'mb-15'} />
                 <Field
                     name={'password_repeat'}
                     type={'input'}
