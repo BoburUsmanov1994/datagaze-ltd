@@ -6,7 +6,6 @@ const Styled = styled.div`
   position: relative;
   background-color: #fff;
   width: calc(100% - 60px);
-  padding-bottom: 20px;
   overflow-x: auto;
 `;
 

@@ -3,43 +3,69 @@ import {useNavigate, Link} from 'react-router-dom';
 import Form from "../../../containers/form/form";
 import Field from "../../../containers/form/field";
 import Button from "../../../components/ui/button";
-import {usePostQuery} from "../../../hooks/api";
+import {useGetAllQuery, usePostQuery} from "../../../hooks/api";
 import {useSettingsStore, useStore} from "../../../store";
-import {get} from "lodash";
+import {get, isNil} from "lodash";
 import Swal from "sweetalert2";
 import {OverlayLoader} from "../../../components/loader";
 import {URLS} from "../../../constants/url";
 
 const LoginContainer = ({...rest}) => {
 
+    const [tokenData, setTokenData] = useState(null)
+    const navigate = useNavigate();
+
+    const setAuth = useStore(state => get(state, 'setAuth', () => {
+    }))
+    const setUser = useStore(state => get(state, 'setUser', () => {
+    }))
     const setToken = useSettingsStore(state => get(state, 'setToken', () => {
     }))
+
+    const {data: profile, isLoadingProfile} = useGetAllQuery({
+        key: 'tokenData',
+        url: URLS.profile,
+        hideErrorMsg: true,
+        headers: {
+            'Authorization': `Bearer ${tokenData}`
+        },
+        enabled: !!(tokenData)
+    });
+
+
     const {mutate, isLoading} = usePostQuery({url: URLS.login, hideSuccessToast: true})
 
-    const navigate = useNavigate();
 
     const loginRequest = ({data}) => {
         mutate({url: URLS.login, attributes: data}, {
             onSuccess: ({data}) => {
-                setToken(get(data, 'token'));
-                navigate("/dashboard");
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    backdrop: 'rgba(0,0,0,0.9)',
-                    background: 'none',
-                    title: 'Добро пожаловать в нашу систему',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    customClass: {
-                        title: 'title-color',
-                    },
-                });
+                setTokenData(get(data, 'token'));
             }
         })
     }
 
-    if (isLoading) {
+    useEffect(() => {
+        if (!isNil(get(profile, 'data'))) {
+            setToken(tokenData);
+            setAuth(true);
+            setUser(get(profile, 'data'));
+            navigate("/dashboard");
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                backdrop: 'rgba(0,0,0,0.9)',
+                background: 'none',
+                title: 'Добро пожаловать в нашу систему',
+                showConfirmButton: false,
+                timer: 2000,
+                customClass: {
+                    title: 'title-color',
+                },
+            });
+        }
+    }, [get(profile, 'data')])
+
+    if (isLoading || isLoadingProfile) {
         return <OverlayLoader/>
     }
 

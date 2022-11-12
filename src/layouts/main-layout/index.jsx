@@ -5,6 +5,7 @@ import Header from "../../components/header";
 import styled from "styled-components";
 import Sidebar from "../../components/sidebar";
 import Content from "../../components/content";
+import Footer from "../../components/footer";
 
 const Styled = styled.div`
   position: relative;
@@ -26,6 +27,7 @@ const MainLayout = ({...rest}) => {
                     <div className={'wrap-content'}>
                         <Outlet/>
                     </div>
+                    <Footer />
                 </Content>
             </div>
         </Styled>

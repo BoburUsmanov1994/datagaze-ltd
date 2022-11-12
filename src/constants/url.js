@@ -11,4 +11,8 @@ export const URLS = {
     statusComps: '/api/main/dashboard/statusComps',
     organizationReports: '/api/reports/incident/organization',
     activity: 'api/main/activity',
+    keylogger: 'api/main/keylgrlist',
+    buffer: 'api/main/clbrdlist',
+    screenshot: '/api/main/scrshtlist',
+    alerts: '/api/main/alerts',
 }

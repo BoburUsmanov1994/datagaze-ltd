@@ -11,8 +11,6 @@ const Auth = ({children, ...rest}) => {
     const setAuth = useStore(state => get(state,'setAuth',()=>{}))
     const setUser = useStore(state => get(state,'setUser',()=>{}))
 
-
-
     useEffect(()=>{
         if(!isNil(get(profile,'data'))){
             setUser(get(profile,'data'));

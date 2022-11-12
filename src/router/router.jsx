@@ -15,6 +15,10 @@ import ForgotPasswordPage from "../modules/auth/pages/ForgotPasswordPage";
 import ConfirmPage from "../modules/auth/pages/ConfirmPage";
 import ForbiddenPage from "../modules/auth/pages/ForbiddenPage";
 import ErrorPage from "../modules/auth/pages/ErrorPage";
+import KeyloggerListPage from "../modules/keylogger/pages/KeyloggerListPage";
+import BufferListPage from "../modules/buffer/pages/BufferListPage";
+import ScreenshotListPage from "../modules/screenshot/pages/ScreenshotListPage";
+import WarningsListPage from "../modules/alerts/pages/WarningsListPage";
 
 const Router = ({...rest}) => {
     return (
@@ -28,6 +32,10 @@ const Router = ({...rest}) => {
                             <Route index element={<EmployeeListPage/>}/>
                             <Route element={<EmployeeLayout/>}>
                                 <Route path={"activity-log/:id"} element={<EmployeePage/>}/>
+                                <Route path={"keylogger/:id"} element={<KeyloggerListPage/>}/>
+                                <Route path={"buffer/:id"} element={<BufferListPage/>}/>
+                                <Route path={"screenshot/:id"} element={<ScreenshotListPage/>}/>
+                                <Route path={"warnings/:id"} element={<WarningsListPage />}/>
                             </Route>
                         </Route>
                         <Route path={"403"} element={<ForbiddenPage />}/>

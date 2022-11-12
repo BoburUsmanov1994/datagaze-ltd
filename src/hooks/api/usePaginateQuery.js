@@ -10,7 +10,8 @@ const usePaginateQuery = ({
                               limit = 5,
                               params = {},
                               showSuccessMsg = false,
-                              showErrorMsg = false
+                              showErrorMsg = false,
+                              enabled = true,
                           }) => {
 
     const {
@@ -19,7 +20,7 @@ const usePaginateQuery = ({
         data,
         error,
         isFetching
-    } = useQuery([key, page, limit,params], () => request.get(`${url}`, {params}), {
+    } = useQuery([key, page, limit, params], () => request.get(`${url}`, {params}), {
         keepPreviousData: true,
         onSuccess: () => {
             if (showSuccessMsg) {
@@ -30,7 +31,8 @@ const usePaginateQuery = ({
             if (showErrorMsg) {
                 toast.error(data?.response?.data?.message || `ERROR`)
             }
-        }
+        },
+        enabled
     });
 
     return {

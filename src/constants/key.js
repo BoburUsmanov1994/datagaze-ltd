@@ -10,4 +10,8 @@ export const KEYS = {
     statusComps: 'statusComps',
     organizationReports: 'organizationReports',
     activity: 'activity',
+    keylogger: 'keylogger',
+    buffer: 'buffer',
+    screenshot: 'screenshot',
+    alerts: 'alerts',
 }

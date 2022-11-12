@@ -1,20 +1,21 @@
 import React, {useEffect, useMemo} from 'react';
 import {useStore} from "../../../store";
 import {get, isNil} from "lodash";
-import {Col, Container, Row} from "react-grid-system";
+import dayjs from "dayjs";
+import Flex from "../../../components/flex";
 import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
-import {OverlayLoader} from "../../../components/loader";
-import dayjs from "dayjs";
-import Flex from "../../../components/flex";
 import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
 
-
-const EmployeeContainer = ({id = null, ...rest}) => {
+const KeyloggerListContainer = ({
+                                    id = null,
+                                    ...rest
+                                }) => {
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
     const dateRange = useStore(state => get(state, 'dateRange', null))
+
     const breadcrumbs = useMemo(() => [
         {
             id: 1,
@@ -36,33 +37,34 @@ const EmployeeContainer = ({id = null, ...rest}) => {
     const columns = [
         {
             title: '№',
-            dataIndex: 'title',
-            render:(th,tr,index,offset)=>offset + index + 1
+            render: (th, tr, index, offset) => offset + index + 1
         },
         {
             title: 'Дата и время',
             dataIndex: 'datetime',
-            render:(th)=>dayjs(th).format("DD-MM-YYYY HH:mm")
+            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
+            width:150
         },
         {
             title: 'Название процесса',
             dataIndex: 'process',
-            render:(th,tr)=><Flex justify={'center'}><img src={`data:image/png;base64, ${get(tr,'icon')}`} alt=""/> <span className={'ml-10'}>{th}</span></Flex>
+            render: (th, tr) => <Flex><img src={`data:image/png;base64, ${get(tr, 'icon')}`} alt=""/>
+                <span className={'ml-10'}>{th}</span></Flex>,
+            align:'left'
         },
         {
-            title: 'Название',
-            dataIndex: 'title',
-            width:350
+            title: 'Активное окно ',
+            dataIndex: 'activeWindowName',
         },
         {
-            title: 'Продолжительность',
-            dataIndex: 'time',
-            render:(th)=>dayjs(th).format("HH:mm:ss"),
+            title: 'Текст',
+            dataIndex: 'text',
+            render: (th) => th,
         },
         {
             title: 'Название компьютера',
             dataIndex: 'pcname',
-            render:(th,tr)=>get(tr,'computer.pcname')
+            render: (th, tr) => get(tr, 'computerId.pcname')
         }
     ]
 
@@ -70,12 +72,13 @@ const EmployeeContainer = ({id = null, ...rest}) => {
         setBreadcrumbs(breadcrumbs)
     }, [])
 
+
     return (
         <>
             <GridViewHeader/>
             <GridView
-                url={URLS.activity}
-                keyId={KEYS.activity}
+                url={URLS.keylogger}
+                keyId={KEYS.keylogger}
                 params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
                 tableHeaderData={columns}
             />
@@ -83,4 +86,4 @@ const EmployeeContainer = ({id = null, ...rest}) => {
     );
 };
 
-export default EmployeeContainer;
+export default KeyloggerListContainer;

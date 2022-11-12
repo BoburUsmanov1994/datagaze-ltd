@@ -120,6 +120,9 @@ const GlobalStyles = createGlobalStyle`
   .mb-20 {
     margin-bottom: 20px !important;
   }
+  .ml-10{
+    margin-left: 10px;
+  }
 
   /* width */
   ::-webkit-scrollbar {

@@ -8,14 +8,12 @@ import Theme from "./theme";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-    // <React.StrictMode>
-        <Query>
-            <Theme>
-                <Auth>
-                    <Router/>
-                </Auth>
-            </Theme>
-        </Query>
-    // </React.StrictMode>
+    <Query>
+        <Theme>
+            <Auth>
+                <Router/>
+            </Auth>
+        </Theme>
+    </Query>
 );
 

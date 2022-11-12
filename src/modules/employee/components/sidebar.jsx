@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Avatar from "../../../components/avatar";
 import {Briefcase} from "react-feather";
 import Menu from "./menu";
+import {get} from "lodash"
 
 const Styled = styled.div`
   min-height: 100vh;
@@ -45,13 +46,14 @@ const Styled = styled.div`
   }
 `;
 const Sidebar = ({
+                     data = {},
                      ...rest
                  }) => {
     return (
         <Styled {...rest}>
             <div className="sidebar__profile">
-                <Avatar className={"avatar"}/>
-                <h2 className={'sidebar__profile__title'}>Turapov Avazbek</h2>
+                <Avatar className={"avatar"} isOnline={get(data,'isOnline',false)}/>
+                <h2 className={'sidebar__profile__title'}>{get(data,'hostname')}</h2>
                 <p className={'sidebar__profile__job'}><Briefcase size={18}/> <span>Начальние отдела</span></p>
             </div>
             <div className="sidebar__menu">
