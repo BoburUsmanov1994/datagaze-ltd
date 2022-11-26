@@ -2,7 +2,6 @@ import React, {useEffect, useMemo} from 'react';
 import {useStore} from "../../../store";
 import {get} from "lodash";
 import dayjs from "dayjs";
-import Flex from "../../../components/flex";
 import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
 import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";

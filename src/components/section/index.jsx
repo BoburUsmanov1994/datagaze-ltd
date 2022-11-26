@@ -5,6 +5,7 @@ import {Container} from "react-grid-system";
 const Styled = styled.section`
   padding: 25px 15px;
   background-color: #fff;
+  min-height: 85vh;
 `;
 const Section = ({
                      children,

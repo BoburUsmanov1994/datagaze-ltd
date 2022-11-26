@@ -73,7 +73,7 @@ const Sidebar = ({children, ...rest}) => {
                 clearToken(null);
                 setUser(null);
                 storage.remove('settings');
-                navigate('/auth');
+                window.location.href='/auth'
             }
         });
     }

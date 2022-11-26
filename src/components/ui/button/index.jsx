@@ -28,7 +28,7 @@ const StyledButton = styled.button`
   `}
   ${({transparent}) => transparent && css`
     background-color: transparent;
-    border:1px solid #B3B3B3;
+    border: 1px solid #B3B3B3;
     color: #B3B3B3;
   `}
 
@@ -44,6 +44,16 @@ const StyledButton = styled.button`
     display: block;
     width: 100%;
   `}
+
+  ${({primary}) => primary && css`
+    background-color: #5BBA7C;
+  `}
+
+  ${({rounded}) => rounded && css`
+    border-radius: 55px;
+  `}
+
+
 
 `;
 

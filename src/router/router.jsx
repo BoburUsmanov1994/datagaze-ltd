@@ -19,6 +19,8 @@ import KeyloggerListPage from "../modules/keylogger/pages/KeyloggerListPage";
 import BufferListPage from "../modules/buffer/pages/BufferListPage";
 import ScreenshotListPage from "../modules/screenshot/pages/ScreenshotListPage";
 import WarningsListPage from "../modules/alerts/pages/WarningsListPage";
+import AccountsPage from "../modules/account/pages/AccountsPage";
+import ComputersListPage from "../modules/computer/pages/ComputersListPage";
 
 const Router = ({...rest}) => {
     return (
@@ -37,6 +39,12 @@ const Router = ({...rest}) => {
                                 <Route path={"screenshot/:id"} element={<ScreenshotListPage/>}/>
                                 <Route path={"warnings/:id"} element={<WarningsListPage />}/>
                             </Route>
+                        </Route>
+                        <Route path={"accounts"}>
+                            <Route index element={<AccountsPage/>}/>
+                        </Route>
+                        <Route path={"computers"}>
+                            <Route index element={<ComputersListPage/>}/>
                         </Route>
                         <Route path={"403"} element={<ForbiddenPage />}/>
                         <Route path={"error"} element={<ErrorPage />}/>

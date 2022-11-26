@@ -15,4 +15,6 @@ export const URLS = {
     buffer: 'api/main/clbrdlist',
     screenshot: '/api/main/scrshtlist',
     alerts: '/api/main/alerts',
+    accountList: 'api/account/list',
+    computers: 'api/main/computers',
 }

@@ -58,12 +58,12 @@ const Menu = ({...rest}) => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/statistics"}>
+                    <NavLink to={"/computers"}>
                         <Monitor size={20}/>
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/user"}>
+                    <NavLink to={"/accounts"}>
                         <User size={20}/>
                     </NavLink>
                 </li>

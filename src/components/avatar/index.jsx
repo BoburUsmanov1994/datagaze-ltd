@@ -43,6 +43,20 @@ const Styled = styled.div`
       right: 0;
     }
   `}
+
+  ${({size}) => isEqual(size,'md') && css`
+  width: 60px;
+    height: 60px;
+    img{
+      width: 60px;
+      height: 60px;
+    }
+    .status{
+      width: 16px;
+      height: 16px;
+      right: 0;
+    }
+  `}
 `;
 const Avatar = ({
                     size = 'lg',

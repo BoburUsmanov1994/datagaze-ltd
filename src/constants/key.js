@@ -14,4 +14,6 @@ export const KEYS = {
     buffer: 'buffer',
     screenshot: 'screenshot',
     alerts: 'alerts',
+    accountList: 'accountList',
+    computers: 'computers',
 }

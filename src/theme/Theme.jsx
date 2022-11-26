@@ -93,6 +93,9 @@ const GlobalStyles = createGlobalStyle`
     white-space: nowrap;
   }
 
+  .mr-5{
+    margin-right: 5px !important;
+  }
   .mr-16 {
     margin-right: 16px !important;
   }

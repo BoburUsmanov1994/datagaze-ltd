@@ -23,20 +23,21 @@ const GridView = ({
                       url,
                       viewUrl = null,
                       params = {},
+                      hideTimeline = false,
                       ...rest
                   }) => {
 
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(0);
     const dateRange = useStore(state => get(state, 'dateRange', null))
-    // ?start=&end=&offset=0&limit=10&deleted=&monitored=&online=&groups=&search=
+
     const {data, isError, isLoading, isFetching} = usePaginateQuery({
         key: keyId,
         url,
         page,
         limit,
-        params: {limit, offset: page * limit,...params},
-        enabled:!isNil(dateRange)
+        params: {limit, offset: page * limit, ...params},
+        enabled: !isNil(dateRange)
     })
 
     useEffect(() => {
@@ -46,16 +47,16 @@ const GridView = ({
     }, [limit])
 
 
-    if (isLoading || isNil(dateRange)) {
+    if (isLoading) {
         return <OverlayLoader/>
     }
 
     if (isError) {
-        return <ErrorPage />;
+        return <ErrorPage/>;
     }
     return (
         <Styled {...rest}>
-            <GridViewTimeline/>
+            {!hideTimeline && <GridViewTimeline/>}
             {
                 isFetching && <OverlayLoader/>
             }
