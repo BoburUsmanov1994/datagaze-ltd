@@ -93,9 +93,10 @@ const GlobalStyles = createGlobalStyle`
     white-space: nowrap;
   }
 
-  .mr-5{
+  .mr-5 {
     margin-right: 5px !important;
   }
+
   .mr-16 {
     margin-right: 16px !important;
   }
@@ -123,8 +124,13 @@ const GlobalStyles = createGlobalStyle`
   .mb-20 {
     margin-bottom: 20px !important;
   }
-  .ml-10{
+
+  .ml-10 {
     margin-left: 10px;
+  }
+
+  .w-100 {
+    width: 100% !important;
   }
 
   /* width */
@@ -157,7 +163,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   * {
-    scrollbar-color:  #4439C1 #F5F5F5;
+    scrollbar-color: #4439C1 #F5F5F5;
     scrollbar-width: thin;
   }
 

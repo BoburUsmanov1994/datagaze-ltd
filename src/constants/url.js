@@ -5,7 +5,7 @@ export const URLS = {
     employees: 'api/main/employees',
     topUsers: 'api/main/dashboard/topUsers',
     kpd: '/api/main/dashboard/kpd',
-    incidents: '/api/main/dashboard/incidents',
+    incidents: '/api/main/dashboard/incident',
     incsByPeriod: '/api/main/dashboard/incsByPeriod',
     incsByType: '/api/main/dashboard/incsByType',
     statusComps: '/api/main/dashboard/statusComps',
@@ -17,4 +17,7 @@ export const URLS = {
     alerts: '/api/main/alerts',
     accountList: 'api/account/list',
     computers: 'api/main/computers',
+    allIncidents: 'api/main/events/allincidents',
+    visitList: '/api/main/visitlist',
+    groups: 'api/main/policies/groups',
 }

@@ -16,4 +16,7 @@ export const KEYS = {
     alerts: 'alerts',
     accountList: 'accountList',
     computers: 'computers',
+    allIncidents: 'allIncidents',
+    visitList: 'visitList',
+    groups: 'groups',
 }

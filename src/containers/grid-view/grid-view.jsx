@@ -37,7 +37,7 @@ const GridView = ({
         page,
         limit,
         params: {limit, offset: page * limit, ...params},
-        enabled: !isNil(dateRange)
+        // enabled: !isNil(dateRange)
     })
 
     useEffect(() => {

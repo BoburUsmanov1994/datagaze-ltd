@@ -64,17 +64,17 @@ const Menu = ({...rest}) => {
                 </li>
                 <li>
                     <NavLink to={"/accounts"}>
-                        <User size={20}/>
+                        <User size={20} />
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/shield-check"}>
+                    <NavLink to={"/incidents"}>
                         <Shield size={20} />
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/exclamation-circle"}>
-                        <AlertCircle size={20} />
+                    <NavLink to={"/groups"}>
+                        <Users size={20} />
                     </NavLink>
                 </li>
                 <li>

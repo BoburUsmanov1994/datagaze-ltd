@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {NavLink, useParams} from "react-router-dom";
+import {Link, NavLink, useParams,useLocation} from "react-router-dom";
 import logsIcon from "../../../assets/icons/logs.svg"
 import keyloggerIcon from "../../../assets/icons/keylogger.svg"
 import screenIcon from "../../../assets/icons/screenshot.svg"
@@ -14,13 +14,16 @@ import printerIcon from "../../../assets/icons/printer.svg"
 import remoteIcon from "../../../assets/icons/remote.svg"
 import audioIcon from "../../../assets/icons/audio.svg"
 import sessionIcon from "../../../assets/icons/session.svg"
+import {ChevronDown, ChevronRight} from "react-feather";
+import {includes} from "lodash";
 
 const Styled = styled.ul`
   .menu {
     &__link {
+      position: relative;
       display: flex;
       align-items: center;
-      padding: 15px 20px;
+      padding: 15px 25px 15px 20px;
       color: #000;
       font-size: 14px;
       font-weight: 300;
@@ -44,11 +47,42 @@ const Styled = styled.ul`
       }
     }
   }
+
+  .submenu {
+    li {
+      a.submenu__link {
+        color: #000;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        border-bottom: 1px solid #CDCDCD;
+        font-weight: 300;
+        &.active{
+          color: #084B92;
+        }
+
+        .dot {
+          width: 4px;
+          height: 4px;
+          display: inline-block;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+          background-color: #C4C4C4;
+          margin: 0 16px;
+
+        }
+      }
+    }
+  }
 `;
 const Menu = ({
                   ...rest
               }) => {
     const {id} = useParams()
+    const {pathname} = useLocation();
+    console.log('location',pathname)
     return (
         <Styled {...rest}>
             <li>
@@ -65,12 +99,24 @@ const Menu = ({
             <li>
                 <NavLink className={'menu__link'} to={`/employee/screenshot/${id}`}><span
                     className={"menu__link__left"}><img src={screenIcon} alt=""/>
-                    <span>Скриншоты</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>Скриншоты</span></span> <span className={'count'}>564</span> </NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/internet-use/${id}`}><span
                     className={"menu__link__left"}><img src={wifiIcon} alt=""/>
-                    <span>Исп. интернета</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>Исп. интернета</span></span> <span className={'count'}>564</span>{includes(pathname,'internet-use') ? <ChevronDown size={18} color={'#9B9B9B'} style={{position:"absolute",right:'3px'}}/>:<ChevronRight size={18} color={'#9B9B9B'} style={{position:"absolute",right:'3px'}}/>}</NavLink>
+                {includes(pathname,'internet-use') && <ul className={'submenu'}>
+                    <li><NavLink to={`/employee/internet-use/${id}`} className={'submenu__link'}><span
+                        className={'dot'}></span><span>Посещение сайтов</span></NavLink></li>
+                    <li><NavLink to={`/employee/internet-use/cloud-storage/${id}`} className={'submenu__link'}><span
+                        className={'dot'}></span><span>Облачное хранилище</span></NavLink></li>
+                    <li><NavLink to={`/employee/internet-use/http/${id}`} className={'submenu__link'}><span
+                        className={'dot'}></span><span>HTTP запросы</span></NavLink></li>
+                    <li><NavLink to={`/employee/internet-use/email/${id}`} className={'submenu__link'}><span
+                        className={'dot'}></span><span>Эл. почта</span></NavLink></li>
+                    <li><NavLink to={`/employee/internet-use/mail/${id}`} className={'submenu__link'}><span
+                        className={'dot'}></span><span>Счётчик сообщений</span></NavLink></li>
+                </ul>}
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/buffer/${id}`}><span

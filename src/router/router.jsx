@@ -21,11 +21,14 @@ import ScreenshotListPage from "../modules/screenshot/pages/ScreenshotListPage";
 import WarningsListPage from "../modules/alerts/pages/WarningsListPage";
 import AccountsPage from "../modules/account/pages/AccountsPage";
 import ComputersListPage from "../modules/computer/pages/ComputersListPage";
+import IncidentListPage from "../modules/incident/pages/IncidentListPage";
+import VisitsListPage from "../modules/internet/pages/VisitsListPage";
+import CloudStorageListPage from "../modules/internet/pages/CloudStorageListPage";
+import GroupsPage from "../modules/account/pages/GroupsPage";
 
 const Router = ({...rest}) => {
     return (
         <BrowserRouter>
-
             <IsAuth>
                 <Routes>
                     <Route path={"/"} element={<MainLayout/>}>
@@ -37,7 +40,10 @@ const Router = ({...rest}) => {
                                 <Route path={"keylogger/:id"} element={<KeyloggerListPage/>}/>
                                 <Route path={"buffer/:id"} element={<BufferListPage/>}/>
                                 <Route path={"screenshot/:id"} element={<ScreenshotListPage/>}/>
-                                <Route path={"warnings/:id"} element={<WarningsListPage />}/>
+                                <Route path={"warnings/:id"} element={<WarningsListPage/>}/>
+                                <Route path={"internet-use/:id"} element={<VisitsListPage/>}/>
+                                <Route path={"internet-use/cloud-storage/:id"} element={<CloudStorageListPage/>}/>
+                                <Route path={"internet-use/http/:id"} element={<CloudStorageListPage/>}/>
                             </Route>
                         </Route>
                         <Route path={"accounts"}>
@@ -46,13 +52,18 @@ const Router = ({...rest}) => {
                         <Route path={"computers"}>
                             <Route index element={<ComputersListPage/>}/>
                         </Route>
-                        <Route path={"403"} element={<ForbiddenPage />}/>
-                        <Route path={"error"} element={<ErrorPage />}/>
+                        <Route path={"incidents"}>
+                            <Route index element={<IncidentListPage/>}/>
+                        </Route>
+                        <Route path={"groups"}>
+                            <Route index element={<GroupsPage/>}/>
+                        </Route>
+                        <Route path={"403"} element={<ForbiddenPage/>}/>
+                        <Route path={"error"} element={<ErrorPage/>}/>
                         <Route path={"auth/*"} element={<Navigate to={'/dashboard'} replace/>}/>
                         <Route path={"/"} element={<Navigate to={'/dashboard'} replace/>}/>
                         <Route path={"*"} element={<NotFoundPage/>}/>
                     </Route>
-
                 </Routes>
             </IsAuth>
 
