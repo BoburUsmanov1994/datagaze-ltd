@@ -16,7 +16,9 @@ NProgress.configure({
 
 const request = axios.create({
     baseURL: config.API_ROOT,
-    params: {},
+    params: {
+
+    },
 });
 
 request.interceptors.request.use((config) => {
