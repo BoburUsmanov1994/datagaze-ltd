@@ -63,7 +63,7 @@ const Styled = styled.div`
   .oferta {
     text-align: justify;
     margin-top: 20px;
-  
+
     font-size: 13px;
   }
 
@@ -85,32 +85,15 @@ const AuthLayout = ({...rest}) => {
                     <Brand/>
                 </div>
                 <ul className={'auth-links'}>
-                    {(!includes(pathname,'forgot-password') && !includes(pathname,'confirm')) && <><li>
-                        <NavLink to={'/auth/sign-up'} end>
-                            Регистрация
-                        </NavLink>
-                    </li>
                     <li>
                         <NavLink to={'/auth'} end>
                             Вход
                         </NavLink>
-                    </li></>}
-                    {includes(pathname,'forgot-password') && <li>
-                        <NavLink to={'/auth/forgot-password'} end>
-                            Забыли пароль?
-                        </NavLink>
-                    </li>}
-
-                    {includes(pathname,'confirm') && <li>
-                        <NavLink to={'#'} end>
-                            Подтверждение заявки
-                        </NavLink>
-                    </li>}
-
-
+                    </li>
                 </ul>
                 <Outlet/>
-                {!includes(pathname,'forgot-password') && !includes(pathname,'confirm') && <p className={'oferta'}>Регистрируясь на DatagazeDLP или авторизуясь через социальные сети, вы
+                {!includes(pathname, 'forgot-password') && !includes(pathname, 'confirm') &&
+                <p className={'oferta'}>Регистрируясь на DatagazeDLP или авторизуясь через социальные сети, вы
                     соглашаетесь с
                     <a href="#"> Пользовательским соглашением</a> и <a href="#">Политикой конфиденциальности</a>.</p>}
                 <p className={'auth-bottom'}>2019 - {dayjs().year()} © Разработано Datagaze LTD</p>

@@ -24,20 +24,19 @@ const GridView = ({
                       viewUrl = null,
                       params = {},
                       hideTimeline = false,
+                      source = 'data.data.result',
                       ...rest
                   }) => {
 
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(0);
-    const dateRange = useStore(state => get(state, 'dateRange', null))
 
     const {data, isError, isLoading, isFetching} = usePaginateQuery({
         key: keyId,
         url,
         page,
         limit,
-        params: {limit, offset: page * limit, ...params},
-        // enabled: !isNil(dateRange)
+        params: {take: limit, skip: page * limit, ...params},
     })
 
     useEffect(() => {
@@ -61,8 +60,8 @@ const GridView = ({
                 isFetching && <OverlayLoader/>
             }
             <GridViewTable offset={page * limit} viewUrl={viewUrl} tableHeaderData={tableHeaderData}
-                           tableBodyData={get(data, "data.docs", [])}/>
-            <GridViewPagination limit={limit} pageCount={ceil(get(data, "data.total") / limit)} setPage={setPage}
+                           tableBodyData={get(data, source, [])}/>
+            <GridViewPagination limit={limit} pageCount={ceil(get(data, "data.data.total") / limit)} setPage={setPage}
                                 setLimit={setLimit}/>
         </Styled>
     );

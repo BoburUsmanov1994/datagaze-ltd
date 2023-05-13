@@ -38,8 +38,9 @@ const Styled = styled.div`
       tr {
         cursor: pointer;
         transition: 0.2s ease;
-        &:hover{
-         background: #f1f5f7;
+
+        &:hover {
+          background: #f1f5f7;
         }
       }
 
@@ -92,7 +93,7 @@ const GridViewTable = ({
                                 <td key={j} style={{
                                     textAlign: get(th, 'align', ''),
                                     width: get(th, 'width', 'auto')
-                                }}>{get(th, 'render') ? get(th, 'render')(get(tr, get(th, 'dataIndex')), tr, i,offset) : get(tr, get(th, 'dataIndex'), 'test')}</td>
+                                }}>{get(th, 'render') ? get(th, 'render')(get(tr, get(th, 'dataIndex')), tr, i, offset) : get(tr, get(th, 'dataIndex'), '-')}</td>
                             )
                         }
                     </tr>)

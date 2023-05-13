@@ -54,8 +54,8 @@ request.interceptors.response.use((response) => {
                 },
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.localStorage.clear();
-                    window.location.href='/auth';
+                    // window.localStorage.clear();
+                    // window.location.href='/auth';
                 }
             });
         }else{

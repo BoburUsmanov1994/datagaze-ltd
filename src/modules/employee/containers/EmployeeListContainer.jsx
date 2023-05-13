@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo} from 'react';
 import {useStore} from "../../../store";
-import {get} from "lodash";
+import {get, head} from "lodash";
 import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
@@ -35,7 +35,7 @@ const EmployeeListContainer = ({
         {
             title: "Имя сотрудника",
             dataIndex: 'firstName',
-            render: (th, tr) => <Flex><Avatar size={'sm'} isOnline={get(tr,'isOnline',false)}/><span
+            render: (th, tr) => <Flex><Avatar size={'sm'} isOnline={get(tr, 'isOnline', false)}/><span
                 className={'ml-10'}>{th} {get(tr, 'lastName')}</span></Flex>,
             align: 'left'
         },
@@ -45,25 +45,27 @@ const EmployeeListContainer = ({
         },
         {
             title: "Время последного подключения",
-            dataIndex: 'lastSeen',
+            dataIndex: 'createdAt',
             render: (th) => dayjs(th).format("DD-MM-YYYY HH:MM")
         },
         {
             title: "Название компьютера",
-            dataIndex: 'lastComputer.pcname',
+            dataIndex: 'computers',
+            render: (th) => get(head(th), 'pcName')
         },
         {
             title: "Группа",
             dataIndex: 'group.name',
         },
         {
-            title: "Aдрес",
-            dataIndex: 'lastComputer.ipAddress',
-            render: (th, tr) => <>{th} <br/> {get(tr, 'lastComputer.macAddress')}</>
+            title: "IP/Mac",
+            dataIndex: 'computers',
+            render: (th, tr) => <>{get(head(th), 'ipAddress')} <br/> {get(head(th), 'macAddress')}</>
         },
         {
             title: "Версия агента",
-            dataIndex: 'lastComputer.agentVersion',
+            dataIndex: 'computers',
+            render: (th) => get(head(th), 'agentVersion')
         },
 
         {

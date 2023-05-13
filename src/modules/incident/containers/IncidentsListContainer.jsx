@@ -77,8 +77,8 @@ const IncidentsListContainer = ({
                 </Col>
             </Row>
             <GridView
-                url={URLS.allIncidents}
-                keyId={KEYS.allIncidents}
+                url={URLS.incidents}
+                keyId={KEYS.incidents}
                 tableHeaderData={columns}
                 hideTimeline
             />

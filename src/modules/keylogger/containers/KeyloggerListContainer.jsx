@@ -79,7 +79,7 @@ const KeyloggerListContainer = ({
             <GridView
                 url={URLS.keylogger}
                 keyId={KEYS.keylogger}
-                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
+                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'startDate')}}
                 tableHeaderData={columns}
             />
         </>

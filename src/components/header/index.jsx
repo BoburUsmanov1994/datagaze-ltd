@@ -67,18 +67,7 @@ const Styled = styled.header`
 `;
 
 const Header = ({...rest}) => {
-    const {data:profile,isLoading} = useGetAllQuery({key:KEYS.profile,url:URLS.profile,hideErrorMsg:true})
-    const setUser = useStore(state => get(state,'setUser',()=>{}))
-    const setToken = useSettingsStore(state => get(state,'setToken',()=>{}))
-    const user = useStore(state => get(state,'user'));
-
-    useEffect(()=>{
-        if(!isNil(get(profile,'data'))){
-            setUser(get(profile,'data'));
-            setToken(get(profile,'data.token'));
-        }
-    },[get(profile,'data')])
-
+    const user = {}
     return (
         <Styled {...rest}>
             <Container fluid>

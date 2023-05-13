@@ -33,7 +33,7 @@ const EmployeeLayout = ({
         params:{
 
         },
-        enabled:!!(id)
+        enabled:false
     })
     if(isError){
         return <Navigate to={'/error'} />

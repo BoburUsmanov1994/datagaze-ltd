@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import {get} from "lodash";
 import {useSettingsStore, useStore} from "../../store";
 import storage from "../../services/storage";
-import {  useQueryClient } from "react-query"
+import {useQueryClient} from "react-query"
 
 
 const Styled = styled.aside`
@@ -41,14 +41,6 @@ const Styled = styled.aside`
 `;
 
 const Sidebar = ({children, ...rest}) => {
-    const queryClient = useQueryClient();
-    const clearToken = useSettingsStore(state => get(state, 'setToken', () => {
-    }))
-    const setAuth = useStore(state => get(state, 'setAuth', () => {
-    }))
-    const setUser = useStore(state => get(state, 'setUser', () => {
-    }))
-
     const navigate = useNavigate();
     const logout = () => {
         Swal.fire({
@@ -68,12 +60,7 @@ const Sidebar = ({children, ...rest}) => {
             },
         }).then((result) => {
             if (result.isConfirmed) {
-                queryClient.removeQueries("profile")
-                setAuth(false);
-                clearToken(null);
-                setUser(null);
-                storage.remove('settings');
-                window.location.href='/auth'
+                navigate('/logout')
             }
         });
     }

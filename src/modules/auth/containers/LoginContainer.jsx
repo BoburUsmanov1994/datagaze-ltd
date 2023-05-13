@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {useNavigate, Link} from 'react-router-dom';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import Form from "../../../containers/form/form";
 import Field from "../../../containers/form/field";
 import Button from "../../../components/ui/button";
@@ -9,9 +9,9 @@ import {get, isNil} from "lodash";
 import Swal from "sweetalert2";
 import {OverlayLoader} from "../../../components/loader";
 import {URLS} from "../../../constants/url";
+import {KEYS} from "../../../constants/key";
 
-const LoginContainer = ({...rest}) => {
-
+const LoginContainer = () => {
     const [tokenData, setTokenData] = useState(null)
     const navigate = useNavigate();
 
@@ -22,51 +22,49 @@ const LoginContainer = ({...rest}) => {
     const setToken = useSettingsStore(state => get(state, 'setToken', () => {
     }))
 
-    const {data: profile, isLoadingProfile} = useGetAllQuery({
-        key: 'tokenData',
+    const {data: profile, isLoading: isLoadingProfile} = useGetAllQuery({
+        key: [KEYS.profile, 'getme'],
         url: URLS.profile,
         hideErrorMsg: true,
         headers: {
             'Authorization': `Bearer ${tokenData}`
         },
-        enabled: !!(tokenData)
+        enabled: !isNil(tokenData),
+        cb: {
+            success: (res) => {
+                setAuth(true);
+                setUser(get(res, 'data'));
+                setToken(tokenData);
+                navigate("/dashboard");
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    backdrop: 'rgba(0,0,0,0.9)',
+                    background: 'none',
+                    title: 'Добро пожаловать в нашу систему',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    customClass: {
+                        title: 'title-color',
+                    },
+                });
+            }
+        }
     });
 
 
     const {mutate, isLoading} = usePostQuery({url: URLS.login, hideSuccessToast: true})
 
-
     const loginRequest = ({data}) => {
         mutate({url: URLS.login, attributes: data}, {
-            onSuccess: ({data}) => {
-                setTokenData(get(data, 'token'));
+            onSuccess: ({data: response}) => {
+                setTokenData(get(response, 'token'));
             }
         })
     }
 
-    useEffect(() => {
-        if (!isNil(get(profile, 'data'))) {
-            setToken(tokenData);
-            setAuth(true);
-            setUser(get(profile, 'data'));
-            navigate("/dashboard");
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                backdrop: 'rgba(0,0,0,0.9)',
-                background: 'none',
-                title: 'Добро пожаловать в нашу систему',
-                showConfirmButton: false,
-                timer: 2000,
-                customClass: {
-                    title: 'title-color',
-                },
-            });
-        }
-    }, [get(profile, 'data')])
-
     if (isLoading || isLoadingProfile) {
-        return <OverlayLoader/>
+        return <OverlayLoader/>;
     }
 
     return (
@@ -88,7 +86,6 @@ const LoginContainer = ({...rest}) => {
                     label={'Пароль'}
                     property={{type: 'password', placeholder: 'Пароль', hideLabel: true}}
                     params={{required: true}}/>
-                <Link className={'forget-password'} to={'/auth/forgot-password'}>Забыли пароль?</Link>
             </Form>
         </div>
     );

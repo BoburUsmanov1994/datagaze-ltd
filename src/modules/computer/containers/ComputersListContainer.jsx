@@ -95,6 +95,7 @@ const ComputersListContainer = ({
                 keyId={KEYS.computers}
                 tableHeaderData={columns}
                 hideTimeline
+                source={'data.data.computers'}
             />
 
         </Section>

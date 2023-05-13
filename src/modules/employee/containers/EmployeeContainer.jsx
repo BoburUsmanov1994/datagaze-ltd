@@ -1,11 +1,9 @@
 import React, {useEffect, useMemo} from 'react';
 import {useStore} from "../../../store";
-import {get, isNil} from "lodash";
-import {Col, Container, Row} from "react-grid-system";
+import {get} from "lodash";
 import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
-import {OverlayLoader} from "../../../components/loader";
 import dayjs from "dayjs";
 import Flex from "../../../components/flex";
 import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
@@ -37,32 +35,33 @@ const EmployeeContainer = ({id = null, ...rest}) => {
         {
             title: '№',
             dataIndex: 'title',
-            render:(th,tr,index,offset)=>offset + index + 1
+            render: (th, tr, index, offset) => offset + index + 1
         },
         {
             title: 'Дата и время',
             dataIndex: 'datetime',
-            render:(th)=>dayjs(th).format("DD-MM-YYYY HH:mm")
+            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm")
         },
         {
             title: 'Название процесса',
             dataIndex: 'process',
-            render:(th,tr)=><Flex justify={'center'}><img src={`data:image/png;base64, ${get(tr,'icon')}`} alt=""/> <span className={'ml-10'}>{th}</span></Flex>
+            render: (th, tr) => <Flex justify={'center'}><img src={`data:image/png;base64, ${get(tr, 'icon')}`} alt=""/>
+                <span className={'ml-10'}>{th}</span></Flex>
         },
         {
             title: 'Название',
             dataIndex: 'title',
-            width:350
+            width: 350
         },
         {
             title: 'Продолжительность',
             dataIndex: 'time',
-            render:(th)=>dayjs(th).format("HH:mm:ss"),
+            render: (th) => dayjs(th).format("HH:mm:ss"),
         },
         {
             title: 'Название компьютера',
             dataIndex: 'pcname',
-            render:(th,tr)=>get(tr,'computer.pcname')
+            render: (th, tr) => get(tr, 'computer.pcname')
         }
     ]
 
@@ -76,7 +75,7 @@ const EmployeeContainer = ({id = null, ...rest}) => {
             <GridView
                 url={URLS.activity}
                 keyId={KEYS.activity}
-                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
+                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'startDate')}}
                 tableHeaderData={columns}
             />
         </>
