@@ -75,7 +75,7 @@ const EmployeeContainer = ({id = null, ...rest}) => {
             <GridView
                 url={URLS.activity}
                 keyId={KEYS.activity}
-                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'startDate')}}
+                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
                 tableHeaderData={columns}
             />
         </>
