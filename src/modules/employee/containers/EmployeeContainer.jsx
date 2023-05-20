@@ -6,31 +6,32 @@ import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
 import dayjs from "dayjs";
 import Flex from "../../../components/flex";
-import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
 import GridViewCalendar from "../../../containers/grid-view/components/grid-view-calendar";
+import {useTranslation} from "react-i18next";
 
 
-const EmployeeContainer = ({id = null, ...rest}) => {
+const EmployeeContainer = ({id = null}) => {
+    const {t} = useTranslation()
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
     const dateRange = useStore(state => get(state, 'dateRange', null))
-    const breadcrumbs = useMemo(() => [
+    const breadcrumbs = [
         {
             id: 1,
-            title: 'Datagaze DLP',
+            title: t('Datagaze DLP'),
             path: '/',
         },
         {
             id: 2,
-            title: 'Сотрудники',
+            title: t('Сотрудники'),
             path: '/employees',
         },
         {
             id: 3,
-            title: 'Журнал активности',
+            title: t('Журнал активности'),
             path: '#',
         }
-    ], [])
+    ];
 
     const columns = [
         {
@@ -39,28 +40,28 @@ const EmployeeContainer = ({id = null, ...rest}) => {
             render: (th, tr, index, offset) => offset + index + 1
         },
         {
-            title: 'Дата и время',
+            title: t('Дата и время'),
             dataIndex: 'datetime',
             render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm")
         },
         {
-            title: 'Название процесса',
+            title: t('Название процесса'),
             dataIndex: 'process',
             render: (th, tr) => <Flex justify={'center'}><img src={`data:image/png;base64, ${get(tr, 'icon')}`} alt=""/>
                 <span className={'ml-10'}>{th}</span></Flex>
         },
         {
-            title: 'Название',
+            title: t('Название'),
             dataIndex: 'title',
             width: 350
         },
         {
-            title: 'Продолжительность',
+            title: t('Продолжительность'),
             dataIndex: 'time',
             render: (th) => dayjs(th).format("HH:mm:ss"),
         },
         {
-            title: 'Название компьютера',
+            title: t('Название компьютера'),
             dataIndex: 'pcname',
             render: (th, tr) => get(tr, 'computer.pcname')
         }

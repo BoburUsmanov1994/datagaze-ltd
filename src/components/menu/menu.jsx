@@ -19,6 +19,7 @@ import {
 
 const StyledMenu = styled.div`
   position: relative;
+
   ul {
     padding: 15px 15px 5px;
     height: calc(100vh - 120px);

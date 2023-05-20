@@ -6,6 +6,7 @@ import usePutQuery from "./usePutQuery";
 import usePaginateQuery from "./usePaginateQuery";
 import useInfiniteLoadingQuery from "./useInfiniteLoadingQuery";
 import useParallelQuery from "./useParallelQuery";
+import usePatchQuery from "./usePatchQuery";
 
 
 export {
@@ -16,5 +17,6 @@ export {
     usePutQuery,
     usePaginateQuery,
     useInfiniteLoadingQuery,
-    useParallelQuery
+    useParallelQuery,
+    usePatchQuery
 }

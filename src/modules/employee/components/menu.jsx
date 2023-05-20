@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {Link, NavLink, useParams, useLocation} from "react-router-dom";
+import {NavLink, useParams, useLocation} from "react-router-dom";
 import logsIcon from "../../../assets/icons/logs.svg"
 import keyloggerIcon from "../../../assets/icons/keylogger.svg"
 import screenIcon from "../../../assets/icons/screenshot.svg"
@@ -16,6 +16,7 @@ import audioIcon from "../../../assets/icons/audio.svg"
 import sessionIcon from "../../../assets/icons/session.svg"
 import {ChevronDown, ChevronRight} from "react-feather";
 import {includes} from "lodash";
+import {useTranslation} from "react-i18next";
 
 const Styled = styled.ul`
   .menu {
@@ -83,6 +84,7 @@ const Styled = styled.ul`
 const Menu = ({
                   ...rest
               }) => {
+    const {t} = useTranslation()
     const {id} = useParams()
     const {pathname} = useLocation();
     return (
@@ -91,82 +93,82 @@ const Menu = ({
                 <NavLink className={'menu__link '} to={`/employee/activity-log/${id}`}><span
                     className={"menu__link__left"}><img
                     src={logsIcon} alt=""/>
-                    <span>Журнал активности</span></span> <span className={'count'}>123</span></NavLink>
+                    <span>{t('Журнал активности')}</span></span> <span className={'count'}>123</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link '} to={`/employee/keylogger/${id}`}><span
                     className={"menu__link__left"}><img src={keyloggerIcon} alt=""/>
-                    <span>Кейлогер</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Кейлогер')}</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/screenshot/${id}`}><span
                     className={"menu__link__left"}><img src={screenIcon} alt=""/>
-                    <span>Скриншоты</span></span> <span className={'count'}>564</span> </NavLink>
+                    <span>{t('Скриншоты')}</span></span> <span className={'count'}>564</span> </NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/internet-use/${id}`}><span
                     className={"menu__link__left"}><img src={wifiIcon} alt=""/>
-                    <span>Исп. интернета</span></span> <span
+                    <span>{t('Исп. интернета')}</span></span> <span
                     className={'count'}>564</span>{includes(pathname, 'internet-use') ?
                     <ChevronDown size={18} color={'#9B9B9B'} style={{position: "absolute", right: '3px'}}/> :
                     <ChevronRight size={18} color={'#9B9B9B'} style={{position: "absolute", right: '3px'}}/>}</NavLink>
                 {includes(pathname, 'internet-use') && <ul className={'submenu'}>
                     <li><NavLink to={`/employee/internet-use/${id}`} className={'submenu__link'}><span
-                        className={'dot'}></span><span>Посещение сайтов</span></NavLink></li>
+                        className={'dot'}></span><span>{t('Посещение сайтов')}</span></NavLink></li>
                     <li><NavLink to={`/employee/internet-use/cloud-storage/${id}`} className={'submenu__link'}><span
-                        className={'dot'}></span><span>Облачное хранилище</span></NavLink></li>
+                        className={'dot'}></span><span>{t('Облачное хранилище')}</span></NavLink></li>
                     <li><NavLink to={`/employee/internet-use/http/${id}`} className={'submenu__link'}><span
-                        className={'dot'}></span><span>HTTP запросы</span></NavLink></li>
+                        className={'dot'}></span><span>{t('HTTP запросы')}</span></NavLink></li>
                     <li><NavLink to={`/employee/internet-use/email/${id}`} className={'submenu__link'}><span
-                        className={'dot'}></span><span>Эл. почта</span></NavLink></li>
+                        className={'dot'}></span><span>{t('Эл. почта')}</span></NavLink></li>
                     <li><NavLink to={`/employee/internet-use/mail/${id}`} className={'submenu__link'}><span
-                        className={'dot'}></span><span>Счётчик сообщений</span></NavLink></li>
+                        className={'dot'}></span><span>{t('Счётчик сообщений')}</span></NavLink></li>
                 </ul>}
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/buffer/${id}`}><span
                     className={"menu__link__left"}><img src={buferIcon} alt=""/>
-                    <span>Буфер</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Буфер')}</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link '} to={`/employee/warnings/${id}`}><span
                     className={"menu__link__left"}><img src={polygonIcon} alt=""/>
-                    <span>Предупреждения</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Предупреждения')}</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/telegram/${id}`}><span
                     className={"menu__link__left"}><img src={telegramIcon} alt=""/>
-                    <span>Телеграм</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Телеграм')}</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={"/employee/usb-list/1"}><span
                     className={"menu__link__left"}><img src={usbIcon} alt=""/>
-                    <span>USB лист</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('USB лист')}</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/usb-file/${id}`}><span
                     className={"menu__link__left"}><img src={usbDriverIcon} alt=""/>
-                    <span>USB файлы</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('USB файлы')}</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/printer/${id}`}><span
                     className={"menu__link__left"}><img src={printerIcon} alt=""/>
-                    <span>Принтеры</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Принтеры')}</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/remote/${id}`}><span
                     className={"menu__link__left"}><img src={remoteIcon} alt=""/>
-                    <span>Удаленное упр.</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Удаленное упр.')}</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/audio/${id}`}><span
                     className={"menu__link__left"}><img src={audioIcon} alt=""/>
-                    <span>Аудио записи</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Аудио записи')}</span></span> <span className={'count'}>564</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/session/${id}`}><span
                     className={"menu__link__left"}><img src={sessionIcon} alt=""/>
-                    <span>Журнал сеанса</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Журнал сеанса')}</span></span> <span className={'count'}>564</span></NavLink>
             </li>
         </Styled>
     );

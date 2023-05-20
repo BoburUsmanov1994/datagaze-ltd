@@ -58,6 +58,7 @@ const Modal = ({
                    children,
                    ...rest
                }) => {
+
         useEffect(() => {
             if (open) {
                 document.body.style.overflow = 'hidden';
@@ -65,12 +66,13 @@ const Modal = ({
                 document.body.style.overflow = 'auto';
             }
         }, [open]);
+
         return (
             <>
                 {open && <Styled {...rest}>
-                    <div className="modal__backdrop"></div>
+                    <div onClick={onClose} className="modal__backdrop"></div>
                     <div className="modal__body">
-                        <div className="modal__close">
+                        <div onClick={onClose} className="modal__close">
                             <X size={24}/>
                         </div>
                         {children}

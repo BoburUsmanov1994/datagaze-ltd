@@ -2,36 +2,37 @@ import React, {useEffect, useMemo} from 'react';
 import {useStore} from "../../../store";
 import {get} from "lodash";
 import dayjs from "dayjs";
-import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
 import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
+import GridViewCalendar from "../../../containers/grid-view/components/grid-view-calendar";
+import {useTranslation} from "react-i18next";
 
 const BufferListContainer = ({
                                  id = null,
-                                 ...rest
                              }) => {
+    const {t} = useTranslation()
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
     const dateRange = useStore(state => get(state, 'dateRange', null))
 
-    const breadcrumbs = useMemo(() => [
+    const breadcrumbs = [
         {
             id: 1,
-            title: 'Datagaze DLP',
+            title: t('Datagaze DLP'),
             path: '/',
         },
         {
             id: 2,
-            title: 'Сотрудники',
+            title: t('Сотрудники'),
             path: '/employees',
         },
         {
             id: 3,
-            title: 'Буфер',
+            title: t('Буфер'),
             path: '#',
         }
-    ], [])
+    ];
 
     const columns = [
         {
@@ -39,28 +40,28 @@ const BufferListContainer = ({
             render: (th, tr, index, offset) => offset + index + 1
         },
         {
-            title: 'Дата и время',
+            title: t('Дата и время'),
             dataIndex: 'datetime',
             render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
-            width:150
+            width: 150
         },
         {
-            title: 'Тип',
+            title: t('Тип'),
             dataIndex: 'type',
-            width:200
+            width: 200
         },
         {
-            title: 'Источник',
+            title: t('Источник'),
             dataIndex: 'source',
-            align:'left'
+            align: 'left'
         },
         {
-            title: 'Содержание',
+            title: t('Содержание'),
             dataIndex: 'content',
             render: (th) => th,
         },
         {
-            title: 'Название компьютера',
+            title: t('Название компьютера'),
             dataIndex: 'pcname',
             render: (th, tr) => get(tr, 'computer.pcname')
         }
@@ -73,8 +74,10 @@ const BufferListContainer = ({
 
     return (
         <>
-            <GridViewHeader/>
             <GridView
+                headerComponent={<>
+                    <GridViewCalendar/>
+                </>}
                 url={URLS.buffer}
                 keyId={KEYS.buffer}
                 params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
