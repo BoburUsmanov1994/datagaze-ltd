@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {isArray, get, isNil} from "lodash";
 import {useNavigate} from "react-router-dom";
 import EmptyPage from "../../../modules/auth/pages/EmptyPage";
+import Modal from "../../../components/modal";
 
 const Styled = styled.div`
   padding: 30px;
@@ -72,6 +73,7 @@ const GridViewTable = ({
     }
     return (
         <Styled {...rest}>
+            <Modal>test</Modal>
             <table className="table">
                 <thead className={"table__head"}>
                 <tr>

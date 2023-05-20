@@ -2,13 +2,11 @@ import React from 'react';
 import styled from "styled-components";
 import Menu from "../menu";
 import miniLogo from '../../assets/images/mini-logo.svg'
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {LogOut} from "react-feather";
 import Swal from "sweetalert2";
-import {get} from "lodash";
-import {useSettingsStore, useStore} from "../../store";
-import storage from "../../services/storage";
-import {useQueryClient} from "react-query"
+import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router-dom"
 
 
 const Styled = styled.aside`
@@ -41,18 +39,19 @@ const Styled = styled.aside`
 `;
 
 const Sidebar = ({children, ...rest}) => {
+    const {t} = useTranslation()
     const navigate = useNavigate();
     const logout = () => {
         Swal.fire({
-            title: 'Chiqishga ishonchingiz komilmi?',
+            title: t('Chiqishga ishonchingiz komilmi?'),
             icon: 'warning',
             backdrop: 'rgba(0,0,0,0.9)',
             background: 'none',
             showCancelButton: true,
             confirmButtonColor: '#CD4472',
             cancelButtonColor: '#463BC1',
-            confirmButtonText: 'Ha albatta',
-            cancelButtonText: 'Ortga qaytish',
+            confirmButtonText: t('Ha albatta'),
+            cancelButtonText: t('Ortga qaytish'),
             customClass: {
                 title: 'title-color',
                 content: 'text-color',

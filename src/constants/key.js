@@ -2,6 +2,7 @@ export const KEYS = {
     getMe: 'get-me',
     profile: 'profile',
     employees: 'employees-list',
+    employee: 'employee',
     topUsers: 'topUsers',
     kpd: 'kpd',
     incidents: 'incidents',
@@ -19,4 +20,5 @@ export const KEYS = {
     allIncidents: 'allIncidents',
     visitList: 'visitList',
     groups: 'groups',
+    translations: 'translations',
 }

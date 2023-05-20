@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import dayjs from "dayjs";
+import {useTranslation} from "react-i18next";
 
 const Styled = styled.footer`
   border-top: 1px solid #C0C0C0;
@@ -35,18 +36,19 @@ const Styled = styled.footer`
 const Footer = ({
                     ...rest
                 }) => {
+    const {t} = useTranslation()
     return (
         <Styled {...rest}>
-            <p>2019 - {dayjs().format("YYYY")} © Разработано ООО "DATAGAZE"</p>
+            <p>2019 - {dayjs().format("YYYY")} © {t('Разработано ООО "DATAGAZE"')}</p>
             <ul>
                 <li>
-                    <a href="@">О нас</a>
+                    <a href="@">{t('О нас')}</a>
                 </li>
                 <li>
-                    <a href="@">Помощь</a>
+                    <a href="@">{t('Помощь')}</a>
                 </li>
                 <li>
-                    <a href="@">Свяжитесь с нами</a>
+                    <a href="@">{t('Свяжитесь с нами')}</a>
                 </li>
             </ul>
         </Styled>

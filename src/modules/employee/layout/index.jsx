@@ -26,28 +26,28 @@ const EmployeeLayout = ({
                             ...rest
                         }) => {
     const {id} = useParams();
-    const {data,isLoading,isError} = useGetOneQuery({
+    const {data, isLoading, isError} = useGetOneQuery({
         id,
-        key:KEYS.employees,
-        url:URLS.employees,
-        params:{
-
+        key: KEYS.employee,
+        url: URLS.employee,
+        params: {
+            id
         },
-        enabled:false
+        enabled: !!(id)
     })
-    if(isError){
-        return <Navigate to={'/error'} />
+    if (isError) {
+        return <Navigate to={'/error'}/>
     }
-    if(isLoading){
-        return  <OverlayLoader />
+    if (isLoading) {
+        return <OverlayLoader/>
     }
     return (
         <Styled {...rest}>
             <div className="layout__left">
-                <Sidebar data={get(data,'data',{})}/>
+                <Sidebar data={get(data, 'data.data', {})}/>
             </div>
             <div className="layout__right">
-                <Outlet />
+                <Outlet/>
             </div>
         </Styled>
     );

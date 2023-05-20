@@ -1,8 +1,8 @@
-<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="3.22583" y1="1.09278e-08" x2="3.22583" y2="14.3122" stroke="black" stroke-width="0.5"/>
-<line x1="13.9954" y1="3.25928" x2="13.9954" y2="12.7535" stroke="black" stroke-width="0.5"/>
-<line x1="13.9954" y1="14.4539" x2="13.9954" y2="17.4297" stroke="black" stroke-width="0.5"/>
-<line x1="17.1462" y1="14.5623" x2="2.97571" y2="14.5623" stroke="black" stroke-width="0.5"/>
-<line x1="13.7454" y1="3.50928" x2="4.53452" y2="3.50928" stroke="black" stroke-width="0.5"/>
-<line x1="2.97583" y1="3.50928" x2="1.85966e-05" y2="3.50928" stroke="black" stroke-width="0.5"/>
+<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="13.4067" y1="0.416992" x2="13.4067" y2="52.9701" stroke="black" stroke-width="3"/>
+<line x1="53.606" y1="12.3843" x2="53.606" y2="47.2462" stroke="black" stroke-width="3"/>
+<line x1="53.606" y1="53.49" x2="53.606" y2="64.4169" stroke="black" stroke-width="3"/>
+<line x1="64.7998" y1="54.4697" x2="11.9084" y2="54.4697" stroke="black" stroke-width="3"/>
+<line x1="52.106" y1="13.8843" x2="17.7265" y2="13.8843" stroke="black" stroke-width="3"/>
+<line x1="11.9067" y1="13.8843" x2="0.799538" y2="13.8843" stroke="black" stroke-width="3"/>
 </svg>

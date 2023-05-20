@@ -83,7 +83,7 @@ const RangeDatepicker = ({
                          }) => {
 
     const [open, setOpen] = useState(false)
-    const [range, setRange] = useState({startDate: dayjs().subtract(3, 'month').toDate(), endDate: dayjs().toDate()})
+    const [range, setRange] = useState({startDate: dayjs().subtract(12, 'month').toDate(), endDate: dayjs().toDate()})
     const setDateRange = useStore(state => get(state, 'setDateRange', () => {
     }))
 
@@ -103,19 +103,19 @@ const RangeDatepicker = ({
                     className={'datepicker__input_text'}>{grid ? dayjs(get(range, 'startDate')).format("DD.MM.YYYY") : dayjs(get(range, 'startDate')).format("MMM DD, YYYY")} — {grid ? dayjs(get(range, 'endDate')).format("DD.MM.YYYY") : dayjs(get(range, 'endDate')).format("MMM DD, YYYY")}</span>
                 <Calendar className={'datepicker__input_calendar'} color={grid ? '#09121F' : '#ABABAB'} size={20}/>
                 {grid &&
-                    <ChevronDown className={'datepicker__input_arrow'} color={grid ? '#09121F' : '#ABABAB'} size={20}/>}
+                <ChevronDown className={'datepicker__input_arrow'} color={grid ? '#09121F' : '#ABABAB'} size={20}/>}
             </div>
             {open &&
-                <OutsideClickHandler onOutsideClick={() => {
-                    setOpen(false)
-                }}><DateRangePicker
-                    ranges={[{...range, key: 'selection'}]}
-                    onChange={({selection}) => setRange(selection)}
-                    className={'datepicker__range'}
-                    rangeColors={['#4439C1']}
-                    months={2}
-                    direction="horizontal"
-                /></OutsideClickHandler>}
+            <OutsideClickHandler onOutsideClick={() => {
+                setOpen(false)
+            }}><DateRangePicker
+                ranges={[{...range, key: 'selection'}]}
+                onChange={({selection}) => setRange(selection)}
+                className={'datepicker__range'}
+                rangeColors={['#4439C1']}
+                months={2}
+                direction="horizontal"
+            /></OutsideClickHandler>}
         </Styled>
     );
 };

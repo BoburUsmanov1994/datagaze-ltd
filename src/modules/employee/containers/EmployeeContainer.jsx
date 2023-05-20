@@ -7,6 +7,7 @@ import {KEYS} from "../../../constants/key";
 import dayjs from "dayjs";
 import Flex from "../../../components/flex";
 import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
+import GridViewCalendar from "../../../containers/grid-view/components/grid-view-calendar";
 
 
 const EmployeeContainer = ({id = null, ...rest}) => {
@@ -71,8 +72,10 @@ const EmployeeContainer = ({id = null, ...rest}) => {
 
     return (
         <>
-            <GridViewHeader/>
             <GridView
+                headerComponent={<>
+                    <GridViewCalendar/>
+                </>}
                 url={URLS.activity}
                 keyId={KEYS.activity}
                 params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}

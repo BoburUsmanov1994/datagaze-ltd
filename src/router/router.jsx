@@ -23,6 +23,7 @@ import IncidentListPage from "../modules/incident/pages/IncidentListPage";
 import VisitsListPage from "../modules/internet/pages/VisitsListPage";
 import CloudStorageListPage from "../modules/internet/pages/CloudStorageListPage";
 import GroupsPage from "../modules/account/pages/GroupsPage";
+import TranslationsPage from "../modules/translations/pages/ListPage";
 
 const Router = ({...rest}) => {
     return (
@@ -56,6 +57,7 @@ const Router = ({...rest}) => {
                         <Route path={"groups"}>
                             <Route index element={<GroupsPage/>}/>
                         </Route>
+                        <Route path={"translations"} element={<TranslationsPage/>}/>
                         <Route path={"403"} element={<ForbiddenPage/>}/>
                         <Route path={"error"} element={<ErrorPage/>}/>
                         <Route path={"logout"} element={<LogoutPage/>}/>

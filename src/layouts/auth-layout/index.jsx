@@ -5,6 +5,7 @@ import bgImg from "../../assets/images/login-bg.png"
 import Brand from "../../components/brand";
 import dayjs from 'dayjs'
 import {includes} from "lodash";
+import {useTranslation} from "react-i18next";
 
 const Styled = styled.div`
   min-height: 100vh;
@@ -78,6 +79,7 @@ const Styled = styled.div`
 
 const AuthLayout = ({...rest}) => {
     const {pathname} = useLocation()
+    const {t} = useTranslation()
     return (
         <Styled {...rest}>
             <div className="box">
@@ -87,16 +89,17 @@ const AuthLayout = ({...rest}) => {
                 <ul className={'auth-links'}>
                     <li>
                         <NavLink to={'/auth'} end>
-                            Вход
+                            {t('Вход')}
                         </NavLink>
                     </li>
                 </ul>
                 <Outlet/>
                 {!includes(pathname, 'forgot-password') && !includes(pathname, 'confirm') &&
-                <p className={'oferta'}>Регистрируясь на DatagazeDLP или авторизуясь через социальные сети, вы
-                    соглашаетесь с
-                    <a href="#"> Пользовательским соглашением</a> и <a href="#">Политикой конфиденциальности</a>.</p>}
-                <p className={'auth-bottom'}>2019 - {dayjs().year()} © Разработано Datagaze LTD</p>
+                <p className={'oferta'}>{t('Регистрируясь на DatagazeDLP или авторизуясь через социальные сети, вы\n' +
+                    '                    соглашаетесь с')}
+                    <a href="#"> {t('Пользовательским соглашением')}</a> и <a
+                        href="#">{t('Политикой конфиденциальности')}</a>.</p>}
+                <p className={'auth-bottom'}>2019 - {dayjs().year()} © {t('Разработано Datagaze LTD')}</p>
             </div>
         </Styled>
     );

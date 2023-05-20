@@ -16,9 +16,7 @@ NProgress.configure({
 
 const request = axios.create({
     baseURL: config.API_ROOT,
-    params: {
-
-    },
+    params: {},
 });
 
 request.interceptors.request.use((config) => {
@@ -39,7 +37,7 @@ request.interceptors.response.use((response) => {
 }, (error) => {
     const statusCode = error?.response?.status;
     if (statusCode == 401) {
-        if(!includes(window.location.pathname,'auth')) {
+        if (!includes(window.location.pathname, 'auth')) {
             Swal.fire({
                 title: 'Your token expired',
                 icon: 'error',
@@ -54,11 +52,11 @@ request.interceptors.response.use((response) => {
                 },
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // window.localStorage.clear();
-                    // window.location.href='/auth';
+                    window.localStorage.clear();
+                    window.location.href = '/auth';
                 }
             });
-        }else{
+        } else {
             window.localStorage.clear();
         }
     }

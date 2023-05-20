@@ -11,18 +11,20 @@ import GridViewTable from "./components/grid-view-table";
 import GridViewPagination from "./components/grid-view-pagination";
 import ErrorPage from "../../modules/auth/pages/ErrorPage";
 import {useStore} from "../../store";
+import Modal from "../../components/modal";
 
 
 const Styled = styled.div`
   min-height: 80vh;
 `;
 const GridView = ({
+                      headerComponent = null,
                       tableHeaderData = [],
                       tableBodyData = [],
                       keyId,
                       url,
                       viewUrl = null,
-                      params = {},
+                      params = null,
                       hideTimeline = false,
                       source = 'data.data.result',
                       ...rest
@@ -30,13 +32,13 @@ const GridView = ({
 
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(0);
+    const [search, handleSearch] = useState('');
 
     const {data, isError, isLoading, isFetching} = usePaginateQuery({
         key: keyId,
         url,
-        page,
-        limit,
-        params: {take: limit, skip: page * limit, ...params},
+        params: {...params, take: limit, skip: page * limit, search: `${search}`},
+        enabled: !isNil(params)
     })
 
     useEffect(() => {
@@ -55,13 +57,15 @@ const GridView = ({
     }
     return (
         <Styled {...rest}>
+            <GridViewHeader headerComponent={headerComponent} handleSearch={handleSearch}/>
             {!hideTimeline && <GridViewTimeline/>}
             {
                 isFetching && <OverlayLoader/>
             }
             <GridViewTable offset={page * limit} viewUrl={viewUrl} tableHeaderData={tableHeaderData}
                            tableBodyData={get(data, source, [])}/>
-            <GridViewPagination limit={limit} pageCount={ceil(get(data, "data.data.total") / limit)} setPage={setPage}
+            <GridViewPagination limit={limit} pageCount={ceil(get(data, "data.data.total") / limit) || 0}
+                                setPage={setPage}
                                 setLimit={setLimit}/>
         </Styled>
     );

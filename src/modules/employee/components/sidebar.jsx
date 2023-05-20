@@ -13,6 +13,16 @@ const Styled = styled.div`
     &__profile {
       padding: 25px 30px;
       text-align: center;
+      &_info{
+        margin-top: 15px;
+        text-align: left;
+        li{
+          margin-top: 8px;
+          strong{
+            margin-right: 16px;
+          }
+        }
+      }
 
       .avatar {
         margin: 0 auto;
@@ -53,8 +63,13 @@ const Sidebar = ({
         <Styled {...rest}>
             <div className="sidebar__profile">
                 <Avatar className={"avatar"} isOnline={get(data,'isOnline',false)}/>
-                <h2 className={'sidebar__profile__title'}>{get(data,'hostname')}</h2>
-                <p className={'sidebar__profile__job'}><Briefcase size={18}/> <span>Начальние отдела</span></p>
+                <h2 className={'sidebar__profile__title'}>{get(data,'lastName')} {get(data,'firstName')}</h2>
+                {get(data,'position') && <p className={'sidebar__profile__job'}><Briefcase size={18}/> <span>{get(data,'position')}</span></p>}
+                <ul className={'sidebar__profile_info'}>
+                    <li><strong>IP:</strong></li>
+                    <li><strong>MAC:</strong></li>
+                    <li><strong>E-mail:</strong></li>
+                </ul>
             </div>
             <div className="sidebar__menu">
                 <Menu/>

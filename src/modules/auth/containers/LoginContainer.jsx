@@ -10,10 +10,12 @@ import Swal from "sweetalert2";
 import {OverlayLoader} from "../../../components/loader";
 import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
+import {useTranslation} from "react-i18next";
 
 const LoginContainer = () => {
     const [tokenData, setTokenData] = useState(null)
     const navigate = useNavigate();
+    const {t} = useTranslation()
 
     const setAuth = useStore(state => get(state, 'setAuth', () => {
     }))
@@ -41,7 +43,7 @@ const LoginContainer = () => {
                     icon: 'success',
                     backdrop: 'rgba(0,0,0,0.9)',
                     background: 'none',
-                    title: 'Добро пожаловать в нашу систему',
+                    title: t('Добро пожаловать в нашу систему'),
                     showConfirmButton: false,
                     timer: 2000,
                     customClass: {
@@ -69,22 +71,23 @@ const LoginContainer = () => {
 
     return (
         <div>
-            <p className={'login-description'}>Введите имя пользователя и пароль для доступа к панели
-                администратора.</p>
-            <Form formRequest={loginRequest} footer={<Button block success lg bold type={'submit'}>Войти</Button>}>
+            <p className={'login-description'}>{t('Введите имя пользователя и пароль для доступа к панели\n' +
+                '                администратора.')}</p>
+            <Form formRequest={loginRequest}
+                  footer={<Button block success lg bold type={'submit'}>{t('Войти')}</Button>}>
                 <Field
                     name={'username'}
                     type={'input'}
-                    label={'Имя пользователя'}
-                    property={{hideLabel: true, placeholder: 'Введите имя пользователя'}}
+                    label={t('Имя пользователя')}
+                    property={{hideLabel: true, placeholder: t('Введите имя пользователя')}}
                     params={{
                         required: true,
                     }}/>
                 <Field
                     name={'password'}
                     type={'input'}
-                    label={'Пароль'}
-                    property={{type: 'password', placeholder: 'Пароль', hideLabel: true}}
+                    label={t('Пароль')}
+                    property={{type: 'password', placeholder: t('Пароль'), hideLabel: true}}
                     params={{required: true}}/>
             </Form>
         </div>

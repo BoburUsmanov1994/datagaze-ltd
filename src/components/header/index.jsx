@@ -5,7 +5,7 @@ import Flex from "../flex";
 import Breadcrumb from "../breadcrumb";
 import Dropdown from "../dropdown";
 import Profile from "../profile";
-import {Settings, Menu,Search} from "react-feather";
+import {Settings, Menu, Search} from "react-feather";
 import dots from "../../assets/images/dots.png";
 import Notification from "../notification";
 import RangeDatepicker from "../range-datepicker";
@@ -14,6 +14,7 @@ import {KEYS} from "../../constants/key";
 import {URLS} from "../../constants/url";
 import {useSettingsStore, useStore} from "../../store";
 import {get, isNil} from "lodash";
+import Language from "../lang";
 
 const Styled = styled.header`
   padding: 15px 10px 15px 5px;
@@ -57,10 +58,7 @@ const Styled = styled.header`
 
   .header {
     &__dots {
-     margin: 0 40px;
-    }
-    &__search{
-      margin-right: 40px;
+      margin: 0 40px;
     }
   }
 
@@ -80,10 +78,8 @@ const Header = ({...rest}) => {
                     </Col>
                     <Col xs={6}>
                         <Flex justify={'flex-end'} align={'center'}>
-                            <Search color={'#C4C4C4'} size={28} className={'header__search'}/>
-                            <Notification />
-                            <img className={'header__dots'} src={dots} alt="dots"/>
-                            <Dropdown button={<Profile  avatar={get(user,'image')} username={get(user,'username')}/>}>
+                            <Language />
+                            <Dropdown button={<Profile avatar={get(user, 'image')} username={get(user, 'username')}/>}>
                                 <ul className={'profile-body'}>
                                     <li><Settings size={20}/><span>Settings</span></li>
                                 </ul>

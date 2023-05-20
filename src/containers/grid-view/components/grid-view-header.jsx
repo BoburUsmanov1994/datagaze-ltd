@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 import {Container, Row, Col} from "react-grid-system";
-import GridViewCalendar from "./grid-view-calendar";
-import GridViewFilter from "./grid-view-filter";
-import GridViewInterval from "./grid-view-interval";
-import GridViewExport from "./grid-view-export";
-import Flex from "../../../components/flex";
+import Search from "../../../components/search";
+import Form from "../../form/form";
 
 const Styled = styled.div`
   padding: 10px;
@@ -16,20 +13,37 @@ const Styled = styled.div`
     display: flex;
     align-items: center;
   }
+
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  .form-btn {
+    margin-top: 0;
+  }
+
+  label {
+    margin-bottom: 0 !important;
+  }
 `;
 
-const GridViewHeader = ({...rest}) => {
+const GridViewHeader = ({
+                            headerComponent = null,
+                            handleSearch = () => {
+                            },
+                            ...rest
+                        }) => {
     return (
         <Styled {...rest}>
             <Container fluid>
                 <Row align={"center"}>
                     <Col xs={9} className={'gridview__header'}>
-                        <GridViewCalendar/>
-                        <GridViewFilter/>
-                        <GridViewInterval/>
+                        <Form>
+                            {headerComponent}
+                        </Form>
                     </Col>
                     <Col xs={3}>
-                        <Flex  justify={'flex-end'}> <GridViewExport/></Flex>
+                        <Search handleSearch={handleSearch}/>
                     </Col>
                 </Row>
             </Container>

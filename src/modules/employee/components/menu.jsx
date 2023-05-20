@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {Link, NavLink, useParams,useLocation} from "react-router-dom";
+import {Link, NavLink, useParams, useLocation} from "react-router-dom";
 import logsIcon from "../../../assets/icons/logs.svg"
 import keyloggerIcon from "../../../assets/icons/keylogger.svg"
 import screenIcon from "../../../assets/icons/screenshot.svg"
@@ -42,7 +42,9 @@ const Styled = styled.ul`
       }
 
       img {
-        width: 18px;
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
         margin-right: 15px;
       }
     }
@@ -58,7 +60,8 @@ const Styled = styled.ul`
         padding: 12px 20px;
         border-bottom: 1px solid #CDCDCD;
         font-weight: 300;
-        &.active{
+
+        &.active {
           color: #084B92;
         }
 
@@ -82,7 +85,6 @@ const Menu = ({
               }) => {
     const {id} = useParams()
     const {pathname} = useLocation();
-    console.log('location',pathname)
     return (
         <Styled {...rest}>
             <li>
@@ -104,8 +106,11 @@ const Menu = ({
             <li>
                 <NavLink className={'menu__link'} to={`/employee/internet-use/${id}`}><span
                     className={"menu__link__left"}><img src={wifiIcon} alt=""/>
-                    <span>Исп. интернета</span></span> <span className={'count'}>564</span>{includes(pathname,'internet-use') ? <ChevronDown size={18} color={'#9B9B9B'} style={{position:"absolute",right:'3px'}}/>:<ChevronRight size={18} color={'#9B9B9B'} style={{position:"absolute",right:'3px'}}/>}</NavLink>
-                {includes(pathname,'internet-use') && <ul className={'submenu'}>
+                    <span>Исп. интернета</span></span> <span
+                    className={'count'}>564</span>{includes(pathname, 'internet-use') ?
+                    <ChevronDown size={18} color={'#9B9B9B'} style={{position: "absolute", right: '3px'}}/> :
+                    <ChevronRight size={18} color={'#9B9B9B'} style={{position: "absolute", right: '3px'}}/>}</NavLink>
+                {includes(pathname, 'internet-use') && <ul className={'submenu'}>
                     <li><NavLink to={`/employee/internet-use/${id}`} className={'submenu__link'}><span
                         className={'dot'}></span><span>Посещение сайтов</span></NavLink></li>
                     <li><NavLink to={`/employee/internet-use/cloud-storage/${id}`} className={'submenu__link'}><span

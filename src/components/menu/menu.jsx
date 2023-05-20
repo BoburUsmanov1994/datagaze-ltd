@@ -2,13 +2,15 @@ import React, {memo} from 'react';
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 import {
-    AlertCircle,
     Clipboard,
     Copy,
     Database,
+    Globe,
     Grid,
     Monitor,
-    PieChart, Search, Server,
+    PieChart,
+    Search,
+    Server,
     Settings,
     Shield,
     User,
@@ -18,20 +20,23 @@ import {
 const StyledMenu = styled.div`
   position: relative;
   ul {
-padding: 15px 15px 5px;
+    padding: 15px 15px 5px;
     height: calc(100vh - 120px);
     overflow-y: auto;
 
     li {
       margin-bottom: 20px;
       text-align: center;
-      a{
+
+      a {
         color: #948989;
         transition: 0.3s ease;
-        &:hover{
+
+        &:hover {
           color: #18181B;
         }
-        &.active{
+
+        &.active {
           color: #4439C1;
         }
       }
@@ -49,7 +54,7 @@ const Menu = ({...rest}) => {
             <ul>
                 <li>
                     <NavLink to={"/dashboard"}>
-                        <Grid  size={21}/>
+                        <Grid size={21}/>
                     </NavLink>
                 </li>
                 <li>
@@ -64,52 +69,57 @@ const Menu = ({...rest}) => {
                 </li>
                 <li>
                     <NavLink to={"/accounts"}>
-                        <User size={20} />
+                        <User size={20}/>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to={"/incidents"}>
-                        <Shield size={20} />
+                        <Shield size={20}/>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to={"/groups"}>
-                        <Users size={20} />
+                        <Users size={20}/>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to={"/clipboard-list"}>
-                        <Clipboard size={20} />
+                        <Clipboard size={20}/>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to={"/clipboard-list"}>
-                        <PieChart size={20} />
+                        <PieChart size={20}/>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to={"/clipboard-list"}>
-                        <Database size={20} />
+                        <Database size={20}/>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to={"/settings"}>
-                        <Settings size={20} />
+                        <Settings size={20}/>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to={"/settings"}>
-                        <Copy size={20} />
+                        <Copy size={20}/>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to={"/search"}>
-                        <Search size={20} />
+                        <Search size={20}/>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to={"/search"}>
-                        <Server size={20} />
+                        <Server size={20}/>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/translations"}>
+                        <Globe size={20}/>
                     </NavLink>
                 </li>
             </ul>

@@ -4,6 +4,7 @@ import Router from "./router";
 import Query from "./services/query";
 import Auth from "./services/auth/Auth";
 import Theme from "./theme";
+import i18config from "./services/i18n";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

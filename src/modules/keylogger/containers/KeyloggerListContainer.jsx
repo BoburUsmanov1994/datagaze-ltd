@@ -7,6 +7,7 @@ import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
 import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
+import GridViewCalendar from "../../../containers/grid-view/components/grid-view-calendar";
 
 const KeyloggerListContainer = ({
                                     id = null,
@@ -43,14 +44,14 @@ const KeyloggerListContainer = ({
             title: 'Дата и время',
             dataIndex: 'datetime',
             render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
-            width:150
+            width: 150
         },
         {
             title: 'Название процесса',
             dataIndex: 'process',
             render: (th, tr) => <Flex><img src={`data:image/png;base64, ${get(tr, 'icon')}`} alt=""/>
                 <span className={'ml-10'}>{th}</span></Flex>,
-            align:'left'
+            align: 'left'
         },
         {
             title: 'Активное окно ',
@@ -71,15 +72,17 @@ const KeyloggerListContainer = ({
     useEffect(() => {
         setBreadcrumbs(breadcrumbs)
     }, [])
-
+    
 
     return (
         <>
-            <GridViewHeader/>
             <GridView
+                headerComponent={<>
+                    <GridViewCalendar/>
+                </>}
                 url={URLS.keylogger}
                 keyId={KEYS.keylogger}
-                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'startDate')}}
+                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
                 tableHeaderData={columns}
             />
         </>
