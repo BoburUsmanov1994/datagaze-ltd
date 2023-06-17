@@ -11,7 +11,6 @@ import GridViewTable from "./components/grid-view-table";
 import GridViewPagination from "./components/grid-view-pagination";
 import ErrorPage from "../../modules/auth/pages/ErrorPage";
 import {useStore} from "../../store";
-import Modal from "../../components/modal";
 
 
 const Styled = styled.div`
@@ -33,11 +32,19 @@ const GridView = ({
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(0);
     const [search, handleSearch] = useState('');
+    const dateRange = useStore(state => get(state, 'dateRange', null))
 
     const {data, isError, isLoading, isFetching} = usePaginateQuery({
         key: keyId,
         url,
-        params: {...params, take: limit, skip: page * limit, search: `${search}`},
+        params: {
+            ...params,
+            take: limit,
+            skip: page * limit,
+            search: `${search}`,
+            start: get(dateRange, 'startDate'),
+            end: get(dateRange, 'endDate')
+        },
         enabled: !isNil(params)
     })
 
@@ -50,10 +57,6 @@ const GridView = ({
 
     if (isLoading) {
         return <OverlayLoader/>
-    }
-
-    if (isError) {
-        return <ErrorPage/>;
     }
     return (
         <Styled {...rest}>

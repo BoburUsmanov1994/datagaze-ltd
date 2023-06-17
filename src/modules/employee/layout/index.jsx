@@ -26,7 +26,7 @@ const EmployeeLayout = ({
                             ...rest
                         }) => {
     const {id} = useParams();
-    const {data, isLoading, isError} = useGetOneQuery({
+    const {data, isLoading} = useGetOneQuery({
         id,
         key: KEYS.employee,
         url: URLS.employee,
@@ -35,9 +35,6 @@ const EmployeeLayout = ({
         },
         enabled: !!(id)
     })
-    if (isError) {
-        return <Navigate to={'/error'}/>
-    }
     if (isLoading) {
         return <OverlayLoader/>
     }

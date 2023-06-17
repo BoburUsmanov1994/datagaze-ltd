@@ -2,37 +2,37 @@ import React, {useEffect, useMemo} from 'react';
 import {useStore} from "../../../store";
 import {get} from "lodash";
 import dayjs from "dayjs";
-import Flex from "../../../components/flex";
 import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
 import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
+import {useTranslation} from "react-i18next";
 
 const WarningsListContainer = ({
-                                   id = null,
-                                   ...rest
+                                   id = null
                                }) => {
+    const {t} = useTranslation()
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
     const dateRange = useStore(state => get(state, 'dateRange', null))
 
-    const breadcrumbs = useMemo(() => [
+    const breadcrumbs = [
         {
             id: 1,
-            title: 'Datagaze DLP',
+            title: t('Datagaze DLP'),
             path: '/',
         },
         {
             id: 2,
-            title: 'Сотрудники',
+            title: t('Сотрудники'),
             path: '/employees',
         },
         {
             id: 3,
-            title: 'Предупреждения',
+            title: t('Предупреждения'),
             path: '#',
         }
-    ], [])
+    ];
 
     const columns = [
         {
@@ -40,33 +40,33 @@ const WarningsListContainer = ({
             render: (th, tr, index, offset) => offset + index + 1
         },
         {
-            title: 'Дата и время',
+            title: t('Дата и время'),
             dataIndex: 'datetime',
             render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
             width: 150
         },
         {
-            title: 'Содержание',
+            title: t('Содержание'),
             dataIndex: 'source',
         },
         {
-            title: 'Тип документа',
+            title: t('Тип документа'),
             dataIndex: 'documentType',
         },
         {
-            title: 'Тип действия',
+            title: t('Тип действия'),
             dataIndex: 'action',
         },
         {
-            title: 'Канал',
+            title: t('Канал'),
             dataIndex: 'channel',
         },
         {
-            title: 'Уровень',
+            title: t('Уровень'),
             dataIndex: 'severity',
         },
         {
-            title: 'Название компьютера ',
+            title: t('Название компьютера'),
             dataIndex: 'computer',
             render: (th, tr) => get(tr, 'computer.pcname')
         }
@@ -79,7 +79,6 @@ const WarningsListContainer = ({
 
     return (
         <>
-            <GridViewHeader/>
             <GridView
                 url={URLS.alerts}
                 keyId={KEYS.alerts}

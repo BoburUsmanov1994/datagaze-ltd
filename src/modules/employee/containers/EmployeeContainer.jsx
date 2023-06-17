@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useEffect} from 'react';
 import {useStore} from "../../../store";
 import {get} from "lodash";
 import GridView from "../../../containers/grid-view";
@@ -14,7 +14,6 @@ const EmployeeContainer = ({id = null}) => {
     const {t} = useTranslation()
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
-    const dateRange = useStore(state => get(state, 'dateRange', null))
     const breadcrumbs = [
         {
             id: 1,
@@ -39,11 +38,7 @@ const EmployeeContainer = ({id = null}) => {
             dataIndex: 'title',
             render: (th, tr, index, offset) => offset + index + 1
         },
-        {
-            title: t('Дата и время'),
-            dataIndex: 'datetime',
-            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm")
-        },
+
         {
             title: t('Название процесса'),
             dataIndex: 'process',
@@ -52,19 +47,24 @@ const EmployeeContainer = ({id = null}) => {
         },
         {
             title: t('Название'),
-            dataIndex: 'title',
+            dataIndex: 'activeWindowName',
             width: 350
+        },
+        {
+            title: t('Название компьютера'),
+            dataIndex: 'computer',
+            render: (th, tr) => get(tr, 'computer.pcName')
+        },
+        {
+            title: t('Дата и время'),
+            dataIndex: 'dateTime',
+            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm")
         },
         {
             title: t('Продолжительность'),
             dataIndex: 'time',
-            render: (th) => dayjs(th).format("HH:mm:ss"),
+            render: (th) => th,
         },
-        {
-            title: t('Название компьютера'),
-            dataIndex: 'pcname',
-            render: (th, tr) => get(tr, 'computer.pcname')
-        }
     ]
 
     useEffect(() => {
@@ -79,7 +79,7 @@ const EmployeeContainer = ({id = null}) => {
                 </>}
                 url={URLS.activity}
                 keyId={KEYS.activity}
-                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
+                params={{employeeId: id}}
                 tableHeaderData={columns}
             />
         </>

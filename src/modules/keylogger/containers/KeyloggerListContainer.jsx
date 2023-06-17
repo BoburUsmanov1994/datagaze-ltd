@@ -40,18 +40,17 @@ const KeyloggerListContainer = ({
             title: '№',
             render: (th, tr, index, offset) => offset + index + 1
         },
-        {
-            title: t('Дата и время'),
-            dataIndex: 'datetime',
-            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
-            width: 150
-        },
+
         {
             title: t('Название процесса'),
             dataIndex: 'process',
-            render: (th, tr) => <Flex><img src={`data:image/png;base64, ${get(tr, 'icon')}`} alt=""/>
+            render: (th, tr) => <Flex justify={'center'}><img src={`data:image/png;base64, ${get(tr, 'icon')}`} alt=""/>
                 <span className={'ml-10'}>{th}</span></Flex>,
-            align: 'left'
+        },
+        {
+            title: t('Название компьютера'),
+            dataIndex: 'computer',
+            render: (th, tr) => get(tr, 'computer.pcName')
         },
         {
             title: t('Активное окно'),
@@ -59,14 +58,17 @@ const KeyloggerListContainer = ({
         },
         {
             title: t('Текст'),
-            dataIndex: 'text',
+            dataIndex: 'content',
             render: (th) => th,
+            width:300
         },
+
         {
-            title: t('Название компьютера'),
-            dataIndex: 'pcname',
-            render: (th, tr) => get(tr, 'computerId.pcname')
-        }
+            title: t('Дата и время'),
+            dataIndex: 'dateTime',
+            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
+            width: 150
+        },
     ]
 
     useEffect(() => {

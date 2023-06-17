@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import RangeDatepicker from "../../../components/range-datepicker";
 
@@ -17,4 +17,4 @@ const GridViewCalendar = ({
     );
 };
 
-export default memo(GridViewCalendar);
+export default GridViewCalendar;

@@ -119,10 +119,6 @@ const Menu = ({
                         className={'dot'}></span><span>{t('Облачное хранилище')}</span></NavLink></li>
                     <li><NavLink to={`/employee/internet-use/http/${id}`} className={'submenu__link'}><span
                         className={'dot'}></span><span>{t('HTTP запросы')}</span></NavLink></li>
-                    <li><NavLink to={`/employee/internet-use/email/${id}`} className={'submenu__link'}><span
-                        className={'dot'}></span><span>{t('Эл. почта')}</span></NavLink></li>
-                    <li><NavLink to={`/employee/internet-use/mail/${id}`} className={'submenu__link'}><span
-                        className={'dot'}></span><span>{t('Счётчик сообщений')}</span></NavLink></li>
                 </ul>}
             </li>
             <li>

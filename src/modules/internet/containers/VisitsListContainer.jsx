@@ -45,12 +45,7 @@ const VisitsListContainer = ({
             title: '№',
             render: (th, tr, index, offset) => offset + index + 1
         },
-        {
-            title: t('Дата и время'),
-            dataIndex: 'datetime',
-            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
-            width: 150
-        },
+
         {
             title: t('Хост'),
             dataIndex: 'host',
@@ -70,8 +65,14 @@ const VisitsListContainer = ({
         },
         {
             title: t('Название компьютера'),
-            dataIndex: 'computer.pcname',
-        }
+            dataIndex: 'computer.pcName',
+        },
+        {
+            title: t('Дата и время'),
+            dataIndex: 'dateTime',
+            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
+            width: 150
+        },
     ]
 
     useEffect(() => {

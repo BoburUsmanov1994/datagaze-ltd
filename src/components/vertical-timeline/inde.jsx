@@ -148,7 +148,6 @@ const VerticalTimelineComponent = ({id = null, ...props}) => {
     const [open, setOpen] = useState(false);
     const [imageIndex, setImageIndex] = useState(null);
     const [items, setItems] = useState([]);
-    const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(0);
 
     const {ref, inView} = useInView();
@@ -163,41 +162,33 @@ const VerticalTimelineComponent = ({id = null, ...props}) => {
     } = usePaginateQuery({
         key: KEYS.screenshot,
         url: URLS.screenshot,
-        limit,
-        page,
         params: {
-            limit: 10,
-            offset: page * limit,
+            take: 10,
+            skip: 0,
             employeeId: id,
             start: get(dateRange, 'startDate'),
             end: get(dateRange, 'endDate')
         },
     })
 
-    console.log('data',data)
+    console.log('data', data, get(data, 'data.data.total'))
 
     useEffect(() => {
         if (inView) {
-            if(items.length < parseInt(get(data,'data.total'))){
+            if (items.length < parseInt(get(data, 'data.data.total'))) {
                 setPage(prev => ++prev)
             }
-            console.log('in view')
         }
     }, [inView])
     useEffect(() => {
-        if (!isEmpty(get(data, 'data.docs', []))) {
-            setItems(prev => [...prev, ...get(data, 'data.docs', [])])
+        if (!isEmpty(get(data, 'data.data.result', []))) {
+            setItems(prev => [...prev, ...get(data, 'data.data.result', [])])
         }
     }, [data])
 
-    if (isError) {
-        return <Navigate to={'/error'}/>
-    }
     if (isLoading) {
         return <OverlayLoader/>
     }
-    console.log('items',items)
-    console.log('page',page)
     return (
         <StyledVerticalTimelineComponent {...props}>
 
@@ -219,7 +210,7 @@ const VerticalTimelineComponent = ({id = null, ...props}) => {
                             <div className="timeline-gallery">
                                 <div className="timeline-gallery-item">
                                     <div className="img"
-                                         style={{backgroundImage: `url(${config.FILE_SERVER}${get(item, 'imageUrl')})`}}
+                                         style={{backgroundImage: `url(${config.FILE_SERVER}${get(item, 'filePath')})`}}
                                          onClick={() => {
                                              setImageIndex(get(item, '_id'))
                                              setOpen(true);
@@ -228,12 +219,11 @@ const VerticalTimelineComponent = ({id = null, ...props}) => {
                                         <Col xs={12}>
                                             <Flex justify={'space-between'}>
                                                 <p>68% of 1 hour</p>
-                                                {/*<ReactSVG src={galleryIcon}/><span className={'count'}>x20</span>*/}
                                             </Flex>
                                         </Col>
                                     </Row>
                                     {!isNil(imageIndex) && open &&
-                                    <ImageLightboxGallery images={[`${config.FILE_SERVER}${get(item, 'imageUrl')}`]}
+                                    <ImageLightboxGallery images={[`${config.FILE_SERVER}${get(item, 'filePath')}`]}
                                                           setOpen={setOpen}/>}
                                 </div>
                             </div>
@@ -247,7 +237,7 @@ const VerticalTimelineComponent = ({id = null, ...props}) => {
                 <button
                     ref={ref}
                 >
-                    {isFetching ? 'Loading...':'Nothing to load'}
+                    {isFetching ? 'Loading...' : 'Nothing to load'}
                 </button>
             </div>
         </StyledVerticalTimelineComponent>
