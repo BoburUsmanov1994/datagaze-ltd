@@ -23,4 +23,5 @@ export const URLS = {
     translations: 'api/central/language',
     webSniffs: '/api/central/employees/web-sniffs',
     webSearch: '/api/central/employees/web-search',
+    documents: '/api/central/documents',
 }

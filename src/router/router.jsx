@@ -25,6 +25,7 @@ import CloudStorageListPage from "../modules/internet/pages/CloudStorageListPage
 import WebSniffsListPage from "../modules/internet/pages/HttpListPage";
 import GroupsPage from "../modules/account/pages/GroupsPage";
 import TranslationsPage from "../modules/translations/pages/ListPage";
+import DocumentsListPage from "../modules/document/pages/DocumentListPage";
 
 const Router = ({...rest}) => {
     return (
@@ -54,6 +55,9 @@ const Router = ({...rest}) => {
                         </Route>
                         <Route path={"incidents"}>
                             <Route index element={<IncidentListPage/>}/>
+                        </Route>
+                        <Route path={"documents"}>
+                            <Route index element={<DocumentsListPage/>}/>
                         </Route>
                         <Route path={"groups"}>
                             <Route index element={<GroupsPage/>}/>

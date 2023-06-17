@@ -6,8 +6,7 @@ import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
 import {useStore} from "../../../store";
-import {get, isArray} from "lodash";
-import Badge from "../../../components/ui/badge";
+import {get} from "lodash";
 import dayjs from "dayjs";
 
 const IncidentsListContainer = ({
@@ -77,9 +76,11 @@ const IncidentsListContainer = ({
                 </Col>
             </Row>
             <GridView
+                hideGridHeader
                 url={URLS.incidents}
                 keyId={KEYS.incidents}
                 tableHeaderData={columns}
+                params={{}}
                 hideTimeline
             />
         </Section>

@@ -23,4 +23,5 @@ export const KEYS = {
     translations: 'translations',
     webSniffs: 'webSniffs',
     webSearch: 'webSearch',
+    documents: 'documents',
 }

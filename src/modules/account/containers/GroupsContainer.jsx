@@ -20,7 +20,13 @@ const GroupsContainer = ({
                          }) => {
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
-    let {data, isLoading} = useGetAllQuery({key: KEYS.groups, url: URLS.groups})
+    let {data, isLoading} = useGetAllQuery({
+        key: KEYS.groups, url: URLS.groups,
+        params: {
+            take: 100,
+            skip: 0
+        }
+    })
     const breadcrumbs = useMemo(() => [
         {
             id: 1,
@@ -55,12 +61,12 @@ const GroupsContainer = ({
                 </Row>
                 <Row>
                     {
-                        get(data, 'data', [])?.length > 0 ? get(data, 'data', []).map(item => <Col key={get(item, 'id')}
-                                                                                                   xs={3}>
-                            <GroupCard data={item}/>
-                        </Col>) : <EmptyPage/>
+                        get(data, 'data.data.groups', [])?.length > 0 ? get(data, 'data.data.groups', []).map(item =>
+                            <Col key={get(item, 'id')}
+                                 xs={3}>
+                                <GroupCard data={item}/>
+                            </Col>) : <EmptyPage/>
                     }
-
                 </Row>
             </Section>
         </>

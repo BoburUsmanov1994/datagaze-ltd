@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import {
     Clipboard,
     Copy,
-    Database,
+    Database, File,
     Globe,
     Grid,
     Monitor,
@@ -68,11 +68,11 @@ const Menu = ({...rest}) => {
                         <Monitor size={20}/>
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink to={"/accounts"}>
-                        <User size={20}/>
-                    </NavLink>
-                </li>
+                {/*<li>*/}
+                {/*    <NavLink to={"/accounts"}>*/}
+                {/*        <User size={20}/>*/}
+                {/*    </NavLink>*/}
+                {/*</li>*/}
                 <li>
                     <NavLink to={"/incidents"}>
                         <Shield size={20}/>
@@ -83,41 +83,41 @@ const Menu = ({...rest}) => {
                         <Users size={20}/>
                     </NavLink>
                 </li>
+                {/*<li>*/}
+                {/*    <NavLink to={"/clipboard-list"}>*/}
+                {/*        <Clipboard size={20}/>*/}
+                {/*    </NavLink>*/}
+                {/*</li>*/}
+                {/*<li>*/}
+                {/*    <NavLink to={"/clipboard-list"}>*/}
+                {/*        <PieChart size={20}/>*/}
+                {/*    </NavLink>*/}
+                {/*</li>*/}
                 <li>
-                    <NavLink to={"/clipboard-list"}>
-                        <Clipboard size={20}/>
+                    <NavLink to={"/documents"}>
+                        <File size={20}/>
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/clipboard-list"}>
-                        <PieChart size={20}/>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to={"/clipboard-list"}>
-                        <Database size={20}/>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to={"/settings"}>
+                    <NavLink to={"/rules"}>
                         <Settings size={20}/>
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink to={"/settings"}>
-                        <Copy size={20}/>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to={"/search"}>
-                        <Search size={20}/>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to={"/search"}>
-                        <Server size={20}/>
-                    </NavLink>
-                </li>
+                {/*<li>*/}
+                {/*    <NavLink to={"/settings"}>*/}
+                {/*        <Copy size={20}/>*/}
+                {/*    </NavLink>*/}
+                {/*</li>*/}
+                {/*<li>*/}
+                {/*    <NavLink to={"/search"}>*/}
+                {/*        <Search size={20}/>*/}
+                {/*    </NavLink>*/}
+                {/*</li>*/}
+                {/*<li>*/}
+                {/*    <NavLink to={"/search"}>*/}
+                {/*        <Server size={20}/>*/}
+                {/*    </NavLink>*/}
+                {/*</li>*/}
                 <li>
                     <NavLink to={"/translations"}>
                         <Globe size={20}/>
