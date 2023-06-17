@@ -2,6 +2,7 @@ import React from 'react';
 import {useMutation, useQueryClient} from 'react-query'
 import {request} from "../../services/api";
 import {toast} from "react-toastify";
+import {get, isArray, forEach} from "lodash";
 
 const postRequest = (url, attributes) => request.post(url, attributes);
 
@@ -24,8 +25,14 @@ const usePostQuery = ({hideSuccessToast = false, listKeyId = null}) => {
                         queryClient.invalidateQueries(listKeyId)
                     }
                 },
-                onError: (data) => {
-                    toast.error(data?.response?.data?.message || 'ERROR')
+                onError: ({response}) => {
+                    if (isArray(get(response, 'data.message'))) {
+                        forEach(get(response, 'data.message'), (msg) => {
+                            toast.error(msg || 'ERROR')
+                        })
+                    } else {
+                        toast.error(response?.data?.message || 'ERROR')
+                    }
                 }
             }
         );

@@ -25,4 +25,7 @@ export const URLS = {
     webSearch: '/api/central/employees/web-search',
     documents: '/api/central/documents',
     rules: '/api/central/rules',
+    ruleModules: '/api/central/rules/modules',
+    ruleDocs: '/api/central/rules/documents',
+    ruleUsbGroups: '/api/central/rules/usb-groups',
 }

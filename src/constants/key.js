@@ -25,4 +25,7 @@ export const KEYS = {
     webSearch: 'webSearch',
     documents: 'documents',
     rules: 'rules',
+    ruleModules: 'ruleModules',
+    ruleDocs: 'ruleDocs',
+    ruleUsbGroups: 'ruleUsbGroups',
 }
