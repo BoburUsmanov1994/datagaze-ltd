@@ -22,6 +22,7 @@ import ComputersListPage from "../modules/computer/pages/ComputersListPage";
 import IncidentListPage from "../modules/incident/pages/IncidentListPage";
 import VisitsListPage from "../modules/internet/pages/VisitsListPage";
 import CloudStorageListPage from "../modules/internet/pages/CloudStorageListPage";
+import WebSniffsListPage from "../modules/internet/pages/HttpListPage";
 import GroupsPage from "../modules/account/pages/GroupsPage";
 import TranslationsPage from "../modules/translations/pages/ListPage";
 
@@ -42,7 +43,7 @@ const Router = ({...rest}) => {
                                 <Route path={"warnings/:id"} element={<WarningsListPage/>}/>
                                 <Route path={"internet-use/:id"} element={<VisitsListPage/>}/>
                                 <Route path={"internet-use/cloud-storage/:id"} element={<CloudStorageListPage/>}/>
-                                <Route path={"internet-use/http/:id"} element={<CloudStorageListPage/>}/>
+                                <Route path={"internet-use/http/:id"} element={<WebSniffsListPage/>}/>
                             </Route>
                         </Route>
                         <Route path={"accounts"}>

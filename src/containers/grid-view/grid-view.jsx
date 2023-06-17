@@ -26,6 +26,7 @@ const GridView = ({
                       params = null,
                       hideTimeline = false,
                       source = 'data.data.result',
+                      hideGridHeader = false,
                       ...rest
                   }) => {
 
@@ -34,7 +35,7 @@ const GridView = ({
     const [search, handleSearch] = useState('');
     const dateRange = useStore(state => get(state, 'dateRange', null))
 
-    const {data, isError, isLoading, isFetching} = usePaginateQuery({
+    const {data, isLoading, isFetching} = usePaginateQuery({
         key: keyId,
         url,
         params: {
@@ -60,7 +61,7 @@ const GridView = ({
     }
     return (
         <Styled {...rest}>
-            <GridViewHeader headerComponent={headerComponent} handleSearch={handleSearch}/>
+            {!hideGridHeader && <GridViewHeader headerComponent={headerComponent} handleSearch={handleSearch}/>}
             {!hideTimeline && <GridViewTimeline/>}
             {
                 isFetching && <OverlayLoader/>

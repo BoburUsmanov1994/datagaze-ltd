@@ -1,21 +1,18 @@
 import React, {useEffect, useMemo} from 'react';
 import {useStore} from "../../../store";
-import {get} from "lodash";
+import {get, head} from "lodash";
 import dayjs from "dayjs";
 import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
 import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
+import config from "../../../config";
 
 const CloudStorageListContainer = ({
-                                 id,
-                                 ...rest
-                             }) => {
+                                       id
+                                   }) => {
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
-
-    const dateRange = useStore(state => get(state, 'dateRange', null))
-
     const breadcrumbs = useMemo(() => [
         {
             id: 1,
@@ -44,24 +41,10 @@ const CloudStorageListContainer = ({
             title: '№',
             render: (th, tr, index, offset) => offset + index + 1
         },
-        {
-            title: 'Дата и время',
-            dataIndex: 'datetime',
-            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
-            width: 150
-        },
+
         {
             title: 'Хост',
             dataIndex: 'host',
-        },
-        {
-            title: 'Название',
-            dataIndex: 'title',
-            align: 'left',
-        },
-        {
-            title: 'Продолжительность',
-            dataIndex: 'duration',
         },
         {
             title: 'Браузер',
@@ -69,8 +52,21 @@ const CloudStorageListContainer = ({
         },
         {
             title: 'Название компьютера',
-            dataIndex: 'computer.pcname',
-        }
+            dataIndex: 'computer.pcName',
+        },
+        {
+            title: 'Файл',
+            dataIndex: 'files',
+            render: (th) => <a target={'_blank'}
+                               href={`${config.FILE_SERVER}${get(head(th), 'filePath')}`}>{get(head(th), 'fileName')}</a>,
+        },
+        {
+            title: 'Дата и время',
+            dataIndex: 'dateTime',
+            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
+            width: 150
+        },
+
     ]
 
     useEffect(() => {
@@ -80,9 +76,9 @@ const CloudStorageListContainer = ({
         <>
             <GridViewHeader/>
             <GridView
-                url={URLS.visitList}
-                keyId={KEYS.visitList}
-                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
+                url={URLS.webSniffs}
+                keyId={KEYS.webSniffs}
+                params={{employeeId: id}}
                 tableHeaderData={columns}
             />
         </>

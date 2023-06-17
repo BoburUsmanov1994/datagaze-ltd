@@ -13,9 +13,7 @@ import GridView from "../../../containers/grid-view";
 import {isArray} from "lodash";
 import Badge from "../../../components/ui/badge";
 
-const ComputersListContainer = ({
-                                    ...rest
-                                }) => {
+const ComputersListContainer = () => {
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
     const breadcrumbs = useMemo(() => [
@@ -39,7 +37,7 @@ const ComputersListContainer = ({
         },
         {
             title: 'Название компьютера',
-            dataIndex: 'pcname'
+            dataIndex: 'pcName'
         },
         {
             title: 'Количество сотрудников',
@@ -86,14 +84,13 @@ const ComputersListContainer = ({
                 <Col xs={8}>
                     <Title>Компьютеры</Title>
                 </Col>
-                <Col xs={4} className={'text-right'}>
-                    <Button primary rounded><Flex><PlusCircle size={18} className={'mr-5'}/><span>Добавить новый компьютер</span></Flex></Button>
-                </Col>
             </Row>
             <GridView
+                hideGridHeader
                 url={URLS.computers}
                 keyId={KEYS.computers}
                 tableHeaderData={columns}
+                params={{}}
                 hideTimeline
                 source={'data.data.computers'}
             />

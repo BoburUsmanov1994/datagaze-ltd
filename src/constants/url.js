@@ -21,4 +21,6 @@ export const URLS = {
     visitList: '/api/central/employees/web-visits',
     groups: 'api/central/groups',
     translations: 'api/central/language',
+    webSniffs: '/api/central/employees/web-sniffs',
+    webSearch: '/api/central/employees/web-search',
 }

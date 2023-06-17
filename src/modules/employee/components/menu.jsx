@@ -116,9 +116,9 @@ const Menu = ({
                     <li><NavLink to={`/employee/internet-use/${id}`} className={'submenu__link'}><span
                         className={'dot'}></span><span>{t('Посещение сайтов')}</span></NavLink></li>
                     <li><NavLink to={`/employee/internet-use/cloud-storage/${id}`} className={'submenu__link'}><span
-                        className={'dot'}></span><span>{t('Облачное хранилище')}</span></NavLink></li>
-                    <li><NavLink to={`/employee/internet-use/http/${id}`} className={'submenu__link'}><span
                         className={'dot'}></span><span>{t('HTTP запросы')}</span></NavLink></li>
+                    <li><NavLink to={`/employee/internet-use/http/${id}`} className={'submenu__link'}><span
+                        className={'dot'}></span><span>{t('Облачное хранилище')}</span></NavLink></li>
                 </ul>}
             </li>
             <li>

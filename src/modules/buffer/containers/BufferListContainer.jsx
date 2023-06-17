@@ -39,12 +39,7 @@ const BufferListContainer = ({
             title: '№',
             render: (th, tr, index, offset) => offset + index + 1
         },
-        {
-            title: t('Дата и время'),
-            dataIndex: 'datetime',
-            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
-            width: 150
-        },
+
         {
             title: t('Тип'),
             dataIndex: 'type',
@@ -53,7 +48,6 @@ const BufferListContainer = ({
         {
             title: t('Источник'),
             dataIndex: 'source',
-            align: 'left'
         },
         {
             title: t('Содержание'),
@@ -62,9 +56,15 @@ const BufferListContainer = ({
         },
         {
             title: t('Название компьютера'),
-            dataIndex: 'pcname',
-            render: (th, tr) => get(tr, 'computer.pcname')
-        }
+            dataIndex: 'pcName',
+            render: (th, tr) => get(tr, 'computer.pcName')
+        },
+        {
+            title: t('Дата и время'),
+            dataIndex: 'dateTime',
+            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
+            width: 150
+        },
     ]
 
     useEffect(() => {
@@ -80,7 +80,7 @@ const BufferListContainer = ({
                 </>}
                 url={URLS.buffer}
                 keyId={KEYS.buffer}
-                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
+                params={{employeeId: id}}
                 tableHeaderData={columns}
             />
         </>

@@ -45,24 +45,15 @@ const CloudStorageListContainer = ({
             title: '№',
             render: (th, tr, index, offset) => offset + index + 1
         },
-        {
-            title: t('Дата и время'),
-            dataIndex: 'datetime',
-            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
-            width: 150
-        },
+
         {
             title: t('Хост'),
             dataIndex: 'host',
         },
         {
-            title: t('Название'),
-            dataIndex: 'title',
+            title: t('Text'),
+            dataIndex: 'text',
             align: 'left',
-        },
-        {
-            title: t('Продолжительность'),
-            dataIndex: 'duration',
         },
         {
             title: t('Браузер'),
@@ -70,8 +61,14 @@ const CloudStorageListContainer = ({
         },
         {
             title: t('Название компьютера'),
-            dataIndex: 'computer.pcname',
-        }
+            dataIndex: 'computer.pcName',
+        },
+        {
+            title: t('Дата и время'),
+            dataIndex: 'dateTime',
+            render: (th) => dayjs(th).format("DD-MM-YYYY HH:mm"),
+            width: 150
+        },
     ]
 
     useEffect(() => {
@@ -83,9 +80,9 @@ const CloudStorageListContainer = ({
                 headerComponent={<>
                     <GridViewCalendar/>
                 </>}
-                url={URLS.visitList}
-                keyId={KEYS.visitList}
-                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
+                url={URLS.webSearch}
+                keyId={KEYS.webSearch}
+                params={{employeeId: id}}
                 tableHeaderData={columns}
             />
         </>

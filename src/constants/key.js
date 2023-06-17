@@ -21,4 +21,6 @@ export const KEYS = {
     visitList: 'visitList',
     groups: 'groups',
     translations: 'translations',
+    webSniffs: 'webSniffs',
+    webSearch: 'webSearch',
 }
