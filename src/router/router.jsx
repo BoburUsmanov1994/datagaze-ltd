@@ -26,6 +26,7 @@ import WebSniffsListPage from "../modules/internet/pages/HttpListPage";
 import GroupsPage from "../modules/account/pages/GroupsPage";
 import TranslationsPage from "../modules/translations/pages/ListPage";
 import DocumentsListPage from "../modules/document/pages/DocumentListPage";
+import RuleListPage from "../modules/rules/pages/RuleListPage";
 
 const Router = ({...rest}) => {
     return (
@@ -58,6 +59,9 @@ const Router = ({...rest}) => {
                         </Route>
                         <Route path={"documents"}>
                             <Route index element={<DocumentsListPage/>}/>
+                        </Route>
+                        <Route path={"rules"}>
+                            <Route index element={<RuleListPage/>}/>
                         </Route>
                         <Route path={"groups"}>
                             <Route index element={<GroupsPage/>}/>

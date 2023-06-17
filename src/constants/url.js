@@ -24,4 +24,5 @@ export const URLS = {
     webSniffs: '/api/central/employees/web-sniffs',
     webSearch: '/api/central/employees/web-search',
     documents: '/api/central/documents',
+    rules: '/api/central/rules',
 }

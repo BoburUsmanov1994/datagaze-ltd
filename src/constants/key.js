@@ -24,4 +24,5 @@ export const KEYS = {
     webSniffs: 'webSniffs',
     webSearch: 'webSearch',
     documents: 'documents',
+    rules: 'rules',
 }
