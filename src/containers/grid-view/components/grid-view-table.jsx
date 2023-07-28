@@ -1,16 +1,15 @@
 import React, {memo} from 'react';
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {isArray, get, isNil} from "lodash";
 import {useNavigate} from "react-router-dom";
 import EmptyPage from "../../../modules/auth/pages/EmptyPage";
-import Modal from "../../../components/modal";
 
 const Styled = styled.div`
-  padding: 30px;
-
+  margin: 20px 0;
 
   .table {
     width: 100%;
+
 
     tr {
       border-bottom: 1px solid #D0D0D0;
@@ -57,7 +56,31 @@ const Styled = styled.div`
 
       }
     }
+
+    ${({bordered}) => bordered && css`
+      border: 1px solid #D0D0D0;
+
+      .table__head {
+        th {
+          border: 1px solid #D0D0D0;
+        }
+      }
+
+      .table__body {
+        td {
+          border: 1px solid #D0D0D0;
+        }
+      }
+    `}
   }
+
+  ${({tableHeadDark}) => tableHeadDark && css`
+    .table__head {
+     background: #F2F1F1;
+    }
+
+  `}
+}
 `;
 const GridViewTable = ({
                            children,
@@ -73,7 +96,6 @@ const GridViewTable = ({
     }
     return (
         <Styled {...rest}>
-            <Modal>test</Modal>
             <table className="table">
                 <thead className={"table__head"}>
                 <tr>

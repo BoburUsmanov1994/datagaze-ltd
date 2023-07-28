@@ -9,7 +9,6 @@ import GridViewHeader from "./components/grid-view-header";
 import GridViewTimeline from "./components/grid-view-timeline";
 import GridViewTable from "./components/grid-view-table";
 import GridViewPagination from "./components/grid-view-pagination";
-import ErrorPage from "../../modules/auth/pages/ErrorPage";
 import {useStore} from "../../store";
 
 
@@ -27,6 +26,8 @@ const GridView = ({
                       hideTimeline = false,
                       source = 'data.data.result',
                       hideGridHeader = false,
+                      bordered = false,
+                      tableHeadDark = false,
                       ...rest
                   }) => {
 
@@ -66,7 +67,7 @@ const GridView = ({
             {
                 isFetching && <OverlayLoader/>
             }
-            <GridViewTable offset={page * limit} viewUrl={viewUrl} tableHeaderData={tableHeaderData}
+            <GridViewTable tableHeadDark={tableHeadDark} bordered={bordered} offset={page * limit} viewUrl={viewUrl} tableHeaderData={tableHeaderData}
                            tableBodyData={get(data, source, [])}/>
             <GridViewPagination limit={limit} pageCount={ceil(get(data, "data.data.total") / limit) || 0}
                                 setPage={setPage}

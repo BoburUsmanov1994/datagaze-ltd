@@ -182,6 +182,10 @@ const GlobalStyles = createGlobalStyle`
   table {
     border-collapse: collapse;
   }
+  .scheduler-container {
+    height: 100vh;
+    width: 100vw;
+  }
 
   @media print {
     @page {
