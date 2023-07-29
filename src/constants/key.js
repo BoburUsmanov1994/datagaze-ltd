@@ -28,4 +28,6 @@ export const KEYS = {
     ruleModules: 'ruleModules',
     ruleDocs: 'ruleDocs',
     ruleUsbGroups: 'ruleUsbGroups',
+    employeeGroups: 'employeeGroups',
+    employeeRules: 'employeeRules',
 }

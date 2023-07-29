@@ -8,8 +8,12 @@ import Avatar from "../../../components/avatar";
 import Flex from "../../../components/flex";
 import dayjs from "dayjs";
 import Badge from "../../../components/ui/badge";
-import Field from "../../../containers/form/field";
 import {useTranslation} from "react-i18next";
+import Select from "../../../components/select";
+import {useGetAllQuery} from "../../../hooks/api";
+import {OverlayLoader} from "../../../components/loader";
+import {getSelectOptionsListFromData} from "../../../utils";
+import Switcher from "../../../components/switcher";
 
 const EmployeeListContainer = ({
                                    ...rest
@@ -18,6 +22,26 @@ const EmployeeListContainer = ({
     const [filter, setFilter] = useState({isOnline: false})
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
+
+    let {data: groups, isLoading: isLoadingGroups} = useGetAllQuery({
+        key: KEYS.employeeGroups, url: URLS.employeeGroups,
+        params: {
+            take: 100,
+            skip: 0
+        }
+    })
+
+    const groupListData = getSelectOptionsListFromData(get(groups, 'data.data.groups', []), 'id', 'name')
+
+    let {data: rules, isLoading: isLoadingRules} = useGetAllQuery({
+        key: KEYS.employeeRules, url: URLS.employeeRules,
+        params: {
+            take: 100,
+            skip: 0
+        }
+    })
+
+    const ruleListData = getSelectOptionsListFromData(get(rules, 'data.data.rules', []), 'id', 'name')
     const breadcrumbs = [
         {
             id: 1,
@@ -86,14 +110,28 @@ const EmployeeListContainer = ({
         setBreadcrumbs(breadcrumbs)
     }, [])
 
+    if (isLoadingGroups || isLoadingRules) {
+        return <OverlayLoader/>;
+    }
+
     return (
         <>
             <GridView
-                headerComponent={<>
-                    <Field property={{onChange: (val) => setFilter(prev => ({...prev, isOnline: val}))}}
-                           options={[{label: t('Оффлайн'), value: false}, {label: t('Онлайн'), value: true}]}
-                           type={'switch'}/>
-                </>}
+                headerComponent={<Flex>
+                    <Select isMulti property={{
+                        placeholder: 'Группы',
+                        onChange: (val) => setFilter(prev => ({...prev, group: val?.map(({value}) => value)}))
+                    }} options={groupListData}/>
+                    <Switcher className={'ml-20'}
+                              property={{onChange: (val) => setFilter(prev => ({...prev, isOnline: val}))}}
+                              options={[{label: t('Оффлайн'), value: false}, {label: t('Онлайн'), value: true}]}
+                    />
+                    <Select className={'ml-20'} isMulti property={{
+                        placeholder: 'Политика',
+                        onChange: (val) => setFilter(prev => ({...prev, rule: val?.map(({value}) => value)}))
+                    }} options={ruleListData}/>
+
+                </Flex>}
                 hideTimeline
                 url={URLS.employees}
                 keyId={KEYS.employees}

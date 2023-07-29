@@ -38,9 +38,7 @@ const GridViewHeader = ({
             <Container fluid>
                 <Row align={"center"}>
                     <Col xs={9} className={'gridview__header'}>
-                        <Form>
-                            {headerComponent}
-                        </Form>
+                        {headerComponent}
                     </Col>
                     <Col xs={3}>
                         <Search handleSearch={handleSearch}/>

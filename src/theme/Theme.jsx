@@ -157,6 +157,9 @@ const GlobalStyles = createGlobalStyle`
   .mr-20 {
     margin-right: 20px !important;
   }
+  .ml-20 {
+    margin-left: 20px !important;
+  }
 
   .mt-25 {
     margin-top: 25px !important;
@@ -182,6 +185,9 @@ const GlobalStyles = createGlobalStyle`
     background: red;
     width: 100%;
     height: 100%;
+  }
+  .form-select::placeholder{
+    color: #000 !important;
   }
 
   * {

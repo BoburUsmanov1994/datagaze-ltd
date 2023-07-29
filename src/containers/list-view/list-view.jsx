@@ -52,8 +52,8 @@ const ListView = ({
         <div>
             <Row gutterWidth={40} className={'mb-25 mt-25'}>
                 {get(data, source, []).map((item) => <Col xs={colSpan}>
-                    <ListViewCard  key={get(item, 'id')}
-                                                                                     data={item}/></Col>)}
+                    <ListViewCard key={get(item, 'id')}
+                                  data={item}/></Col>)}
             </Row>
             <GridViewPagination limit={limit} pageCount={ceil(get(data, "data.data.total") / limit) || 0}
                                 setPage={setPage}

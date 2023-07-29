@@ -28,4 +28,7 @@ export const URLS = {
     ruleModules: '/api/central/rules/modules',
     ruleDocs: '/api/central/rules/documents',
     ruleUsbGroups: '/api/central/rules/usb-groups',
+    employeeGroups: '/api/central/employees/list/groups',
+    employeeRules: '/api/central/employees/list/rules',
+
 }
