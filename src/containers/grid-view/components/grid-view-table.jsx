@@ -46,7 +46,7 @@ const Styled = styled.div`
 
       td {
         text-align: center;
-        padding: 25px 15px;
+        padding: 15px;
         font-size: 14px;
         font-weight: 400;
 
@@ -76,7 +76,7 @@ const Styled = styled.div`
 
   ${({tableHeadDark}) => tableHeadDark && css`
     .table__head {
-     background: #F2F1F1;
+      background: #F2F1F1;
     }
 
   `}

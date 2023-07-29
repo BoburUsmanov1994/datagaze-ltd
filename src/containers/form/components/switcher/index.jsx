@@ -26,7 +26,7 @@ const Switcher = ({
                       errors,
                       params,
                       property,
-                      defaultValue,
+                      defaultValue=false,
                       getValues,
                       watch,
                       label,

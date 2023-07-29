@@ -24,7 +24,7 @@ const i18config = i18n.use(initReactI18next)
         },
         backend: {
             customHeaders: {
-                Authorization: `Bearer ${get(JSON.parse(storage.get('settings')), 'state.token')}`
+                Authorization: `Bearer ${get(JSON.parse(storage.get('settings')), 'state.token', null)}`
             },
             loadPath: `${config.API_ROOT}api/central/language/{{lng}}/byLang`,
             addPath: `${config.API_ROOT}api/central/language`,

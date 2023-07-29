@@ -1,11 +1,10 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React from 'react';
 import styled from "styled-components";
 
 const Styled = styled.h2`
 
-  font-size: 20px;
+  font-size: 24px;
   color: #000;
-  //margin-bottom: 30px;
   font-weight: 500;
 
 `;

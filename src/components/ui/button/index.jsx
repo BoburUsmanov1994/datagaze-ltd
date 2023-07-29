@@ -11,7 +11,11 @@ const StyledButton = styled.button`
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  min-width: 175px;
+
+  svg {
+    flex: none;
+  }
+
   ${({lg}) => lg && css`
     padding: 18px 36px;
     font-size: 18px;
@@ -25,6 +29,15 @@ const StyledButton = styled.button`
   `}
   ${({dark}) => dark && css`
     background-color: #1D283A;
+  `}
+  ${({gray}) => gray && css`
+    background-color: #959595;
+  `}
+  ${({blue}) => blue && css`
+    background-color: #5BA9BA;
+  `}
+  ${({brown}) => brown && css`
+    background-color: #BA895B;
   `}
   ${({transparent}) => transparent && css`
     background-color: transparent;

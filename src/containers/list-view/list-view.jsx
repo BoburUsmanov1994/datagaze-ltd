@@ -1,36 +1,24 @@
-import React, {useState, memo, useEffect} from 'react';
-import styled from "styled-components";
-import {
-    usePaginateQuery,
-} from "../../hooks/api";
-import {ceil, get, isNil} from "lodash";
-import {OverlayLoader} from "../../components/loader";
-import GridViewHeader from "./components/grid-view-header";
-import GridViewTimeline from "./components/grid-view-timeline";
-import GridViewTable from "./components/grid-view-table";
-import GridViewPagination from "./components/grid-view-pagination";
+import React, {useEffect, useState} from 'react';
 import {useStore} from "../../store";
+import {ceil, get, isNil} from "lodash";
+import {usePaginateQuery} from "../../hooks/api";
+import {OverlayLoader} from "../../components/loader";
+import GridViewPagination from "../grid-view/components/grid-view-pagination";
+import {Row, Col} from "react-grid-system";
+import ListViewCard from "./components/list-view-card";
+import Checkbox from "rc-checkbox";
 
-
-const Styled = styled.div`
-  min-height: 80vh;
-`;
-const GridView = ({
-                      headerComponent = null,
-                      tableHeaderData = [],
-                      tableBodyData = [],
+const ListView = ({
                       keyId,
                       url,
                       viewUrl = null,
                       params = null,
-                      hideTimeline = false,
                       source = 'data.data.result',
-                      hideGridHeader = false,
                       bordered = false,
-                      tableHeadDark = false,
+                      hasCheckbox = false,
+                      colSpan = 3,
                       ...rest
                   }) => {
-
     const [limit, setLimit] = useState(15);
     const [page, setPage] = useState(0);
     const [search, handleSearch] = useState('');
@@ -61,19 +49,17 @@ const GridView = ({
         return <OverlayLoader/>
     }
     return (
-        <Styled {...rest}>
-            {!hideGridHeader && <GridViewHeader headerComponent={headerComponent} handleSearch={handleSearch}/>}
-            {!hideTimeline && <GridViewTimeline/>}
-            {
-                isFetching && <OverlayLoader/>
-            }
-            <GridViewTable tableHeadDark={tableHeadDark} bordered={bordered} offset={page * limit} viewUrl={viewUrl} tableHeaderData={tableHeaderData}
-                           tableBodyData={get(data, source, [])}/>
+        <div>
+            <Row gutterWidth={40} className={'mb-25 mt-25'}>
+                {get(data, source, []).map((item) => <Col xs={colSpan}>
+                    <ListViewCard  key={get(item, 'id')}
+                                                                                     data={item}/></Col>)}
+            </Row>
             <GridViewPagination limit={limit} pageCount={ceil(get(data, "data.data.total") / limit) || 0}
                                 setPage={setPage}
                                 setLimit={setLimit}/>
-        </Styled>
+        </div>
     );
 };
 
-export default memo(GridView);
+export default ListView;

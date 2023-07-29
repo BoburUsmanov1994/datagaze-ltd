@@ -18,7 +18,7 @@ const EmployeeListContainer = ({
     const [filter, setFilter] = useState({isOnline: false})
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
-    const breadcrumbs =  [
+    const breadcrumbs = [
         {
             id: 1,
             title: t('Datagaze DLP'),

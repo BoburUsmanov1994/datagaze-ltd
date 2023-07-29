@@ -62,7 +62,7 @@ const Sidebar = ({
     return (
         <Styled {...rest}>
             <div className="sidebar__profile">
-                <Avatar className={"avatar"} isOnline={get(data,'isOnline',false)}/>
+                <Avatar bordered className={"avatar"} isOnline={get(data,'isOnline',false)}/>
                 <h2 className={'sidebar__profile__title'}>{get(data,'lastName')} {get(data,'firstName')}</h2>
                 {get(data,'position') && <p className={'sidebar__profile__job'}><Briefcase size={18}/> <span>{get(data,'position')}</span></p>}
                 <ul className={'sidebar__profile_info'}>

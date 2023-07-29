@@ -1,12 +1,15 @@
 import React from 'react';
-import styled,{css} from "styled-components";
+import styled, {css} from "styled-components";
 import avatarImg from "../../assets/images/avatar.png";
 import {isEqual} from "lodash";
 
 const Styled = styled.div`
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   img {
     width: 150px;
@@ -29,32 +32,57 @@ const Styled = styled.div`
     bottom: 5px;
     right: 18px;
   }
-  
-  ${({size}) => isEqual(size,'sm') && css`
-  width: 50px;
-    height: 50px;
-    img{
-      width: 50px;
-      height: 50px;
+
+  ${({size}) => isEqual(size, 'sm') && css`
+    width: 65px;
+    height: 65px;
+
+    img {
+      width: 60px;
+      height: 60px;
     }
-    .status{
+
+    .status {
       width: 12px;
       height: 12px;
       right: 0;
     }
   `}
 
-  ${({size}) => isEqual(size,'md') && css`
-  width: 60px;
+  ${({size}) => isEqual(size, 'md') && css`
+    width: 60px;
     height: 60px;
-    img{
+
+    img {
       width: 60px;
       height: 60px;
     }
-    .status{
+
+    .status {
       width: 16px;
       height: 16px;
       right: 0;
+    }
+  `}
+  ${({bordered}) => bordered && css`
+    position: relative;
+    border-radius: 50%;
+    border: 1px dashed #707070;
+    &:before{
+      width: 107.5%;
+      height: 107.5%;
+      border-radius: 50%;
+      border: 1px dashed #C6C6C6;
+      position: absolute;
+      content: "";
+    }
+    &:after{
+      width: 115%;
+      height: 115%;
+      border-radius: 50%;
+      border: 1px dashed #E2E2E2;
+      position: absolute;
+      content: "";
     }
   `}
 `;

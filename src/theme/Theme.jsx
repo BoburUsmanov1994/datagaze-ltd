@@ -162,6 +162,28 @@ const GlobalStyles = createGlobalStyle`
     margin-top: 25px !important;
   }
 
+  .mb-25 {
+    margin-bottom: 25px !important;
+  }
+  .rc-checkbox{
+    position: relative;
+    width: 15px;
+    height: 15px;
+  }
+  .rc-checkbox .rc-checkbox-checked{
+    
+  }
+
+  .rc-checkbox .rc-checkbox-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background: red;
+    width: 100%;
+    height: 100%;
+  }
+
   * {
     scrollbar-color: #4439C1 #F5F5F5;
     scrollbar-width: thin;
@@ -182,6 +204,7 @@ const GlobalStyles = createGlobalStyle`
   table {
     border-collapse: collapse;
   }
+
   .scheduler-container {
     height: 100vh;
     width: 100vw;
