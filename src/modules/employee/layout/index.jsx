@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from "styled-components";
 import Sidebar from "../components/sidebar";
-import {Navigate, Outlet, useParams} from "react-router-dom";
-import {useGetOneQuery} from "../../../hooks/api";
+import {Outlet, useParams} from "react-router-dom";
+import {useGetAllQuery, useGetOneQuery} from "../../../hooks/api";
 import {KEYS} from "../../../constants/key";
 import {URLS} from "../../../constants/url";
 import {OverlayLoader} from "../../../components/loader";
-import {get} from "lodash"
+import {get, isEmpty} from "lodash"
+import {useStore} from "../../../store";
 
 const Styled = styled.div`
   display: flex;
@@ -26,6 +27,7 @@ const EmployeeLayout = ({
                             ...rest
                         }) => {
     const {id} = useParams();
+    const dateRange = useStore(state => get(state, 'dateRange', null))
     const {data, isLoading} = useGetOneQuery({
         id,
         key: KEYS.employee,
@@ -38,10 +40,11 @@ const EmployeeLayout = ({
     if (isLoading) {
         return <OverlayLoader/>
     }
+
     return (
         <Styled {...rest}>
             <div className="layout__left">
-                <Sidebar data={get(data, 'data.data', {})}/>
+                <Sidebar id={id} data={get(data, 'data.data', {})}/>
             </div>
             <div className="layout__right">
                 <Outlet/>

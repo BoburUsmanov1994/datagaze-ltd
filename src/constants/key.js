@@ -30,4 +30,5 @@ export const KEYS = {
     ruleUsbGroups: 'ruleUsbGroups',
     employeeGroups: 'employeeGroups',
     employeeRules: 'employeeRules',
+    dataCount: 'dataCount',
 }
