@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {useStore} from "../../../store";
 import {get} from "lodash";
 import dayjs from "dayjs";
@@ -8,6 +8,8 @@ import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
 import GridViewCalendar from "../../../containers/grid-view/components/grid-view-calendar";
 import {useTranslation} from "react-i18next";
+import {Col, Container, Row} from "react-grid-system";
+import Search from "../../../components/search";
 
 const KeyloggerListContainer = ({
                                     id = null,
@@ -15,6 +17,7 @@ const KeyloggerListContainer = ({
     const {t} = useTranslation()
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
+    const [search, handleSearch] = useState('')
     const dateRange = useStore(state => get(state, 'dateRange', null))
 
     const breadcrumbs = [
@@ -78,13 +81,21 @@ const KeyloggerListContainer = ({
 
     return (
         <>
+            <Container className={'gridview__header__container'} fluid>
+                <Row align={"center"}>
+                    <Col xs={9} className={'gridview__header'}>
+                        <GridViewCalendar/>
+                    </Col>
+                    <Col xs={3}>
+                        <Search handleSearch={handleSearch}/>
+                    </Col>
+                </Row>
+            </Container>
             <GridView
-                headerComponent={<>
-                    <GridViewCalendar/>
-                </>}
+                hideGridHeader
                 url={URLS.keylogger}
                 keyId={KEYS.keylogger}
-                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
+                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate'),search}}
                 tableHeaderData={columns}
             />
         </>
