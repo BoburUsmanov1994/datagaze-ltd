@@ -31,4 +31,5 @@ export const KEYS = {
     employeeGroups: 'employeeGroups',
     employeeRules: 'employeeRules',
     dataCount: 'dataCount',
+    screenshotFile: 'screenshotFile',
 }

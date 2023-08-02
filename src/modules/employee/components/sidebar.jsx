@@ -69,20 +69,16 @@ const Sidebar = ({
                      ...rest
                  }) => {
     const dateRange = useStore(state => get(state, 'dateRange', null))
-    const {data:counts, isLoading} = useGetAllQuery({
+    const {data: counts, isLoading} = useGetAllQuery({
         key: KEYS.dataCount,
         url: URLS.dataCount,
         params: {
-            employeeId :id,
-            start:get(dateRange,'startDate'),
-            end:get(dateRange,'endDate'),
+            employeeId: id,
+            start: get(dateRange, 'startDate'),
+            end: get(dateRange, 'endDate'),
         },
         enabled: !!(id && !isEmpty(dateRange))
     })
-    if(isLoading){
-        return <OverlayLoader />
-    }
-    console.log('counts',counts)
     return (
         <Styled {...rest}>
             <div className="sidebar__profile">
@@ -98,7 +94,7 @@ const Sidebar = ({
                 </ul>
             </div>
             <div className="sidebar__menu">
-                <Menu counts={head(get(counts,'data.data.result',[]))}/>
+                <Menu counts={head(get(counts, 'data.data.result', []))}/>
             </div>
         </Styled>
     );

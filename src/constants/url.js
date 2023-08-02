@@ -31,5 +31,6 @@ export const URLS = {
     employeeGroups: '/api/central/employees/list/groups',
     employeeRules: '/api/central/employees/list/rules',
     dataCount: '/api/central/employees/data-count',
+    screenshotFile: '/api/central/employees/screenshot/file',
 
 }

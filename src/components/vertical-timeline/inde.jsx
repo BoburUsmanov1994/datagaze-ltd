@@ -169,9 +169,9 @@ const VerticalTimelineComponent = ({id = null, ...props}) => {
             start: get(dateRange, 'startDate'),
             end: get(dateRange, 'endDate')
         },
+        enabled:!isEmpty(dateRange)
     })
 
-    console.log('data', data, get(data, 'data.data.total'))
 
     useEffect(() => {
         if (inView) {
