@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useStore} from "../../../store";
-import {get} from "lodash";
+import {get, isEmpty} from "lodash";
 import dayjs from "dayjs";
 import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";
@@ -81,6 +81,7 @@ const VisitsListContainer = ({
     useEffect(() => {
         setBreadcrumbs(breadcrumbs)
     }, [])
+
     return (
         <>
             <Container className={'gridview__header__container'} fluid>
@@ -93,15 +94,16 @@ const VisitsListContainer = ({
                     </Col>
                 </Row>
             </Container>
-            <GridView
+            {!isEmpty(dateRange) && <GridView
+                hideGridHeader
                 headerComponent={<>
                     <GridViewCalendar/>
                 </>}
                 url={URLS.visitList}
                 keyId={KEYS.visitList}
-                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
+                params={{search,employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
                 tableHeaderData={columns}
-            />
+            />}
         </>
     );
 };

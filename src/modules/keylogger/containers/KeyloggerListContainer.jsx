@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {useStore} from "../../../store";
-import {get} from "lodash";
+import {get, isEmpty} from "lodash";
 import dayjs from "dayjs";
 import Flex from "../../../components/flex";
 import GridView from "../../../containers/grid-view";
@@ -91,13 +91,13 @@ const KeyloggerListContainer = ({
                     </Col>
                 </Row>
             </Container>
-            <GridView
+            {!isEmpty(dateRange) && <GridView
                 hideGridHeader
                 url={URLS.keylogger}
                 keyId={KEYS.keylogger}
                 params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate'),search}}
                 tableHeaderData={columns}
-            />
+            />}
         </>
     );
 };
