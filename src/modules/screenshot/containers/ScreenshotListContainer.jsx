@@ -6,12 +6,14 @@ import GridViewTimeline from "../../../containers/grid-view/components/grid-view
 import VerticalTimelineComponent from "../../../components/vertical-timeline/inde";
 import {useTranslation} from "react-i18next";
 import GridViewCalendar from "../../../containers/grid-view/components/grid-view-calendar";
+import dayjs from "dayjs";
 
 const ScreenshotListContainer = ({
                                      id = null,
                                  }) => {
     const [search, setSearch] = useState('')
     const {t} = useTranslation()
+    const dateRange = useStore(state => get(state, 'dateRange', null))
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
 
@@ -43,7 +45,7 @@ const ScreenshotListContainer = ({
     return (
         <>
             <GridViewHeader handleSearch={(val) => setSearch(val)} headerComponent={<><GridViewCalendar/></>}/>
-            <GridViewTimeline/>
+            {(dayjs(get(dateRange, 'startDate')).isSame(get(dateRange, 'endDate'), 'day')) && <GridViewTimeline/>}
             <VerticalTimelineComponent search={search} id={id}/>
         </>
     );

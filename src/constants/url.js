@@ -31,5 +31,6 @@ export const URLS = {
     ruleUsbGroups: '/api/central/rules/usb-groups',
     employeeGroups: '/api/central/employees/list/groups',
     employeeRules: '/api/central/employees/list/rules',
+    dataCount: '/api/central/employees/data-count',
 
 }
