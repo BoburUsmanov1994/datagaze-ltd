@@ -3,7 +3,12 @@ import styled from "styled-components";
 import Avatar from "../../../components/avatar";
 import {Briefcase} from "react-feather";
 import Menu from "./menu";
-import {get} from "lodash"
+import {get, head, isEmpty} from "lodash"
+import {useStore} from "../../../store";
+import {useGetAllQuery, useGetOneQuery} from "../../../hooks/api";
+import {KEYS} from "../../../constants/key";
+import {URLS} from "../../../constants/url";
+import {OverlayLoader} from "../../../components/loader";
 
 const Styled = styled.div`
   min-height: 100vh;
@@ -13,12 +18,15 @@ const Styled = styled.div`
     &__profile {
       padding: 25px 30px;
       text-align: center;
-      &_info{
+
+      &_info {
         margin-top: 15px;
         text-align: left;
-        li{
+
+        li {
           margin-top: 8px;
-          strong{
+
+          strong {
             margin-right: 16px;
           }
         }
@@ -57,14 +65,28 @@ const Styled = styled.div`
 `;
 const Sidebar = ({
                      data = {},
+                     id = null,
                      ...rest
                  }) => {
+    const dateRange = useStore(state => get(state, 'dateRange', null))
+    const {data: counts, isLoading} = useGetAllQuery({
+        key: KEYS.dataCount,
+        url: URLS.dataCount,
+        params: {
+            employeeId: id,
+            start: get(dateRange, 'startDate'),
+            end: get(dateRange, 'endDate'),
+        },
+        enabled: !!(id && !isEmpty(dateRange))
+    })
     return (
         <Styled {...rest}>
             <div className="sidebar__profile">
-                <Avatar bordered className={"avatar"} isOnline={get(data,'isOnline',false)}/>
-                <h2 className={'sidebar__profile__title'}>{get(data,'lastName')} {get(data,'firstName')}</h2>
-                {get(data,'position') && <p className={'sidebar__profile__job'}><Briefcase size={18}/> <span>{get(data,'position')}</span></p>}
+                <Avatar bordered className={"avatar"} isOnline={get(data, 'isOnline', false)}/>
+                <h2 className={'sidebar__profile__title'}>{get(data, 'lastName')} {get(data, 'firstName')}</h2>
+                {get(data, 'position') &&
+                    <p className={'sidebar__profile__job'}><Briefcase size={18}/> <span>{get(data, 'position')}</span>
+                    </p>}
                 <ul className={'sidebar__profile_info'}>
                     <li><strong>IP:</strong></li>
                     <li><strong>MAC:</strong></li>
@@ -72,7 +94,7 @@ const Sidebar = ({
                 </ul>
             </div>
             <div className="sidebar__menu">
-                <Menu/>
+                <Menu counts={head(get(counts, 'data.data.result', []))}/>
             </div>
         </Styled>
     );

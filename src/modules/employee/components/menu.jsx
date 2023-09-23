@@ -15,7 +15,7 @@ import remoteIcon from "../../../assets/icons/remote.svg"
 import audioIcon from "../../../assets/icons/audio.svg"
 import sessionIcon from "../../../assets/icons/session.svg"
 import {ChevronDown, ChevronRight} from "react-feather";
-import {includes} from "lodash";
+import {includes,get} from "lodash";
 import {useTranslation} from "react-i18next";
 
 const Styled = styled.ul`
@@ -82,34 +82,36 @@ const Styled = styled.ul`
   }
 `;
 const Menu = ({
+                  counts = {},
                   ...rest
               }) => {
     const {t} = useTranslation()
     const {id} = useParams()
     const {pathname} = useLocation();
+    console.log('counts',counts)
     return (
         <Styled {...rest}>
             <li>
                 <NavLink className={'menu__link '} to={`/employee/activity-log/${id}`}><span
                     className={"menu__link__left"}><img
                     src={logsIcon} alt=""/>
-                    <span>{t('Журнал активности')}</span></span> <span className={'count'}>123</span></NavLink>
+                    <span>{t('Журнал активности')}</span></span> <span className={'count'}>{get(counts,'activity',0)}</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link '} to={`/employee/keylogger/${id}`}><span
                     className={"menu__link__left"}><img src={keyloggerIcon} alt=""/>
-                    <span>{t('Кейлогер')}</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Кейлогер')}</span></span> <span className={'count'}>{get(counts,'keylogger',0)}</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/screenshot/${id}`}><span
                     className={"menu__link__left"}><img src={screenIcon} alt=""/>
-                    <span>{t('Скриншоты')}</span></span> <span className={'count'}>564</span> </NavLink>
+                    <span>{t('Скриншоты')}</span></span> <span className={'count'}>{get(counts,'screenshot',0)}</span> </NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/internet-use/${id}`}><span
                     className={"menu__link__left"}><img src={wifiIcon} alt=""/>
                     <span>{t('Исп. интернета')}</span></span> <span
-                    className={'count'}>564</span>{includes(pathname, 'internet-use') ?
+                    className={'count'}>{get(counts,'web.webData',0)+get(counts,'web.webSearch',0)+get(counts,'web.webVisit',0)}</span>{includes(pathname, 'internet-use') ?
                     <ChevronDown size={18} color={'#9B9B9B'} style={{position: "absolute", right: '3px'}}/> :
                     <ChevronRight size={18} color={'#9B9B9B'} style={{position: "absolute", right: '3px'}}/>}</NavLink>
                 {includes(pathname, 'internet-use') && <ul className={'submenu'}>
@@ -124,47 +126,47 @@ const Menu = ({
             <li>
                 <NavLink className={'menu__link'} to={`/employee/buffer/${id}`}><span
                     className={"menu__link__left"}><img src={buferIcon} alt=""/>
-                    <span>{t('Буфер')}</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Буфер')}</span></span> <span className={'count'}>{get(counts,'clipboard',0)}</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link '} to={`/employee/warnings/${id}`}><span
                     className={"menu__link__left"}><img src={polygonIcon} alt=""/>
-                    <span>{t('Предупреждения')}</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Предупреждения')}</span></span> <span className={'count'}>{get(counts,'email',0)}</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/telegram/${id}`}><span
                     className={"menu__link__left"}><img src={telegramIcon} alt=""/>
-                    <span>{t('Телеграм')}</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Телеграм')}</span></span> <span className={'count'}>{get(counts,'telegram',0)}</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={"/employee/usb-list/1"}><span
                     className={"menu__link__left"}><img src={usbIcon} alt=""/>
-                    <span>{t('USB лист')}</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('USB лист')}</span></span> <span className={'count'}>{get(counts,'usbList',0)}</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/usb-file/${id}`}><span
                     className={"menu__link__left"}><img src={usbDriverIcon} alt=""/>
-                    <span>{t('USB файлы')}</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('USB файлы')}</span></span> <span className={'count'}>{get(counts,'usbData',0)}</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/printer/${id}`}><span
                     className={"menu__link__left"}><img src={printerIcon} alt=""/>
-                    <span>{t('Принтеры')}</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Принтеры')}</span></span> <span className={'count'}>{get(counts,'printer',0)}</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/remote/${id}`}><span
                     className={"menu__link__left"}><img src={remoteIcon} alt=""/>
-                    <span>{t('Удаленное упр.')}</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Удаленное упр.')}</span></span> <span className={'count'}>{get(counts,'network',0)}</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/audio/${id}`}><span
                     className={"menu__link__left"}><img src={audioIcon} alt=""/>
-                    <span>{t('Аудио записи')}</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Аудио записи')}</span></span> <span className={'count'}>{get(counts,'audiorecord',0)}</span></NavLink>
             </li>
             <li>
                 <NavLink className={'menu__link'} to={`/employee/session/${id}`}><span
                     className={"menu__link__left"}><img src={sessionIcon} alt=""/>
-                    <span>{t('Журнал сеанса')}</span></span> <span className={'count'}>564</span></NavLink>
+                    <span>{t('Журнал сеанса')}</span></span> <span className={'count'}>{get(counts,'network',0)}</span></NavLink>
             </li>
         </Styled>
     );

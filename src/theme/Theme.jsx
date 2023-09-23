@@ -215,6 +215,29 @@ const GlobalStyles = createGlobalStyle`
     height: 100vh;
     width: 100vw;
   }
+  
+  .gridview__header__container{
+    padding: 10px;
+    border-bottom: 1px solid #CDCDCD;
+    position: relative;
+
+    .gridview__header {
+      display: flex;
+      align-items: center;
+    }
+
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    .form-btn {
+      margin-top: 0;
+    }
+
+    label {
+      margin-bottom: 0 !important;
+    }
+  }
 
   @media print {
     @page {

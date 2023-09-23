@@ -1,16 +1,19 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useStore} from "../../../store";
-import {get} from "lodash";
+import {get, isEmpty} from "lodash";
 import dayjs from "dayjs";
-import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
 import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
 import {useTranslation} from "react-i18next";
+import {Col, Container, Row} from "react-grid-system";
+import GridViewCalendar from "../../../containers/grid-view/components/grid-view-calendar";
+import Search from "../../../components/search";
 
 const WarningsListContainer = ({
                                    id = null
                                }) => {
+    const [search, handleSearch] = useState('');
     const {t} = useTranslation()
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
@@ -79,12 +82,23 @@ const WarningsListContainer = ({
 
     return (
         <>
-            <GridView
+            <Container className={'gridview__header__container'} fluid>
+                <Row align={"center"}>
+                    <Col xs={9} className={'gridview__header'}>
+                        <GridViewCalendar/>
+                    </Col>
+                    <Col xs={3}>
+                        <Search handleSearch={handleSearch}/>
+                    </Col>
+                </Row>
+            </Container>
+            {!isEmpty(dateRange) && <GridView
+                hideGridHeader
                 url={URLS.alerts}
                 keyId={KEYS.alerts}
-                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate')}}
+                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate'), search}}
                 tableHeaderData={columns}
-            />
+            />}
         </>
     );
 };

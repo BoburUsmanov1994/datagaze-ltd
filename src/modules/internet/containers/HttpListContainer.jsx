@@ -1,18 +1,23 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {useStore} from "../../../store";
-import {get, head} from "lodash";
+import {get, head, isEmpty} from "lodash";
 import dayjs from "dayjs";
 import GridView from "../../../containers/grid-view";
 import {URLS} from "../../../constants/url";
 import {KEYS} from "../../../constants/key";
 import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
 import config from "../../../config";
+import GridViewCalendar from "../../../containers/grid-view/components/grid-view-calendar";
+import Search from "../../../components/search";
+import {Col, Container, Row} from "react-grid-system";
 
 const CloudStorageListContainer = ({
                                        id
                                    }) => {
+    const [search,handleSearch] = useState('')
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
+    const dateRange = useStore(state => get(state, 'dateRange', null))
     const breadcrumbs = useMemo(() => [
         {
             id: 1,
@@ -74,13 +79,23 @@ const CloudStorageListContainer = ({
     }, [])
     return (
         <>
-            <GridViewHeader/>
-            <GridView
+            <Container className={'gridview__header__container'} fluid>
+                <Row align={"center"}>
+                    <Col xs={9} className={'gridview__header'}>
+                        <GridViewCalendar/>
+                    </Col>
+                    <Col xs={3}>
+                        <Search handleSearch={handleSearch}/>
+                    </Col>
+                </Row>
+            </Container>
+            {!isEmpty(dateRange) && <GridView
+                hideGridHeader
                 url={URLS.webSniffs}
                 keyId={KEYS.webSniffs}
-                params={{employeeId: id}}
+                params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate'),search}}
                 tableHeaderData={columns}
-            />
+            />}
         </>
     );
 };
