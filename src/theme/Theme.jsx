@@ -157,6 +157,7 @@ const GlobalStyles = createGlobalStyle`
   .mr-20 {
     margin-right: 20px !important;
   }
+
   .ml-20 {
     margin-left: 20px !important;
   }
@@ -164,17 +165,26 @@ const GlobalStyles = createGlobalStyle`
   .mt-25 {
     margin-top: 25px !important;
   }
-
   .mb-25 {
     margin-bottom: 25px !important;
   }
-  .rc-checkbox{
+
+  .rbc-day-bg.rbc-today {
+    background-color: rgba(68, 57, 193, 0.3);
+  }
+
+  .rbc-event.rbc-selected {
+    background-color: transparent;
+  }
+
+  .rc-checkbox {
     position: relative;
     width: 15px;
     height: 15px;
   }
-  .rc-checkbox .rc-checkbox-checked{
-    
+
+  .rc-checkbox .rc-checkbox-checked {
+
   }
 
   .rc-checkbox .rc-checkbox-inner {
@@ -186,7 +196,8 @@ const GlobalStyles = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
-  .form-select::placeholder{
+
+  .form-select::placeholder {
     color: #000 !important;
   }
 
@@ -215,8 +226,8 @@ const GlobalStyles = createGlobalStyle`
     height: 100vh;
     width: 100vw;
   }
-  
-  .gridview__header__container{
+
+  .gridview__header__container {
     padding: 10px;
     border-bottom: 1px solid #CDCDCD;
     position: relative;

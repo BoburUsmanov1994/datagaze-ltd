@@ -10,6 +10,7 @@ import GridViewCalendar from "../../../containers/grid-view/components/grid-view
 import {useTranslation} from "react-i18next";
 import {Col, Container, Row} from "react-grid-system";
 import Search from "../../../components/search";
+import ActivityCalendar from "../components/ActivityCalendar";
 
 
 const EmployeeContainer = ({id = null}) => {
@@ -87,18 +88,7 @@ const EmployeeContainer = ({id = null}) => {
                 </Col>
             </Row>
         </Container>
-            {!isEmpty(dateRange) && <GridView
-                hideGridHeader
-                url={URLS.activity}
-                keyId={KEYS.activity}
-                params={{
-                    employeeId: id,
-                    start: get(dateRange, 'startDate'),
-                    end: get(dateRange, 'endDate'),
-                    search
-                }}
-                tableHeaderData={columns}
-            />}
+            <ActivityCalendar id={id} dateRange={dateRange} />
         </>
     );
 };

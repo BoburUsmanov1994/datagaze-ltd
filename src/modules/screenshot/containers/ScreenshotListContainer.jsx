@@ -7,6 +7,7 @@ import VerticalTimelineComponent from "../../../components/vertical-timeline/ind
 import {useTranslation} from "react-i18next";
 import GridViewCalendar from "../../../containers/grid-view/components/grid-view-calendar";
 import dayjs from "dayjs";
+import Select from "../../../components/select";
 
 const ScreenshotListContainer = ({
                                      id = null,
@@ -44,7 +45,11 @@ const ScreenshotListContainer = ({
 
     return (
         <>
-            <GridViewHeader handleSearch={(val) => setSearch(val)} headerComponent={<><GridViewCalendar/></>}/>
+            <GridViewHeader handleSearch={(val) => setSearch(val)}
+                            headerComponent={<><GridViewCalendar/> <Select className={'ml-20'} isMulti property={{
+                                placeholder: t('Categories'),
+                                onChange: (val) => console.log(prev => ({...prev, rule: val?.map(({value}) => value)}))
+                            }} options={[]}/></>}/>
             {(dayjs(get(dateRange, 'startDate')).isSame(get(dateRange, 'endDate'), 'day')) && <GridViewTimeline/>}
             <VerticalTimelineComponent search={search} id={id}/>
         </>
