@@ -129,7 +129,9 @@ const EmployeeListContainer = ({
                     <Select className={'ml-20'} isMulti property={{
                         placeholder: t('Политика'),
                         onChange: (val) => setFilter(prev => ({...prev, rule: val?.map(({value}) => value)}))
-                    }} options={ruleListData}/>
+                    }}
+                            options={ruleListData}
+                    />
 
                 </Flex>}
                 hideTimeline

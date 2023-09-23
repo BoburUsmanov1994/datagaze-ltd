@@ -91,7 +91,6 @@ const ActivityCalendar = ({
                             endAccessor="end"
                             style={{height: 750}}
                             eventPropGetter={eventStyleGetter}
-
                         />
                     </Col>
                 </Row>
