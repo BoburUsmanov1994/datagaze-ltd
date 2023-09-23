@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {useStore} from "../../../store";
 import {get} from "lodash";
 import GridViewHeader from "../../../containers/grid-view/components/grid-view-header";
@@ -10,6 +10,7 @@ import GridViewCalendar from "../../../containers/grid-view/components/grid-view
 const ScreenshotListContainer = ({
                                      id = null,
                                  }) => {
+    const [search, setSearch] = useState('')
     const {t} = useTranslation()
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
     }))
@@ -41,9 +42,9 @@ const ScreenshotListContainer = ({
 
     return (
         <>
-            <GridViewHeader headerComponent={<><GridViewCalendar/></>}/>
+            <GridViewHeader handleSearch={(val) => setSearch(val)} headerComponent={<><GridViewCalendar/></>}/>
             <GridViewTimeline/>
-            <VerticalTimelineComponent id={id}/>
+            <VerticalTimelineComponent search={search} id={id}/>
         </>
     );
 };

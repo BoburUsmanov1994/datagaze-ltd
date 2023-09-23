@@ -119,7 +119,7 @@ const EmployeeListContainer = ({
             <GridView
                 headerComponent={<Flex>
                     <Select isMulti property={{
-                        placeholder: 'Группы',
+                        placeholder: t('Группы'),
                         onChange: (val) => setFilter(prev => ({...prev, group: val?.map(({value}) => value)}))
                     }} options={groupListData}/>
                     <Switcher className={'ml-20'}
@@ -127,7 +127,7 @@ const EmployeeListContainer = ({
                               options={[{label: t('Оффлайн'), value: false}, {label: t('Онлайн'), value: true}]}
                     />
                     <Select className={'ml-20'} isMulti property={{
-                        placeholder: 'Политика',
+                        placeholder: t('Политика'),
                         onChange: (val) => setFilter(prev => ({...prev, rule: val?.map(({value}) => value)}))
                     }} options={ruleListData}/>
 

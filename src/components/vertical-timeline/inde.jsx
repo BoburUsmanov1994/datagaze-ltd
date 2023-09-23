@@ -2,25 +2,37 @@ import React, {useState, useEffect} from 'react';
 import {Col, Row} from "react-grid-system";
 import {VerticalTimeline, VerticalTimelineElement} from 'react-vertical-timeline-component';
 import styled from "styled-components";
-import {ReactSVG} from "react-svg";
 import 'react-vertical-timeline-component/style.min.css';
 import Flex from "../flex";
 import ImageLightboxGallery from "../image-lightbox-gallery";
-import galleryIcon from "../../assets/icons/polygon.svg";
 import {AiFillCheckCircle} from "react-icons/ai";
 import {get, isEmpty, isNil} from "lodash"
 import dayjs from "dayjs";
 import config from "../../config";
 import {useInView} from "react-intersection-observer";
 import {useStore} from "../../store";
-import {useInfiniteLoadingQuery, usePaginateQuery} from "../../hooks/api";
+import {usePaginateQuery} from "../../hooks/api";
 import {KEYS} from "../../constants/key";
 import {URLS} from "../../constants/url";
 import {OverlayLoader} from "../loader";
-import {Navigate} from "react-router-dom";
+import screenshotBottomImg from "../../assets/images/screenshot-bottom.png";
 
 
 const StyledVerticalTimelineComponent = styled.div`
+  position: relative;
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  .timeline-bottom {
+    position: absolute;
+    bottom: -150px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+  }
+
   .vertical-timeline--two-columns.vertical-timeline-element-icon {
     width: unset !important;
     height: unset !important;
@@ -82,10 +94,10 @@ const StyledVerticalTimelineComponent = styled.div`
 
     .img {
       height: 180px;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
       margin-bottom: 10px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
     }
 
     ::-webkit-scrollbar {
@@ -144,7 +156,7 @@ const StyledVerticalTimelineComponent = styled.div`
   }
 `;
 
-const VerticalTimelineComponent = ({id = null, ...props}) => {
+const VerticalTimelineComponent = ({id = null, search, ...props}) => {
     const [open, setOpen] = useState(false);
     const [imageIndex, setImageIndex] = useState(null);
     const [items, setItems] = useState([]);
@@ -156,7 +168,6 @@ const VerticalTimelineComponent = ({id = null, ...props}) => {
 
     const {
         data,
-        isError,
         isFetching,
         isLoading
     } = usePaginateQuery({
@@ -167,11 +178,13 @@ const VerticalTimelineComponent = ({id = null, ...props}) => {
             skip: 0,
             employeeId: id,
             start: get(dateRange, 'startDate'),
-            end: get(dateRange, 'endDate')
+            end: get(dateRange, 'endDate'),
+            search,
+            groupByDay: true
         },
+        enabled: !!(get(dateRange, 'startDate') && get(dateRange, 'endDate'))
     })
 
-    console.log('data', data, get(data, 'data.data.total'))
 
     useEffect(() => {
         if (inView) {
@@ -180,15 +193,19 @@ const VerticalTimelineComponent = ({id = null, ...props}) => {
             }
         }
     }, [inView])
+
     useEffect(() => {
         if (!isEmpty(get(data, 'data.data.result', []))) {
             setItems(prev => [...prev, ...get(data, 'data.data.result', [])])
+        } else {
+            setItems([]);
         }
     }, [data])
 
     if (isLoading) {
         return <OverlayLoader/>
     }
+
     return (
         <StyledVerticalTimelineComponent {...props}>
 
@@ -201,44 +218,44 @@ const VerticalTimelineComponent = ({id = null, ...props}) => {
                     <Row className={'mb-24'}>
                         <Col xs={12}>
                             <div className={'timeline__box__head'}>
-                                <h2>{dayjs(get(item, 'dateTime')).format("DD.MM.YYYY")}</h2>
+                                <h2>{dayjs(get(item, 'date')).format("DD.MM.YYYY")}</h2>
                             </div>
                         </Col>
                     </Row>
                     <Row>
                         <Col xs={12}>
                             <div className="timeline-gallery">
-                                <div className="timeline-gallery-item">
+                                {get(item, 'items', []).map(_item => <div className="timeline-gallery-item">
                                     <div className="img"
-                                         style={{backgroundImage: `url(${config.FILE_SERVER}${get(item, 'filePath')})`}}
+                                         style={{backgroundImage: `url(${config.API_ROOT}${URLS.screenshotFile}?id=${get(_item, 'id')})`}}
                                          onClick={() => {
-                                             setImageIndex(get(item, '_id'))
+                                             setImageIndex(get(_item, 'id'))
                                              setOpen(true);
-                                         }}/>
+                                         }}>
+                                    </div>
+
                                     <Row>
                                         <Col xs={12}>
                                             <Flex justify={'space-between'}>
-                                                <p>68% of 1 hour</p>
+                                                <p>{get(_item, 'activeWindowName')}</p>
                                             </Flex>
                                         </Col>
                                     </Row>
                                     {!isNil(imageIndex) && open &&
-                                    <ImageLightboxGallery images={[`${config.FILE_SERVER}${get(item, 'filePath')}`]}
-                                                          setOpen={setOpen}/>}
-                                </div>
+                                    <ImageLightboxGallery
+                                        images={[`${config.API_ROOT}${URLS.screenshotFile}?id=${imageIndex}`]}
+                                        setOpen={setOpen}/>}
+                                </div>)}
                             </div>
                         </Col>
                     </Row>
                 </VerticalTimelineElement>)
-
                 }
             </VerticalTimeline>
-            <div>
-                <button
-                    ref={ref}
-                >
-                    {isFetching ? 'Loading...' : 'Nothing to load'}
-                </button>
+            <div className={'timeline-bottom'}
+                 ref={ref}
+            >
+                {isFetching ? 'Loading...' : <img src={screenshotBottomImg} alt=""/>}
             </div>
         </StyledVerticalTimelineComponent>
     );

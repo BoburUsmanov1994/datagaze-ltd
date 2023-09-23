@@ -11,6 +11,11 @@ import {get} from "lodash"
 const Styled = styled.div`
   display: flex;
   width: 100%;
+  position: relative;
+  .sticky{
+    position: sticky;
+    top: 0;
+  }
 
   .layout {
     &__left {
@@ -40,7 +45,7 @@ const EmployeeLayout = ({
     }
     return (
         <Styled {...rest}>
-            <div className="layout__left">
+            <div className="layout__left sticky">
                 <Sidebar data={get(data, 'data.data', {})}/>
             </div>
             <div className="layout__right">

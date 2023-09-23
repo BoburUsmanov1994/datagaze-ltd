@@ -14,6 +14,7 @@ export const KEYS = {
     keylogger: 'keylogger',
     buffer: 'buffer',
     screenshot: 'screenshot',
+    screenshotFile: 'screenshotFile',
     alerts: 'alerts',
     accountList: 'accountList',
     computers: 'computers',

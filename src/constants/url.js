@@ -14,6 +14,7 @@ export const URLS = {
     keylogger: 'api/central/employees/keylogger',
     buffer: 'api/central/employees/clipboards',
     screenshot: '/api/central/employees/screenshot',
+    screenshotFile: 'api/central/employees/screenshot/file',
     alerts: '/api/main/alerts',
     accountList: 'api/account/list',
     computers: 'api/central/computers/list',
