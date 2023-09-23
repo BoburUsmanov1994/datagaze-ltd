@@ -11,6 +11,7 @@ import {useTranslation} from "react-i18next";
 import {Col, Container, Row} from "react-grid-system";
 import Search from "../../../components/search";
 import ActivityCalendar from "../components/ActivityCalendar";
+import Select from "../../../components/select";
 
 
 const EmployeeContainer = ({id = null}) => {
@@ -82,13 +83,17 @@ const EmployeeContainer = ({id = null}) => {
             <Row align={"center"}>
                 <Col xs={9} className={'gridview__header'}>
                     <GridViewCalendar/>
+                    <Select className={'ml-20'} isMulti property={{
+                        placeholder: t('Categories'),
+                        onChange: (val) => console.log(prev => ({...prev, rule: val?.map(({value}) => value)}))
+                    }} options={[]}/>
                 </Col>
                 <Col xs={3}>
                     <Search handleSearch={handleSearch}/>
                 </Col>
             </Row>
         </Container>
-            <ActivityCalendar id={id} dateRange={dateRange} />
+            <ActivityCalendar id={id} dateRange={dateRange}/>
         </>
     );
 };
