@@ -32,4 +32,7 @@ export const KEYS = {
     employeeGroups: 'employeeGroups',
     employeeRules: 'employeeRules',
     dataCount: 'dataCount',
+    telegramOwner: 'telegramOwner',
+    telegramChat: 'telegramChat',
+    telegramMessage: 'telegramMessage',
 }

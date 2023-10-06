@@ -32,5 +32,8 @@ export const URLS = {
     employeeGroups: '/api/central/employees/list/groups',
     employeeRules: '/api/central/employees/list/rules',
     dataCount: '/api/central/employees/data-count',
+    telegramOwner: '/api/central/employees/telegram-owner',
+    telegramChat: '/api/central/employees/telegram-chat',
+    telegramMessage: '/api/central/employees/telegram-messege',
 
 }

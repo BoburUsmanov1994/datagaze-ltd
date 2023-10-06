@@ -27,6 +27,7 @@ import GroupsPage from "../modules/account/pages/GroupsPage";
 import TranslationsPage from "../modules/translations/pages/ListPage";
 import DocumentsListPage from "../modules/document/pages/DocumentListPage";
 import RuleListPage from "../modules/rules/pages/RuleListPage";
+import TelegramListPage from "../modules/telegram/pages/TelegramListPage";
 
 const Router = ({...rest}) => {
     return (
@@ -46,6 +47,7 @@ const Router = ({...rest}) => {
                                 <Route path={"internet-use/:id"} element={<VisitsListPage/>}/>
                                 <Route path={"internet-use/cloud-storage/:id"} element={<CloudStorageListPage/>}/>
                                 <Route path={"internet-use/http/:id"} element={<WebSniffsListPage/>}/>
+                                <Route path={"telegram/:id"} element={<TelegramListPage/>}/>
                             </Route>
                         </Route>
                         <Route path={"accounts"}>

@@ -30,6 +30,8 @@ const GridView = ({
                       hideGridHeader = false,
                       bordered = false,
                       tableHeadDark = false,
+                      onRowClick = () => {
+                      },
                       ...rest
                   }) => {
 
@@ -68,7 +70,7 @@ const GridView = ({
             {
                 isFetching && <OverlayLoader/>
             }
-            <GridViewTable tableHeadDark={tableHeadDark} bordered={bordered} offset={page * limit} viewUrl={viewUrl}
+            <GridViewTable onRowClick={onRowClick} tableHeadDark={tableHeadDark} bordered={bordered} offset={page * limit} viewUrl={viewUrl}
                            tableHeaderData={tableHeaderData}
                            tableBodyData={get(data, source, [])}/>
             <GridViewPagination limit={limit} pageCount={ceil(get(data, "data.data.total") / limit) || 0}

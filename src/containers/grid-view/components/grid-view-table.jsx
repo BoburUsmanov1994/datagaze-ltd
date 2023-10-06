@@ -88,6 +88,8 @@ const GridViewTable = ({
                            tableBodyData = [],
                            viewUrl = null,
                            offset = 0,
+                           onRowClick = () => {
+                           },
                            ...rest
                        }) => {
     const navigate = useNavigate();
@@ -111,7 +113,7 @@ const GridViewTable = ({
                 <tbody className={"table__body"}>
                 {
                     tableBodyData && isArray(tableBodyData) && tableBodyData.map((tr, i) => <tr
-                        onClick={() => !isNil(viewUrl) && navigate(`${viewUrl}/${get(tr, "id")}`)} key={i}>
+                        onClick={() => !isNil(viewUrl) ? navigate(`${viewUrl}/${get(tr, "id")}`):onRowClick(tr,i)} key={i}>
                         {
                             tableHeaderData && isArray(tableHeaderData) && tableHeaderData.map((th, j) =>
                                 <td key={j} style={{

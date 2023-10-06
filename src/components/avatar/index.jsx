@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, {css} from "styled-components";
-import avatarImg from "../../assets/images/avatar.png";
+import avatarImg from "../../assets/images/employee.png";
 import {isEqual} from "lodash";
 
 const Styled = styled.div`
@@ -34,12 +34,12 @@ const Styled = styled.div`
   }
 
   ${({size}) => isEqual(size, 'sm') && css`
-    width: 65px;
-    height: 65px;
+    width: 56px;
+    height: 56px;
 
     img {
-      width: 60px;
-      height: 60px;
+      width: 56px;
+      height: 56px;
     }
 
     .status {

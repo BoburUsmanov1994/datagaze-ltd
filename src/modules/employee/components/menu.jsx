@@ -88,7 +88,6 @@ const Menu = ({
     const {t} = useTranslation()
     const {id} = useParams()
     const {pathname} = useLocation();
-    console.log('counts',counts)
     return (
         <Styled {...rest}>
             <li>

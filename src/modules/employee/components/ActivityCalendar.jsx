@@ -68,7 +68,7 @@ const ActivityCalendar = ({
                     className={'mr-10'} src={`data:image/png;base64, ${get(event, 'icon')}`}
                     alt=""/><span>{get(event, 'activeWindowName')}</span>
             </div>
-            <div>{get(event, 'time')}</div>
+            <div>{new Date(get(event, 'time') * 1000).toISOString().substring(11,19)}</div>
         </div>
     }))
     if (isLoading) {
