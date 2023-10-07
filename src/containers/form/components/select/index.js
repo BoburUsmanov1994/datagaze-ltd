@@ -6,6 +6,7 @@ import {ErrorMessage} from "@hookform/error-message";
 import Label from "../../../../components/ui/label";
 import {get} from "lodash";
 import classNames from "classnames";
+import {useTranslation} from "react-i18next";
 
 const StyledFormSelect = styled.div`
   width: 100%;
@@ -82,7 +83,7 @@ const FormSelect = ({
                         },
                         ...props
                     }) => {
-
+    const {t} = useTranslation()
     const [selectedValue, setSelectedValue] = useState(null)
 
     useEffect(() => {
@@ -116,7 +117,7 @@ const FormSelect = ({
                                 clearIndicator={true}
                                 options={options}
                                 disabled={disabled}
-                                placeholder={get(property, 'placeholder', 'Select...')}
+                                placeholder={get(property, 'placeholder', t('Select...'))}
                                 onChange={handleChange}
                                 styles={customStyles}
                                 components={{DropdownIndicator}}
@@ -139,10 +140,10 @@ const FormSelect = ({
                     render={({messages = `${label} is required`}) => {
 
                         if (errors[name].type == 'required') {
-                            messages = `${label} is required`;
+                            messages = `${label} ${t('is required')}`;
                         }
                         if (errors[name].type == 'pattern') {
-                            messages = `${label} is not valid`;
+                            messages = `${label} ${t('is not valid')}`;
                         }
                         if (errors[name].type == 'manual') {
                             messages = `${label} ${errors[name].message}`;

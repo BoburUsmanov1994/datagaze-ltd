@@ -1,28 +1,21 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import {Container, Row, Col} from "react-grid-system";
 import Flex from "../flex";
 import Breadcrumb from "../breadcrumb";
 import Dropdown from "../dropdown";
 import Profile from "../profile";
-import {Settings, Menu, Search} from "react-feather";
-import dots from "../../assets/images/dots.png";
-import Notification from "../notification";
-import RangeDatepicker from "../range-datepicker";
-import {useGetAllQuery} from "../../hooks/api";
-import {KEYS} from "../../constants/key";
-import {URLS} from "../../constants/url";
-import {useSettingsStore, useStore} from "../../store";
-import {get, isNil} from "lodash";
+import {Settings, Menu} from "react-feather";
+import {get} from "lodash";
 import Language from "../lang";
+import {useSettingsStore} from "../../store";
 
 const Styled = styled.header`
   padding: 15px 10px 15px 5px;
   border-bottom: 1px solid #CDCDCD;
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 60px;
-  width: calc(100% - 60px);
+  width: 100%;
   z-index: 999;
   background-color: #fff;
 
@@ -61,24 +54,27 @@ const Styled = styled.header`
       margin: 0 40px;
     }
   }
-
 `;
 
 const Header = ({...rest}) => {
     const user = {}
+    const isMenuOpen = useSettingsStore(state => get(state, 'isMenuOpen', false))
+    const setOpenMenu = useSettingsStore(state => get(state, 'setOpenMenu', () => {
+    }))
     return (
         <Styled {...rest}>
             <Container fluid>
                 <Row align={'center'}>
                     <Col xs={6}>
                         <Flex>
-                            <Menu color={'#DEDEDE'} size={32} className={'cursor-pointer'}/>
+                            <Menu onClick={() => setOpenMenu(!isMenuOpen)} color={'#DEDEDE'} size={32}
+                                  className={'cursor-pointer'}/>
                             <Breadcrumb/>
                         </Flex>
                     </Col>
                     <Col xs={6}>
                         <Flex justify={'flex-end'} align={'center'}>
-                            <Language />
+                            <Language/>
                             <Dropdown button={<Profile avatar={get(user, 'image')} username={get(user, 'username')}/>}>
                                 <ul className={'profile-body'}>
                                     <li><Settings size={20}/><span>Settings</span></li>

@@ -12,9 +12,6 @@ const Styled = styled.div`
   .wrap-box{
     display: flex;
   }
-  .wrap-content{
-    margin-top: 75px;
-  }
 `;
 const MainLayout = ({...rest}) => {
 

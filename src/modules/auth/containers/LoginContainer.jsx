@@ -37,7 +37,7 @@ const LoginContainer = () => {
                 setAuth(true);
                 setUser(get(res, 'data'));
                 setToken(tokenData);
-                navigate("/dashboard");
+                navigate("/employee");
                 Swal.fire({
                     position: 'center',
                     icon: 'success',

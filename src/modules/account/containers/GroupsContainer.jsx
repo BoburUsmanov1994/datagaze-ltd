@@ -55,7 +55,7 @@ const GroupsContainer = () => {
         key: [KEYS.groups, id],
         url: URLS.groups,
         id: id,
-        enabled:!!(id)
+        enabled: !!(id)
     })
 
     const ruleListData = getSelectOptionsListFromData(get(rules, 'data.data.rules', []), 'id', 'name')
@@ -175,14 +175,19 @@ const GroupsContainer = () => {
                     }
                     <Form formRequest={(params) => update(params)}
                           footer={<><Button primary block>{t('Edit')}</Button></>}>
-                        <Field defaultValue={get(group,'data.data.group.name')} params={{required: true}} label={t('Name')} type={'input'} name={'name'}/>
-                        <Field defaultValue={get(group,'data.data.group.description')} label={t('Description')} type={'input'} name={'description'}/>
-                        <Field defaultValue={get(group,'data.data.group.rule.id')} params={{required: true}} label={t('Rule')} type={'select'} name={'rule'}
+                        <Field defaultValue={get(group, 'data.data.group.name')} params={{required: true}}
+                               label={t('Name')} type={'input'} name={'name'}/>
+                        <Field defaultValue={get(group, 'data.data.group.description')} label={t('Description')}
+                               type={'input'} name={'description'}/>
+                        <Field defaultValue={get(group, 'data.data.group.rule.id')} params={{required: true}}
+                               label={t('Rule')} type={'select'} name={'rule'}
                                options={ruleListData}/>
-                        <Field defaultValue={get(group,'data.data.group.employees')} params={{required: true}} isMulti label={t('Employees')} type={'select'}
+                        <Field defaultValue={get(group, 'data.data.group.employees')} params={{required: true}} isMulti
+                               label={t('Employees')} type={'select'}
                                name={'employees'}
                                options={employeeListData}/>
-                        <Field defaultValue={get(group,'data.data.group.isControling')} label={t('Is controlled?')} type={'switch'} name={'isControling'}/>
+                        <Field defaultValue={get(group, 'data.data.group.isControling')} label={t('Is controlled?')}
+                               type={'switch'} name={'isControling'}/>
                     </Form>
                 </Modal>
             </Section>

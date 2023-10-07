@@ -94,8 +94,8 @@ const ComputersListContainer = () => {
                         </Col>
                         <Col xs={10} className={'text-right '}>
                             <Flex justify={'flex-end'}>
-                                <Button primary className={'mr-20'} rounded><Flex><RefreshCw size={18}
-                                                                                             className={'mr-10'}/><span>{t("Перезапустить агента")}</span></Flex></Button>
+                                {/*<Button primary className={'mr-20'} rounded><Flex><RefreshCw size={18}*/}
+                                {/*                                                             className={'mr-10'}/><span>{t("Перезапустить агента")}</span></Flex></Button>*/}
                                 <Button brown className={'mr-20'} rounded><Flex><X size={18}
                                                                                    className={'mr-10'}/><span>{t("Очистить агента")}</span></Flex></Button>
                                 <Button danger className={'mr-20'} rounded><Flex><Trash2 size={18}

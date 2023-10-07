@@ -10,6 +10,7 @@ import Form from "../../containers/form/form";
 import Button from "../ui/button";
 import Field from "../../containers/form/field";
 import Modal from "../modal";
+import {useTranslation} from "react-i18next";
 
 const Styled = styled.div`
   border: 1px solid #CDCDCD;
@@ -53,8 +54,13 @@ const Styled = styled.div`
 
 const RuleCard = ({
                       data,
+                      handleRemove = () => {
+                      },
+                      handleEdit = () => {
+                      },
                       ...rest
                   }) => {
+    const {t} = useTranslation()
     return (
         <Styled {...rest}>
             <Row>
@@ -63,15 +69,15 @@ const RuleCard = ({
                 </Col>
                 <Col className={'text-right'} xs={4}>
                     <Flex justify={'flex-end'}>
-                        <Settings color={'#8C8888'} className={'mr-3 cursor-pointer'} size={18}/>
-                        <Edit2 color={'#8C8888'} className={'mr-3 cursor-pointer'} size={18}/>
-                        <Trash2 color={'#F38E8E'} className={'mr-3 cursor-pointer'} size={18}/>
+                        <Edit2 onClick={() => handleEdit(get(data, 'id'))} color={'#8C8888'} className={'mr-3 cursor-pointer'} size={20}/>
+                        <Trash2 onClick={() => handleRemove(get(data, 'id'))} color={'#F38E8E'}
+                                className={'mr-3 cursor-pointer'} size={20}/>
                     </Flex>
                 </Col>
             </Row>
             <Row>
                 <Col xs={12}>
-                    <h4 className={'card__subtitle'}>Модули</h4>
+                    <h4 className={'card__subtitle'}>{t("Модули")}</h4>
                 </Col>
                 <Col xs={12}>
                     {

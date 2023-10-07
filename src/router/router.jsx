@@ -72,8 +72,8 @@ const Router = ({...rest}) => {
                         <Route path={"403"} element={<ForbiddenPage/>}/>
                         <Route path={"error"} element={<ErrorPage/>}/>
                         <Route path={"logout"} element={<LogoutPage/>}/>
-                        <Route path={"auth/*"} element={<Navigate to={'/dashboard'} replace/>}/>
-                        <Route path={"/"} element={<Navigate to={'/dashboard'} replace/>}/>
+                        <Route path={"auth/*"} element={<Navigate to={'/employee'} replace/>}/>
+                        <Route path={"/"} element={<Navigate to={'/employee'} replace/>}/>
                         <Route path={"*"} element={<NotFoundPage/>}/>
                     </Route>
                 </Routes>

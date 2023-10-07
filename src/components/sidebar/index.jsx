@@ -2,16 +2,20 @@ import React from 'react';
 import styled from "styled-components";
 import Menu from "../menu";
 import miniLogo from '../../assets/images/mini-logo.svg'
+import maxLogo from '../../assets/images/logo-main.svg'
 import {Link} from "react-router-dom";
 import {LogOut} from "react-feather";
 import Swal from "sweetalert2";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router-dom"
+import {motion} from "framer-motion";
+import {useSettingsStore} from "../../store";
+import {get} from "lodash";
 
 
-const Styled = styled.aside`
-  position: fixed;
-  width: 60px;
+const Styled = styled(motion.div)`
+  position: sticky;
+  top: 0;
   height: 100vh;
   border-right: 1px solid #CDCDCD;
   background-color: #fff;
@@ -22,7 +26,8 @@ const Styled = styled.aside`
 
   .miniLogo {
     display: block;
-    text-align: center;
+    text-align: ${({isMenuOpen}) => isMenuOpen ? 'left' : 'center'};
+    padding-left: ${({isMenuOpen}) => isMenuOpen ? '12px' : '0'};
     margin-bottom: 15px;
   }
 
@@ -33,13 +38,20 @@ const Styled = styled.aside`
     bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: ${({isMenuOpen}) => isMenuOpen ? 'flex-start' : 'center'};
     cursor: pointer;
+    padding-left: ${({isMenuOpen}) => isMenuOpen ? '15px' : '0'};
+
+    span {
+      margin-left: 10px;
+      display: ${({isMenuOpen}) => isMenuOpen ? 'inline-block' : 'none'};
+    }
   }
 `;
 
 const Sidebar = ({children, ...rest}) => {
     const {t} = useTranslation()
+    const isMenuOpen = useSettingsStore(state => get(state, 'isMenuOpen', true))
     const navigate = useNavigate();
     const logout = () => {
         Swal.fire({
@@ -64,13 +76,13 @@ const Sidebar = ({children, ...rest}) => {
         });
     }
     return (
-        <Styled {...rest}>
+        <Styled isMenuOpen={!isMenuOpen} as={motion.div} animate={{width: !isMenuOpen ? 225 : 60}} {...rest}>
             <Link className={'miniLogo'} to={'/dashboard'}>
-                <img src={miniLogo} alt="mini logo"/>
+                <img width={!isMenuOpen ? 175 : 30} src={!isMenuOpen ? maxLogo : miniLogo} alt="mini logo"/>
             </Link>
             <Menu/>
             <div onClick={logout} className="logout">
-                <LogOut color={'#948989'} size={22}/>
+                <LogOut color={'#948989'} size={22}/> <span>{t("Logout")}</span>
             </div>
         </Styled>
     );
