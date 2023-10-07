@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {ExternalLink, Settings, Trash2} from "react-feather";
+import {Edit2, ExternalLink, Settings, Trash2} from "react-feather";
 import shieldIcon from "../../../assets/icons/shield.svg";
 import Avatar from "../../../components/avatar";
 import {get} from "lodash";
@@ -82,6 +82,10 @@ const Styled = styled.div`
 `;
 const GroupCard = ({
                        data = {},
+                       handleRemove = () => {
+                       },
+                       handleEdit = () => {
+                       },
                        ...rest
                    }) => {
     return (
@@ -105,10 +109,10 @@ const GroupCard = ({
                 </div>
             </div>
             <div className="card__bottom">
-                <div className={'card__bottom__left'}>
-                    <Settings className={'cursor-pointer mr-5'} size={18}/> Изменить настройки
-                </div>
-                <Trash2 className={'cursor-pointer'} color={'#F38E8E'} size={18}/>
+                <Edit2 onClick={() => handleEdit(get(data, 'id'))} className={'cursor-pointer'} color={'#5BA9BA'}
+                       size={20}/>
+                <Trash2 onClick={() => handleRemove(get(data, 'id'))} className={'cursor-pointer'} color={'#F38E8E'}
+                        size={20}/>
             </div>
         </Styled>
     );

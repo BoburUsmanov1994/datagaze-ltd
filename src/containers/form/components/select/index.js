@@ -99,6 +99,7 @@ const FormSelect = ({
     useEffect(() => {
         getValueFromField(getValues(name), name);
     }, [watch(name)]);
+    
     return (
         <>
             <div className="form-group">

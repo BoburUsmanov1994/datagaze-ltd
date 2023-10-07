@@ -141,7 +141,10 @@ const Styled = styled.div`
           }
 
           &.in {
-            border-bottom-left-radius: 0;
+            .message__box {
+              border-bottom-left-radius: 0 !important;
+            }
+            
           }
 
           &__box {
