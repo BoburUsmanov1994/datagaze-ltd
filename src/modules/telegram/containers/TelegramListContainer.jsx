@@ -21,17 +21,17 @@ const TelegramListContainer = ({
     }))
     const dateRange = useStore(state => get(state, 'dateRange', null))
 
-    const {data:chats, isLoading, isFetching} = usePaginateQuery({
-        key: [KEYS.telegramChat,get(owner,'id')],
-        url:URLS.telegramChat,
+    const {data: chats} = usePaginateQuery({
+        key: [KEYS.telegramChat, get(owner, 'id')],
+        url: URLS.telegramChat,
         params: {
             search: `${search}`,
-            employeeId:id,
-            ownerId:get(owner,'id'),
+            employeeId: id,
+            ownerId: get(owner, 'id'),
             take: 100,
             skip: 0,
         },
-        enabled: !isNil(get(owner,'id') && id)
+        enabled: !isNil(get(owner, 'id') && id)
     })
 
     const breadcrumbs = [
@@ -85,7 +85,7 @@ const TelegramListContainer = ({
                         <GridViewCalendar/>
                     </Col>
                     <Col xs={3}>
-                        <Search handleSearch={handleSearch}/>
+                        <Search />
                     </Col>
                 </Row>
             </Container>
@@ -95,9 +95,11 @@ const TelegramListContainer = ({
                 keyId={KEYS.telegramOwner}
                 params={{employeeId: id, search}}
                 tableHeaderData={columns}
-                onRowClick={(tr)=>setOwner(tr)}
+                onRowClick={(tr) => setOwner(tr)}
             />}
-            <TelegramChat chats={get(chats,'data.data.result',[])} open={!isNil(owner)} onClose={() => setOwner(null)} />
+            <TelegramChat search={search} getSearchByChat={handleSearch} dateRange={dateRange} id={id} owner={owner}
+                          chats={get(chats, 'data.data.result', [])} open={!isNil(owner)}
+                          onClose={() => setOwner(null)}/>
         </>
     );
 };
