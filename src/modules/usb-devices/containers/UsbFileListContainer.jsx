@@ -10,9 +10,9 @@ import {useTranslation} from "react-i18next";
 import {Col, Container, Row} from "react-grid-system";
 import Search from "../../../components/search";
 
-const UsbDevicesListContainer = ({
-                                     id = null,
-                                 }) => {
+const UsbFileListContainer = ({
+                                  id = null,
+                              }) => {
     const [search, handleSearch] = useState('');
     const {t} = useTranslation()
     const setBreadcrumbs = useStore(state => get(state, 'setBreadcrumbs', () => {
@@ -50,28 +50,18 @@ const UsbDevicesListContainer = ({
             width: 200
         },
         {
-            title: t('Название'),
-            dataIndex: 'title',
-        },
-        {
-            title: t('Емкость'),
-            dataIndex: 'capacity',
-            render: (th) => th,
-        },
-        {
-            title: t('Метка'),
-            dataIndex: 'label',
-            render: (th) => th,
-        },
-        {
-            title: t('Модель'),
-            dataIndex: 'model',
-            render: (th) => th,
-        },
-        {
             title: t('IMEI'),
-            dataIndex: 'imei',
+            dataIndex: 'deviceImei',
+        },
+        {
+            title: t('Путь'),
+            dataIndex: 'filePath',
             render: (th) => th,
+        },
+        {
+            title: t('Файл'),
+            dataIndex: 'fileName',
+            render: (th, tr) => <a target={'_blank'} href={`${get(tr, 'targetPath')}`}>{th}</a>,
         },
         {
             title: t('Название компьютера'),
@@ -81,7 +71,7 @@ const UsbDevicesListContainer = ({
     ]
 
     useEffect(() => {
-        setBreadcrumbs(breadcrumbs)
+        setBreadcrumbs(breadcrumbs);
     }, [])
 
     return (
@@ -98,8 +88,8 @@ const UsbDevicesListContainer = ({
             </Container>
             {!isEmpty(dateRange) && <GridView
                 hideGridHeader
-                url={URLS.usbDevices}
-                keyId={KEYS.usbDevices}
+                url={URLS.usbFiles}
+                keyId={KEYS.usbFiles}
                 params={{employeeId: id, start: get(dateRange, 'startDate'), end: get(dateRange, 'endDate'), search}}
                 tableHeaderData={columns}
             />}
@@ -107,4 +97,4 @@ const UsbDevicesListContainer = ({
     );
 };
 
-export default UsbDevicesListContainer;
+export default UsbFileListContainer;

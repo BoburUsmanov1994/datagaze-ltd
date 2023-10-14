@@ -31,8 +31,9 @@ import TelegramListPage from "../modules/telegram/pages/TelegramListPage";
 import UsbDevicesListPage from "../modules/usb-devices/pages/UsbDevicesListPage";
 import RuleEditPage from "../modules/rules/pages/RuleEditPage";
 import RuleCreatePage from "../modules/rules/pages/RuleCreatePage";
+import UsbFileListPage from "../modules/usb-devices/pages/UsbFileListPage";
 
-const Router = ({...rest}) => {
+const Router = () => {
     return (
         <BrowserRouter>
             <IsAuth>
@@ -52,6 +53,7 @@ const Router = ({...rest}) => {
                                 <Route path={"internet-use/http/:id"} element={<WebSniffsListPage/>}/>
                                 <Route path={"telegram/:id"} element={<TelegramListPage/>}/>
                                 <Route path={"usb-devices/:id"} element={<UsbDevicesListPage/>}/>
+                                <Route path={"usb-files/:id"} element={<UsbFileListPage/>}/>
                             </Route>
                         </Route>
                         <Route path={"accounts"}>

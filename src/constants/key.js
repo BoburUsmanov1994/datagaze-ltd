@@ -36,4 +36,5 @@ export const KEYS = {
     telegramChat: 'telegramChat',
     telegramMessage: 'telegramMessage',
     usbDevices: 'usbDevices',
+    usbFiles: 'usbFiles',
 }

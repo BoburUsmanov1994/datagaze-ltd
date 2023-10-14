@@ -149,7 +149,7 @@ const Menu = ({
                     className={'count'}>{get(counts, 'usbList', 0)}</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link'} to={`/employee/usb-file/${id}`}><span
+                <NavLink className={'menu__link'} to={`/employee/usb-files/${id}`}><span
                     className={"menu__link__left"}><img src={usbDriverIcon} alt=""/>
                     <span>{t('USB файлы')}</span></span> <span
                     className={'count'}>{get(counts, 'usbData', 0)}</span></NavLink>

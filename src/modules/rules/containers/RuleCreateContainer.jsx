@@ -119,8 +119,8 @@ const RuleCreateContainer = () => {
             <Container className={'gridview__header__container'} fluid>
                 <Row align={"center"}>
                     <Col xs={9} className={'gridview__header'}>
-                        <GridViewCalendar/>
-                    </Col>
+                        <GridViewCalendar />
+                        </Col>
                     <Col xs={3}>
                         <Search/>
                     </Col>
