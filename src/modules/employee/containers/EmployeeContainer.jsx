@@ -23,7 +23,7 @@ const EmployeeContainer = ({id = null}) => {
     const breadcrumbs = [
         {
             id: 1,
-            title: t('Datagaze DLP'),
+            title: t('Sector DLP'),
             path: '/',
         },
         {

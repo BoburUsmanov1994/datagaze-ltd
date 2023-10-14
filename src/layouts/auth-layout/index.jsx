@@ -95,11 +95,11 @@ const AuthLayout = ({...rest}) => {
                 </ul>
                 <Outlet/>
                 {!includes(pathname, 'forgot-password') && !includes(pathname, 'confirm') &&
-                <p className={'oferta'}>{t('Регистрируясь на DatagazeDLP или авторизуясь через социальные сети, вы\n' +
+                <p className={'oferta'}>{t('Регистрируясь на SectorDLP или авторизуясь через социальные сети, вы\n' +
                     '                    соглашаетесь с')}
                     <a href="#"> {t('Пользовательским соглашением')}</a> и <a
                         href="#">{t('Политикой конфиденциальности')}</a>.</p>}
-                <p className={'auth-bottom'}>2019 - {dayjs().year()} © {t('Разработано Datagaze LTD')}</p>
+                <p className={'auth-bottom'}>2019 - {dayjs().year()} © {t('Разработано Sector LTD')}</p>
             </div>
         </Styled>
     );

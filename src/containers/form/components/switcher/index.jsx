@@ -9,6 +9,10 @@ import {get, head, last, isFunction} from "lodash";
 const Styled = styled.div`
   .switch {
     margin: 0 16px;
+
+    &.ml-0 {
+      margin-left: 0 !important;
+    }
   }
 
   span {
@@ -26,7 +30,7 @@ const Switcher = ({
                       errors,
                       params,
                       property,
-                      defaultValue=false,
+                      defaultValue = false,
                       getValues,
                       watch,
                       label,
@@ -64,17 +68,17 @@ const Switcher = ({
     return (
         <Styled {...rest}>
             <div className="form-group">
-                <Label
-                    className={classNames({required: get(property, 'hasRequiredLabel', false)})}>{label ?? name}</Label>
+                {!get(property, 'hideLabel', false) && <Label
+                    className={classNames({required: get(property, 'hasRequiredLabel', false)})}>{label ?? name}</Label>}
                 <Flex>
-                    <span>{get(head(options), 'label', '-')}</span>
+                    {!get(property, 'hideLabel', false) && <span>{get(head(options), 'label', '-')}</span>}
                     <Switch
                         checked={checked}
                         onChange={(val) => setChecked(val)}
                         onColor={'#5BBA7C'}
                         offColor={'#C8C8C8'}
                         activeBoxShadow={'0 0 2px 3px #5BBA7C'}
-                        className={'switch'}
+                        className={classNames('switch', {'ml-0': get(property, 'hideLabel', false)})}
                     />
                     <span>{get(last(options), 'label', '-')}</span>
                 </Flex>

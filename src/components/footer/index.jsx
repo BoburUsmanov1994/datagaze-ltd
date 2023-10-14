@@ -39,7 +39,7 @@ const Footer = ({
     const {t} = useTranslation()
     return (
         <Styled {...rest}>
-            <p>2019 - {dayjs().format("YYYY")} © {t('Разработано ООО "DATAGAZE"')}</p>
+            <p>2019 - {dayjs().format("YYYY")} © {t('Разработано ООО "Sector"')}</p>
             <ul>
                 <li>
                     <a href="@">{t('О нас')}</a>

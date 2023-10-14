@@ -8,6 +8,7 @@ import MaskedInput from "./components/masked-input";
 import Checkbox from "./components/checkbox";
 import CustomOtpInput from "./components/otp-input";
 import CustomPasswordStrengthInput from "./components/password-strength";
+import Textarea from "./components/textarea";
 
 const StyledField = styled.div`
   //margin-bottom: 25px;
@@ -20,6 +21,9 @@ const Field = ({type, ...rest}) => {
                     switch (type) {
                         case 'input':
                             return <FormConsumer>{({attrs, getValueFromField}) => <Input {...rest} {...attrs}
+                                                                                         getValueFromField={getValueFromField}/>}</FormConsumer>;
+                        case 'textarea':
+                            return <FormConsumer>{({attrs, getValueFromField}) => <Textarea {...rest} {...attrs}
                                                                                          getValueFromField={getValueFromField}/>}</FormConsumer>;
                         case 'select':
                             return <FormConsumer>{({attrs, getValueFromField}) => <CustomSelect {...rest} {...attrs}

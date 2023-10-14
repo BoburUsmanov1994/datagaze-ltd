@@ -22,7 +22,7 @@ const ScreenshotListContainer = ({
     const breadcrumbs = useMemo(() => [
         {
             id: 1,
-            title: t('Datagaze DLP'),
+            title: t('Sector DLP'),
             path: '/',
         },
         {

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
-import {get, includes, isEmpty, isEqual} from "lodash";
+import {get, isEqual} from "lodash";
 import {ErrorMessage} from "@hookform/error-message";
 import Label from "../../../../components/ui/label";
 import classNames from "classnames";
@@ -48,23 +48,22 @@ const Styled = styled.div`
     color: #f1556c;
   }
 `;
-const Input = ({
-                   register,
-                   disabled = false,
-                   name,
-                   errors,
-                   params,
-                   property,
-                   defaultValue,
-                   getValues,
-                   watch,
-                   label,
-                   setValue,
-                   getValueFromField = () => {
-                   },
-                   ...rest
-               }) => {
-    const [fieldTypeText, setFieldTypeText] = useState(false)
+const Textarea = ({
+                      register,
+                      disabled = false,
+                      name,
+                      errors,
+                      params,
+                      property,
+                      defaultValue,
+                      getValues,
+                      watch,
+                      label,
+                      setValue,
+                      getValueFromField = () => {
+                      },
+                      ...rest
+                  }) => {
 
     useEffect(() => {
         setValue(name, defaultValue)
@@ -81,21 +80,17 @@ const Input = ({
                     className={classNames({required: get(property, 'hasRequiredLabel', false)})}>{label ?? name} {
                     get(params, 'required') && <span className={'label__danger'}>*</span>
                 }</Label>}
-                <input
+                <textarea
+                    rows={6}
                     className={classNames('form-input', {
                         error: get(errors, `${name}`, false),
-                        hasPaddingRight: isEqual(get(property, "type"), 'password')
                     })}
                     name={name}
                     {...register(name, params)}
                     placeholder={get(property, "placeholder")}
-                    type={fieldTypeText ? 'text' : get(property, "type", "text")}
                     disabled={get(property, "disabled")}
                     defaultValue={defaultValue}
                 />
-                {isEqual(get(property, "type"), 'password') &&
-                    <Icon onClick={() => setFieldTypeText(prev => !prev)} className={'field-icon'} icon={'eye'}
-                          size={14}/>}
                 <ErrorMessage
                     errors={errors}
                     name={name}
@@ -118,4 +113,4 @@ const Input = ({
     );
 };
 
-export default Input;
+export default Textarea;

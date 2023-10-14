@@ -165,6 +165,7 @@ const GlobalStyles = createGlobalStyle`
   .mt-25 {
     margin-top: 25px !important;
   }
+
   .mb-25 {
     margin-bottom: 25px !important;
   }
@@ -181,6 +182,10 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     width: 15px;
     height: 15px;
+  }
+
+  .label__danger {
+    color: #f1556c;
   }
 
   .rc-checkbox .rc-checkbox-checked {
@@ -248,6 +253,17 @@ const GlobalStyles = createGlobalStyle`
     label {
       margin-bottom: 0 !important;
     }
+  }
+
+  .module__title {
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  .module__description {
+    font-size: 14px;
+    margin-bottom: 15px;
   }
 
   @media print {

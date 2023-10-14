@@ -14,6 +14,10 @@ const StyledFormSelect = styled.div`
   .error__control {
     border-color: #ef466f;
   }
+
+  .label__danger {
+    color: #f1556c;
+  }
 `;
 
 const DropdownIndicator = props => {
@@ -43,11 +47,11 @@ const customStyles = {
         fontSize: '16px',
         fontWeight: '300',
         "&:hover": {
-            borderColor: '#13D6D1',
+            borderColor: '#4439C1',
             outline: "none",
         },
         "&:focus": {
-            borderColor: '#13D6D1',
+            borderColor: '#4439C1',
             outline: "none",
         }
     }),
@@ -100,12 +104,14 @@ const FormSelect = ({
     useEffect(() => {
         getValueFromField(getValues(name), name);
     }, [watch(name)]);
-    
+
     return (
         <>
             <div className="form-group">
                 {!get(property, 'hideLabel', false) && <Label
-                    className={classNames({required: get(property, 'hasRequiredLabel', false)})}>{label ?? name}</Label>}
+                    className={classNames({required: get(property, 'hasRequiredLabel', false)})}>{label ?? name} {
+                    get(params, 'required') && <span className={'label__danger'}>*</span>
+                }</Label>}
 
                 <StyledFormSelect {...props}>
                     <Controller

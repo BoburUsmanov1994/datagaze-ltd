@@ -66,7 +66,7 @@ const GroupsContainer = () => {
     const breadcrumbs = useMemo(() => [
         {
             id: 1,
-            title: 'Datagaze DLP',
+            title: 'Sector DLP',
             path: '/',
         },
         {

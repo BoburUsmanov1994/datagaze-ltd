@@ -22,7 +22,7 @@ const WarningsListContainer = ({
     const breadcrumbs = [
         {
             id: 1,
-            title: t('Datagaze DLP'),
+            title: t('Sector DLP'),
             path: '/',
         },
         {
