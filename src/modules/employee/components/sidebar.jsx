@@ -9,6 +9,7 @@ import {useGetAllQuery, useGetOneQuery} from "../../../hooks/api";
 import {KEYS} from "../../../constants/key";
 import {URLS} from "../../../constants/url";
 import {OverlayLoader} from "../../../components/loader";
+import {EChart} from "../../../components/e-chart";
 
 const Styled = styled.div`
   min-height: 100vh;
@@ -63,6 +64,8 @@ const Styled = styled.div`
     }
   }
 `;
+
+
 const Sidebar = ({
                      data = {},
                      id = null,
@@ -79,6 +82,58 @@ const Sidebar = ({
         },
         enabled: !!(id && !isEmpty(dateRange))
     })
+    let option = {
+        series: [
+            {
+                type: 'gauge',
+                progress: {
+                    show: true,
+                    width: 18
+                },
+                axisLine: {
+                    lineStyle: {
+                        width: 18
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                splitLine: {
+                    length: 15,
+                    lineStyle: {
+                        width: 2,
+                        color: '#999'
+                    }
+                },
+                axisLabel: {
+                    distance: 25,
+                    color: '#999',
+                    fontSize: 20
+                },
+                anchor: {
+                    show: true,
+                    showAbove: true,
+                    size: 25,
+                    itemStyle: {
+                        borderWidth: 10
+                    }
+                },
+                title: {
+                    show: false
+                },
+                detail: {
+                    valueAnimation: true,
+                    fontSize: 80,
+                    offsetCenter: [0, '70%']
+                },
+                data: [
+                    {
+                        value: 70
+                    }
+                ]
+            }
+        ]
+    };
     return (
         <Styled {...rest}>
             <div className="sidebar__profile">
@@ -92,6 +147,9 @@ const Sidebar = ({
                     <li><strong>MAC:</strong></li>
                     <li><strong>E-mail:</strong></li>
                 </ul>
+                {/*<div style={{width:300,height:250}} >*/}
+                {/*    <EChart style={{height:'150px',width:300}} option={option} />*/}
+                {/*</div>*/}
             </div>
             <div className="sidebar__menu">
                 <Menu counts={head(get(counts, 'data.data.result', []))}/>

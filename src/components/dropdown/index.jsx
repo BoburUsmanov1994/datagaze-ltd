@@ -25,7 +25,7 @@ const DropdownStyle = styled.div`
       border-radius: 8px;
       position: absolute;
       top: 105%;
-      width: 100%;
+      min-width: 100%;
       right: 0;
       transition: 0.1s;
       overflow: hidden;

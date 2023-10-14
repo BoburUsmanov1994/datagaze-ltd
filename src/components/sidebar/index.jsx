@@ -32,6 +32,7 @@ const Styled = styled(motion.div)`
   }
 
   .logout {
+    border-top: 1px solid #CDCDCD;
     position: absolute;
     width: 100%;
     height: 50px;

@@ -88,9 +88,6 @@ const RangeDatepicker = ({
     }))
 
     useEffect(() => {
-        if (open) {
-            setOpen(false)
-        }
         if (range) {
             setDateRange(range);
         }
@@ -98,24 +95,30 @@ const RangeDatepicker = ({
 
     return (
         <Styled grid={grid} {...rest}>
-            <div className="datepicker__input" onClick={() => setOpen(prev => !prev)}>
-                <span
-                    className={'datepicker__input_text'}>{grid ? dayjs(get(range, 'startDate')).format("DD.MM.YYYY") : dayjs(get(range, 'startDate')).format("MMM DD, YYYY")} — {grid ? dayjs(get(range, 'endDate')).format("DD.MM.YYYY") : dayjs(get(range, 'endDate')).format("MMM DD, YYYY")}</span>
-                <Calendar className={'datepicker__input_calendar'} color={grid ? '#09121F' : '#ABABAB'} size={20}/>
-                {grid &&
-                <ChevronDown className={'datepicker__input_arrow'} color={grid ? '#09121F' : '#ABABAB'} size={20}/>}
-            </div>
-            {open &&
             <OutsideClickHandler onOutsideClick={() => {
                 setOpen(false)
-            }}><DateRangePicker
-                ranges={[{...range, key: 'selection'}]}
-                onChange={({selection}) => setRange(selection)}
-                className={'datepicker__range'}
-                rangeColors={['#4439C1']}
-                months={2}
-                direction="horizontal"
-            /></OutsideClickHandler>}
+            }}>
+                <div className="datepicker__input" onClick={() => setOpen(prev => !prev)}>
+                <span
+                    className={'datepicker__input_text'}>{grid ? dayjs(get(range, 'startDate')).format("DD.MM.YYYY") : dayjs(get(range, 'startDate')).format("MMM DD, YYYY")} — {grid ? dayjs(get(range, 'endDate')).format("DD.MM.YYYY") : dayjs(get(range, 'endDate')).format("MMM DD, YYYY")}</span>
+                    <Calendar className={'datepicker__input_calendar'} color={grid ? '#09121F' : '#ABABAB'} size={20}/>
+                    {grid &&
+                    <ChevronDown className={'datepicker__input_arrow'} color={grid ? '#09121F' : '#ABABAB'} size={20}/>}
+                </div>
+                {open &&
+                <DateRangePicker
+                    ranges={[{...range, key: 'selection'}]}
+                    onChange={({selection}) => setRange(selection)}
+                    className={'datepicker__range'}
+                    rangeColors={['#4439C1']}
+                    months={2}
+                    showSelectionPreview={true}
+                    moveRangeOnFirstSelection={false}
+                    direction="horizontal"
+                />
+
+                }
+            </OutsideClickHandler>
         </Styled>
     );
 };

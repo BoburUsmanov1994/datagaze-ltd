@@ -50,6 +50,9 @@ const customStyles = {
         minWidth: '150px',
         fontSize: '16px',
         fontWeight: '400',
+        "&:placeholder": {
+          color:'red'
+        },
         "&:hover": {
             borderColor: '#4439C1',
             outline: "none",

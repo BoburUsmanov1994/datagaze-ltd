@@ -4,14 +4,17 @@ import {User, ChevronDown} from "react-feather";
 import config from "../../config";
 import {useStore} from "../../store";
 import {get} from "lodash";
+import avatarImg from "../../assets/icons/admin.png"
 
 const Styled = styled.div`
   border: 1px solid #C2C2C2;
-  padding: 8px 16px;
+  padding: 6px 18px;
+  padding-left: 8px;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
   max-width: 250px;
+  min-width: 150px;
   display: flex;
   align-items: center;
 
@@ -32,13 +35,13 @@ const Styled = styled.div`
   }
 
   .profile__avatar {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 18px;
+    margin-right: 12px;
   }
 `
 
@@ -51,7 +54,7 @@ const Profile = ({
     return (
         <Styled {...rest}>
             {avatar ? <img className={'profile__avatar'} src={`${config.API_ROOT}${avatar}`} alt=""/> :
-                <User className={'user-icon'} size={24} color={'#9B9B9B'}/>}
+                <img className={'profile__avatar'} src={avatarImg} alt=""/>}
             <span className={'username'}>{get(user, 'username')}</span>
             <ChevronDown className={'chevron-icon'} size={20} color={'#9B9B9B'}/>
         </Styled>

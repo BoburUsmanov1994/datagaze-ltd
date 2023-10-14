@@ -10,7 +10,7 @@ import {ChevronDown} from "react-feather";
 
 
 const Styled = styled.div`
-  margin-left: 28px;
+  margin-left: 36px;
   margin-right: 28px;
 
   .lang {

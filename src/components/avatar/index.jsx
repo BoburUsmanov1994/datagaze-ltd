@@ -28,9 +28,16 @@ const Styled = styled.div`
     -moz-border-radius: 50%;
     border-radius: 50%;
     border: 2px solid #fff;
-    background-color: #2E9F5C;
     bottom: 5px;
     right: 18px;
+  }
+
+  .status_inactive {
+    background-color: #847878;
+  }
+
+  .status_active {
+    background-color: #2E9F5C;
   }
 
   ${({size}) => isEqual(size, 'sm') && css`
@@ -68,7 +75,8 @@ const Styled = styled.div`
     position: relative;
     border-radius: 50%;
     border: 1px dashed #707070;
-    &:before{
+
+    &:before {
       width: 107.5%;
       height: 107.5%;
       border-radius: 50%;
@@ -76,7 +84,8 @@ const Styled = styled.div`
       position: absolute;
       content: "";
     }
-    &:after{
+
+    &:after {
       width: 115%;
       height: 115%;
       border-radius: 50%;
@@ -94,7 +103,8 @@ const Avatar = ({
     return (
         <Styled size={size} {...rest}>
             <img src={avatarImg} alt="avatar"/>
-            {isOnline && <span className={"status"}></span>}
+            {isOnline ? <span className={"status status_active"}></span> :
+                <span className={"status status_inactive"}></span>}
         </Styled>
     );
 };

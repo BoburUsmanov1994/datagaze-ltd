@@ -5,10 +5,13 @@ import Flex from "../flex";
 import Breadcrumb from "../breadcrumb";
 import Dropdown from "../dropdown";
 import Profile from "../profile";
-import {Settings, Menu} from "react-feather";
+import {Settings, Menu, User, LogOut} from "react-feather";
 import {get} from "lodash";
 import Language from "../lang";
 import {useSettingsStore} from "../../store";
+import {useTranslation} from "react-i18next";
+import Notification from "../notification";
+import {Link} from "react-router-dom";
 
 const Styled = styled.header`
   padding: 15px 10px 15px 5px;
@@ -20,31 +23,57 @@ const Styled = styled.header`
   background-color: #fff;
 
   .profile-body {
-    width: 200px;
+    width: 225px !important;
     top: 300px;
     text-align: left;
     padding-top: 15px;
     padding-bottom: 15px;
 
-    li {
+    span.welcome {
+      font-size: 14px;
+      padding: 5px 15px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    li > a {
       padding: 5px 15px;
       cursor: pointer;
       transition: 0.3s ease;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
       align-items: center;
       display: flex;
+      color: #6c757d;
 
-      &:last-child {
-        margin-bottom: 0;
+      &:hover {
+        color: #4439C1;
       }
 
       span {
-        margin-left: 10px;
-        font-size: 15px;
+        margin-left: 5px;
+      }
+    }
+
+    .logout {
+      padding-top: 10px;
+      border-top: 1px solid #6c757d;
+      margin-top: 10px;
+
+      span {
+        margin-left: 4px;
       }
 
-      &:hover {
-        color: #13D6D1;
+      a {
+        padding: 5px 15px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        align-items: center;
+        display: flex;
+        color: #6c757d;
+
+        &:hover {
+          color: #4439C1;
+        }
       }
     }
   }
@@ -57,6 +86,7 @@ const Styled = styled.header`
 `;
 
 const Header = ({...rest}) => {
+    const {t} = useTranslation()
     const user = {}
     const isMenuOpen = useSettingsStore(state => get(state, 'isMenuOpen', false))
     const setOpenMenu = useSettingsStore(state => get(state, 'setOpenMenu', () => {
@@ -74,11 +104,19 @@ const Header = ({...rest}) => {
                     </Col>
                     <Col xs={6}>
                         <Flex justify={'flex-end'} align={'center'}>
+                            <Notification/>
                             <Language/>
                             <Dropdown button={<Profile avatar={get(user, 'image')} username={get(user, 'username')}/>}>
-                                <ul className={'profile-body'}>
-                                    <li><Settings size={20}/><span>Settings</span></li>
-                                </ul>
+                                <div className={'profile-body'}>
+                                    <span className={'welcome'}>{t('Добро пожаловать !')}</span>
+                                    <ul>
+                                        <li><Link to={'/profile'}><User
+                                            size={20}/><span>{t('Мой аккаунт')}</span></Link></li>
+                                    </ul>
+                                    <div className={'logout'}>
+                                        <Link to={'/logout'}><LogOut size={20}/><span>{t('Logout')}</span></Link>
+                                    </div>
+                                </div>
                             </Dropdown>
                         </Flex>
                     </Col>
