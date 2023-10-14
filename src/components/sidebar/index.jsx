@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import Menu from "../menu";
 import miniLogo from '../../assets/images/mini-logo.svg'
-import maxLogo from '../../assets/images/logo-main.svg'
+import maxLogo from '../../assets/images/logo.svg'
 import {Link} from "react-router-dom";
 import {LogOut} from "react-feather";
 import Swal from "sweetalert2";
@@ -34,6 +34,8 @@ const Styled = styled(motion.div)`
   .logout {
     border-top: 1px solid #CDCDCD;
     position: absolute;
+    z-index: 9999;
+    background: #fff;
     width: 100%;
     height: 50px;
     bottom: 0;

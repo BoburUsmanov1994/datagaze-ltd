@@ -35,5 +35,6 @@ export const URLS = {
     telegramOwner: '/api/central/employees/telegram-owner',
     telegramChat: '/api/central/employees/telegram-chat',
     telegramMessage: '/api/central/employees/telegram-messege',
+    usbDevices: 'api/central/employees/usb-devices',
 
 }

@@ -2,15 +2,11 @@ import React from 'react';
 import styled from "styled-components";
 import {Row, Col} from "react-grid-system";
 import {get} from "lodash";
-import {Edit2, Settings, Trash2} from "react-feather";
+import {Edit2, Eye, Trash2} from "react-feather";
 import Flex from "../flex";
 import {colors} from "../../constants/colors";
-import {ContentLoader} from "../loader";
-import Form from "../../containers/form/form";
-import Button from "../ui/button";
-import Field from "../../containers/form/field";
-import Modal from "../modal";
 import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router-dom"
 
 const Styled = styled.div`
   border: 1px solid #CDCDCD;
@@ -61,6 +57,7 @@ const RuleCard = ({
                       ...rest
                   }) => {
     const {t} = useTranslation()
+    const navigate = useNavigate()
     return (
         <Styled {...rest}>
             <Row>
@@ -69,7 +66,8 @@ const RuleCard = ({
                 </Col>
                 <Col className={'text-right'} xs={4}>
                     <Flex justify={'flex-end'}>
-                        <Edit2 onClick={() => handleEdit(get(data, 'id'))} color={'#8C8888'} className={'mr-3 cursor-pointer'} size={20}/>
+                        <Edit2 onClick={() => navigate(`/rules/edit/${get(data, 'id')}`)} color={'#8C8888'}
+                               className={'mr-3 cursor-pointer'} size={20}/>
                         <Trash2 onClick={() => handleRemove(get(data, 'id'))} color={'#F38E8E'}
                                 className={'mr-3 cursor-pointer'} size={20}/>
                     </Flex>

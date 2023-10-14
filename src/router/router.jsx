@@ -28,6 +28,8 @@ import TranslationsPage from "../modules/translations/pages/ListPage";
 import DocumentsListPage from "../modules/document/pages/DocumentListPage";
 import RuleListPage from "../modules/rules/pages/RuleListPage";
 import TelegramListPage from "../modules/telegram/pages/TelegramListPage";
+import UsbDevicesListPage from "../modules/usb-devices/pages/UsbDevicesListPage";
+import RuleEditPage from "../modules/rules/pages/RuleEditPage";
 
 const Router = ({...rest}) => {
     return (
@@ -48,6 +50,7 @@ const Router = ({...rest}) => {
                                 <Route path={"internet-use/cloud-storage/:id"} element={<CloudStorageListPage/>}/>
                                 <Route path={"internet-use/http/:id"} element={<WebSniffsListPage/>}/>
                                 <Route path={"telegram/:id"} element={<TelegramListPage/>}/>
+                                <Route path={"usb-devices/:id"} element={<UsbDevicesListPage/>}/>
                             </Route>
                         </Route>
                         <Route path={"accounts"}>
@@ -64,6 +67,7 @@ const Router = ({...rest}) => {
                         </Route>
                         <Route path={"rules"}>
                             <Route index element={<RuleListPage/>}/>
+                            <Route path={"edit/:id"} element={<RuleEditPage/>}/>
                         </Route>
                         <Route path={"groups"}>
                             <Route index element={<GroupsPage/>}/>
