@@ -95,14 +95,14 @@ const Header = ({...rest}) => {
         <Styled {...rest}>
             <Container fluid>
                 <Row align={'center'}>
-                    <Col xs={6}>
+                    <Col xs={8}>
                         <Flex>
                             <Menu onClick={() => setOpenMenu(!isMenuOpen)} color={'#DEDEDE'} size={32}
                                   className={'cursor-pointer'}/>
                             <Breadcrumb/>
                         </Flex>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={4}>
                         <Flex justify={'flex-end'} align={'center'}>
                             <Notification/>
                             <Language/>

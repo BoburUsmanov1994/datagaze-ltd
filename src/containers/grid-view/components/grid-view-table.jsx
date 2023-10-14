@@ -5,7 +5,8 @@ import {useNavigate} from "react-router-dom";
 import EmptyPage from "../../../modules/auth/pages/EmptyPage";
 
 const Styled = styled.div`
-  margin: 20px 0;
+  margin-top: 5px;
+  margin-bottom: 20px;
 
   .table {
     width: 100%;
@@ -25,7 +26,7 @@ const Styled = styled.div`
         font-weight: 500;
         color: #000;
         font-family: 'Inter', sans-serif;
-        padding: 15px 15px 30px 15px;
+        padding: 15px 15px 20px 15px;
 
         &:first-child {
           text-align: left;
@@ -113,7 +114,8 @@ const GridViewTable = ({
                 <tbody className={"table__body"}>
                 {
                     tableBodyData && isArray(tableBodyData) && tableBodyData.map((tr, i) => <tr
-                        onClick={() => !isNil(viewUrl) ? navigate(`${viewUrl}/${get(tr, "id")}`):onRowClick(tr,i)} key={i}>
+                        onClick={() => !isNil(viewUrl) ? navigate(`${viewUrl}/${get(tr, "id")}`) : onRowClick(tr, i)}
+                        key={i}>
                         {
                             tableHeaderData && isArray(tableHeaderData) && tableHeaderData.map((th, j) =>
                                 <td key={j} style={{
