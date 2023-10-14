@@ -30,6 +30,7 @@ import RuleListPage from "../modules/rules/pages/RuleListPage";
 import TelegramListPage from "../modules/telegram/pages/TelegramListPage";
 import UsbDevicesListPage from "../modules/usb-devices/pages/UsbDevicesListPage";
 import RuleEditPage from "../modules/rules/pages/RuleEditPage";
+import RuleCreatePage from "../modules/rules/pages/RuleCreatePage";
 
 const Router = ({...rest}) => {
     return (
@@ -67,6 +68,7 @@ const Router = ({...rest}) => {
                         </Route>
                         <Route path={"rules"}>
                             <Route index element={<RuleListPage/>}/>
+                            <Route path={"create"} element={<RuleCreatePage/>}/>
                             <Route path={"edit/:id"} element={<RuleEditPage/>}/>
                         </Route>
                         <Route path={"groups"}>
