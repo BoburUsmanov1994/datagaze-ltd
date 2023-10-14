@@ -75,7 +75,6 @@ const Styled = styled.ul`
           border-radius: 50%;
           background-color: #C4C4C4;
           margin: 0 16px;
-
         }
       }
     }
@@ -155,7 +154,7 @@ const Menu = ({
                     className={'count'}>{get(counts, 'usbData', 0)}</span></NavLink>
             </li>
             <li>
-                <NavLink className={'menu__link'} to={`/employee/printer/${id}`}><span
+                <NavLink className={'menu__link'} to={`/employee/printers/${id}`}><span
                     className={"menu__link__left"}><img src={printerIcon} alt=""/>
                     <span>{t('Принтеры')}</span></span> <span
                     className={'count'}>{get(counts, 'printer', 0)}</span></NavLink>
